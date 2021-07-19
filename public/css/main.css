@@ -1,0 +1,17 @@
+@charset "UTF-8";
+
+body {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #DEEAF7;
+  /* 017　ベビーグッズ3　ベビーブルーの色 */
+  color: #000;
+}
+
+.navbar-mom {
+  background-color: #FADBE1;
+  /* 017 　ベビーグッズ1　ベビーピンクの色 */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+  /* navbarにうっすらついてる影 */
+}
+
