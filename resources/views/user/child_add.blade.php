@@ -2,14 +2,14 @@
 @extends('layouts.main')
 
 {{-- title --}}
-@section('title', 'こども情報編集')
+@section('title', 'こども情報の追加')
 
 {{-- contentここから --}}
 @section('content')
     <div class="container">
         <div class="row">
             <div class="col-md-4 mx-auto">
-                <h3>《こどものデータ》</h3>  {{-- 後でこどもの名前が出るようにする --}}
+                <h3>《10人目のこどもの情報登録》</h3>  {{-- 後で何人目のこどもなのか出るようにする --}}
             </div>
         </div>
         
@@ -35,18 +35,18 @@
         <div class="form-group row">
             <label class="col-md-3" for="birthday">生年月日</label>
             <div class="col-md-2">
-                <select class="form-control" name="year">  {{-- 横に来るようにする　月、日も --}}
-                    <option value="">選択してください</option>  {{-- 後で入れる方法考える、gのところと同じにする --}}
-                </select> <span>年</span>
-            </div>
-            <div class="col-md-2">
-                <select class="form-control" name="month"> 月
-                    <option value="">選択してください</option>  {{-- 後で年のところと合わせる --}}
+                <select class="form-control" name="year">
+                    <option value="">年</option>
                 </select>
             </div>
             <div class="col-md-2">
-                <select class="form-control" name="day"> 日
-                    <option value="">選択してください</option>  {{-- 後で --}}
+                <select class="form-control" name="month">
+                    <option value="">月</option>
+                </select>
+            </div>
+            <div class="col-md-2">
+                <select class="form-control" name="day">
+                    <option value="">日</option>
                 </select>
             </div>
         </div>
@@ -76,35 +76,14 @@
         <div class="form-group row">
             <label class="col-md-3" for="birth_weight">出生体重</label>
             <div class="col-md-3 form-inline">
-                <input type="text" class="form-control" name="birth_weight"> <span style="margin-left:10px;">g</span> {{-- spanのところは後でscssの方へ書く --}}
+                <input type="text" class="form-control" name="birth_weight" id="birth_weight"> <span style="margin-left:10px;">g</span> {{-- spanのところは後でscssの方へ書く --}}
             </div>
         </div>
     
         <div class="form-group row">
             <label class="col-md-3" for="birth_height">出生身長</label>
             <div class="col-md-3 form-inline">
-                <input type="text" class="form-control" name="birth_height"> cm  {{-- gと同様にする --}}
-            </div>
-        </div>
-        
-        <div class="form-group row">
-            <label class="col-md-3" for="allergy">アレルギー</label>
-            <div class="col-md-5">
-                <textarea class="form-control" name="allergy" rows="4"></textarea>
-            </div>
-        </div>
-        
-        <div class="form-group row">
-            <label class="col-md-3" for="sick">これまでにかかった主な病気</label>
-            <div class="col-md-5">
-                <textarea class="form-control" name="sick" rows="4"></textarea>
-            </div>
-        </div>
-        
-        <div class="form-group row">
-            <label class="col-md-3" for="child_memo">メモ</label>
-            <div class="col-md-5">
-                <textarea class="form-control" name="child_memo" rows="6"></textarea>
+                <input type="text" class="form-control" name="birth_height" id="birth_height"> <span style="margin-left:10px;">cm</span> {{-- spanの装飾はscssへ --}}
             </div>
         </div>
         
@@ -122,13 +101,12 @@
                 <input type="" name="" value="">
                 {{ csrf_field() }}
                 --}}
-                <input type="submit" class="btn btn-primary btn-lg btn-block" value="　更新　">
+                <input type="submit" class="btn btn-primary btn-lg btn-block" value="　登録　">
             </div>
             
             
         </div>
         
+        
     </div>
-
-
 @endsection
