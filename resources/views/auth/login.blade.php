@@ -1,4 +1,4 @@
-{-- loginしていないのでlogin_mainの読み込み --}}
+{{-- loginしていないのでlogin_mainの読み込み --}}
 @extends('layouts.login_main')
 
 {{-- title --}}
@@ -13,12 +13,32 @@
         </div>
     </div>
     
-    <div class="form-group row">
-        <label class="col-md-3" for="email">メールアドレス</label>
-        <div class="col-md-6">
-            <input type="email" class="form-control" name="email" placeholder="メールアドレス">
+    <div class="login-box card">
+        <div class="login-body card-bory">
+            <form method="POST" action="{{ route('login') }}">
+                @csrf
+                
+                <div class="form-group row">
+                    <label class="col-md-3" for="email">{{ __('messages.E-Mail Address') }}</label>
+                    <div class="col-md-6">
+                        <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" placeholder="メールアドレス" value="{{ old('email') }}" required autofocus>
+                    </div>
+                </div>
+                
+                
+            </form>
+            
         </div>
     </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     <div class="form-group row">
         <label class="col-md-3" for="password">パスワード</label>
@@ -52,16 +72,18 @@
 
 
 
-{{-- authでできたloginの分↓
+
+{{-- authでできたloginでテキスト内の編集加えて、かつ自分でも少し手を加えたもの↓
+@extends('layouts.login_main')
 
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('messages.Login') }}</div>
+            <div class="login-box card">
+                <div class="login-header card-header mx-auto">{{ __('messages.Login') }}</div>
 
-                <div class="card-body">
+                <div class="login-body card-body">
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
 
@@ -69,18 +91,18 @@
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('messages.E-Mail Address') }}</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus>
 
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
+                                @if ($errors->has('email'))
+                                    <span class="invalid-feedback">
+                                        <strong>{{ $errors->first('email') }}</strong>
                                     </span>
-                                @enderror
+                                @endif
                             </div>
                         </div>
 
                         <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('messages.assword') }}</label>
+                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('messages.Password') }}</label>
 
                             <div class="col-md-6">
                                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
@@ -108,12 +130,12 @@
                         <div class="form-group row mb-0">
                             <div class="col-md-8 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
-                                    {{ __('messages.Login') }}
+                                    {{ __('messages.login') }}
                                 </button>
 
                                 @if (Route::has('password.request'))
                                     <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        {{ __('Forgot Your Password?') }}
+                                        {{ __('messages.Forgot Your Password?') }}
                                     </a>
                                 @endif
                             </div>

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTUserProfilesTable extends Migration
+class CreateMVaccinesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateTUserProfilesTable extends Migration
      */
     public function up()
     {
-        Schema::create('t_user_profiles', function (Blueprint $table) {
+        Schema::create('m_vaccines', function (Blueprint $table) {
             $table->bigIncrements('id'); //ID
-            $table->string('user_name', 256); //ユーザー名
-            $table->integer('relationship_id')->length(1); //関係性 外部キー
-            $table->integer('notice_flag')->length(1)->default(1); //通知
+            $table->string('vaccine_name',256); //ワクチン名
+            $table->integer('vaccine_times')->length(10); //回数
+            $table->integer('display_order')->length(10); //表示順
             $table->softDeletes(); //論理削除
             $table->timestamps();
         });
@@ -30,6 +30,6 @@ class CreateTUserProfilesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('t_user_profiles');
+        Schema::dropIfExists('m_vaccines');
     }
 }
