@@ -15,33 +15,81 @@
         </div>
     </div>
     
-    <div class="form-group row">
-        <label class="col-md-3" for="user_name">ユーザー名</label>
-        <div class="col-md-5">
-            <input type="text" class="form-control" name="name">
-        </div>
+    <div class="register_body">
+        <form method="POST" action="{{ route('register') }}">
+            @csrf
+            
+            <div class="form-group row">
+                <label class="col-md-3" for="user_name">ユーザー名</label>
+                <div class="col-md-5">
+                    <input id="user_name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('user_name') }}" required autocomplete="name" autofocus>
+                    @error('name')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
+            </div>
+            
+            <div class="form-group row">
+                <label class="col-md-3" for="email">メールアドレス</label>
+                <div class="col-md-5">
+                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+                    @error('email')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
+            </div>
+            
+            <div class="form-group row">
+                <label class="col-md-3" for="password">パスワード</label>
+                <div class="col-md-5">
+                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+                    @error('password')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
+            </div>
+            
+            <div class="form-group row">
+                <label class="col-md-3" for="password-confirm">パスワード確認</label>
+                <div class="col-md-5">
+                    <input id="password-confirm" type="password" class="form-control" name="password-confirmation" required autocomplete="new-password">
+                </div>
+            </div>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+        </form>
     </div>
+    
+    
+    
+    
+    
         
-    <div class="form-group row">
-        <label class="col-md-3" for="email">メールアドレス</label>
-        <div class="col-md-5">
-            <input type="email" class="form-control" name="email">
-        </div>
-    </div>
+    
         
-    <div class="form-group row">
-        <label class="col-md-3" for="password">パスワード</label>
-        <div class="col-md-5">
-            <input type="password" class="form-control" name="password"> {{-- あとで表記方法考える… --}}
-        </div>
-    </div>
-        
-    <div class="form-group row">
-        <label class="col-md-3" for="password_check">パスワード確認</label>
-        <div class="col-md-5">
-            <input type="password" class="form-control" name="password_check"> {{-- あとで表記方法考える… --}}
-        </div>
-    </div>
+    
         
     <div class="form-group row">
         <label class="col-md-3" for="relationship">こどもとの関係性</label>

@@ -16,6 +16,8 @@ class DatabaseSeeder extends Seeder
             M_GendersTableSeeder::class,
             M_BloodtypesTableSeeder::class,
             M_Blood_rhTableSeeder::class,
+            M_VaccinesTableSeeder::class,
+            M_MedeicalTablseSeeder::class,
         ]);
     }
 }
