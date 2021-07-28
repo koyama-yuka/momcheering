@@ -22,7 +22,7 @@
             <div class="form-group row">
                 <label class="col-md-3" for="user_name">ユーザー名</label>
                 <div class="col-md-5">
-                    <input id="user_name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('user_name') }}" required autocomplete="name" autofocus>
+                    <input id="user_name" type="text" class="form-control @error('name') is-invalid @enderror" name="user_name" value="{{ old('user_name') }}" required autocomplete="name" autofocus>
                     @error('name')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
