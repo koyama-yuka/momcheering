@@ -17,14 +17,20 @@ Route::get('/', function () {
 });
 */
 
+Route::get('/', 'Users\UserController@loginTop'); //ログイン画面
+
+Route::get('/register', 'Users\UserController@register'); //新規登録画面
+Route::post('/register', 'Users\UserController@registerDone'); //新規登録したら情報をDBへ保存してログイン画面へ
+
+
 Route::group(['prefix' => 'user'], function(){
-    Route::get('edit', 'Users\UserController@profile_edit');
-    Route::get('/', 'Users\UserController@user_profie_index');
+    Route::get('edit', 'Users\UserController@profileEdit');
+    Route::get('/', 'Users\UserController@userProfieIndex');
 });
 
-Route::get('/', 'Users\UserController@login_top');
-Route::get('/register', 'Users\UserController@register');
-Route::get('/home', 'Users\UserController@home_display');
+
+
+Route::get('/home', 'Users\UserController@homeDisplay');
 
 
 Route::group(['prefix' => 'vaccine'],function(){
@@ -33,11 +39,12 @@ Route::group(['prefix' => 'vaccine'],function(){
     Route::get('details/edit', 'Users\VaccineController@edit');
 });
 
-Route::group(['prefix' => 'child'],function(){
+Route::group(['prefix' => 'child', 'middleware' => 'auth'],function(){
     Route::get('edit', 'Users\ChildController@edit');
     Route::get('/', 'Users\ChildController@index');
     Route::get('add', 'Users\ChildController@add');
 });
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

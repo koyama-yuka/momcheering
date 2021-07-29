@@ -7,23 +7,34 @@ use App\Http\Controllers\Controller;
 
 class UserController extends Controller
 {
-    public function profile_edit(){
-        return view('user.user_profile_edit');
-    }
-    
-    public function user_profie_index(){
-        return view('user.user_profile');
-    }
-    
-    public function login_top(){
+    public function loginTop(){  //ログイン画面の表示
         return view('auth.login');
     }
     
-    public function register(){
+    public function register(){ //新規登録画面の表示
         return view('auth.register');
     }
     
-    public function home_display(){
+    public function registerDone(Request $request){
+        
+        
+        
+    }
+    
+    
+    public function profileEdit(){
+        return view('user.user_profile_edit');
+    }
+    
+    public function userProfieIndex(){
+        return view('user.user_profile');
+    }
+    
+    
+    
+    
+    
+    public function homeDisplay(){
         return view('user.home');
     }
     

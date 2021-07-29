@@ -57,7 +57,7 @@
             
             <div class="form-group row">
                 <div class="col-md-8 offset-md-4">
-                    <button type="button" class="btn btn-primary">新規登録の方はこちら</button>
+                    <button type="button" class="btn btn-primary" onclick="location.href='/register'">新規登録の方はこちら</button>
                 </div>
             </div>
             
