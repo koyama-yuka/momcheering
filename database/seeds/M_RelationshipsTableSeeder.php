@@ -15,14 +15,20 @@ class M_RelationshipsTableSeeder extends Seeder
             
             [
                 'relationship' => '母',
+                'created_at' => new DateTime(),
+                'updated_at' => new DateTime(),
             ],
             
             [
                 'relationship' => '父',
+                'created_at' => new DateTime(),
+                'updated_at' => new DateTime(),
             ],
             
             [
                 'relationship' => 'その他',
+                'created_at' => new DateTime(),
+                'updated_at' => new DateTime(),
             ],
             
             ]);

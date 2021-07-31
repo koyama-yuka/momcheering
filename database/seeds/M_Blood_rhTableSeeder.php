@@ -15,14 +15,20 @@ class M_Blood_rhTableSeeder extends Seeder
             
             [
                 'blood_rh' => '+',
+                'created_at' => new DateTime(),
+                'updated_at' => new DateTime(),
             ],
             
             [
                 'blood_rh' => '-',
+                'created_at' => new DateTime(),
+                'updated_at' => new DateTime(),
             ],
             
             [
                 'blood_rh' => '不明',
+                'created_at' => new DateTime(),
+                'updated_at' => new DateTime(),
             ],
             
         ]);

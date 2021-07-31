@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use App\Child; //追加した
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -52,6 +53,16 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'relationship_id' => ['required'],
+            'notice_flag' => ['required'],
+            
+            'child_name' => ['required', 'string', 'max:255'],
+            'gender_id' => ['required'],
+            'birthday' => ['required'],
+            'blood_type_id' => ['required'],
+            'blood_rh_id' => ['required'],
+            'birth_weight' => ['required'],
+            'birth_height' => ['required'],
         ]);
     }
 
@@ -67,6 +78,19 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'relationship_id' => $data['relationship_id'],
+            'notice_flag' => $data['notice_flag'],
         ]);
+        
+        return Child::create([
+            'child_name' => $data['child_name'],
+            'gender_id' => $data['gender_id'],
+            'birthday' => $data['birthday'],
+            'blood_type_id' => $data['blood_type_id'],
+            'blood_rh_id' => $data['blood_rh_id'],
+            'birth_weight' => $data['birth_weight'],
+            'birth_height' => $data['birth_height'],
+        ]);
+        
     }
 }

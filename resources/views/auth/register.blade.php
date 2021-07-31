@@ -21,10 +21,10 @@
             
             
             <div class="form-group row">
-                <label class="col-md-3" for="user_name">ユーザー名</label>
+                <label class="col-md-3" for="name">ユーザー名</label>
                 <div class="col-md-5">
-                    <input id="user_name" type="text" class="form-control @error('user_name') is-invalid @enderror" name="user_name" value="{{ old('user_name') }}" required autocomplete="user_name" placeholder="ユーザー名" autofocus>
-                    @error('user_name')
+                    <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" placeholder="ユーザー名" autofocus>
+                    @error('name')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
@@ -62,7 +62,7 @@
             <div class="form-group row">
                 <label class="col-md-3" for="password-confirm">パスワード確認</label>
                 <div class="col-md-5">
-                    <input id="password-confirm" type="password" class="form-control" name="password-confirmation" required autocomplete="new-password" placeholder="パスワードの確認のため再度入力してください">
+                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password" placeholder="パスワードの確認のため再度入力してください">
                 </div>
             </div>
             
@@ -70,12 +70,17 @@
             <div class="form-group row">
                 <label class="col-md-3" for="relationship">こどもとの関係性</label>
                 <div class="col-md-3">
-                    <select id="relationship" class="form-control" name="relationship" required>
+                    <select id="relationship" class="form-control @error('relationship') is-invalid @enderror" name="relationship" required>
                         <option value="">選択してください</option>
                         <option value="1">母親</option>
                         <option value="2">父親</option>
                         <option value="3">その他</option>
                     </select>
+                    @error('relationship')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
                 </div>
             </div>
             
@@ -117,12 +122,17 @@
             <div class="form-group row">
                 <label class="col-md-3" for="gender">性別</label>
                 <div class="col-md-3">
-                    <select id="gender" class="form-control" name="gender" required>
+                    <select id="gender" class="form-control @error('gender') is-invalid @enderror" name="gender" required>
                         <option value="">性別を選択してください</option>
                         <option value="1">男の子</option>
                         <option value="2">女の子</option>
                         <option value="3">その他</option>
                     </select>
+                     @error('gender')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
                 </div>
             </div>
             
@@ -130,7 +140,12 @@
             <div class="form-group row"> {{-- あまり美しくないなぁ・・・ということで再考の必要性あり --}}
                 <label class="col-md-3" for="birthday">生年月日</label>
                 <div class="col-md-3">
-                    <input id="birthday" type="date" name="birthday" required>
+                    <input id="birthday" type="date" class="form-control @error('birthday') is-invalid @enderror" name="birthday" required>
+                    @error('birthday')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
                 </div>
             </div>
             
@@ -138,7 +153,7 @@
             <div class="form-group row">
                 <label class="col-md-3" for="blood_type">血液型</label>
                 <div class="col-md-3">
-                    <select id="blood_type" class="form-control" name="blood_type" required>
+                    <select id="blood_type" class="form-control @error('blood_type') is-invalid @enderror" name="blood_type" required>
                         <option value="">血液型を選択してください</option>
                         <option value="1">A型</option></option>
                         <option value="2">B型</option>
@@ -146,14 +161,24 @@
                         <option value="4">AB型</option>
                         <option value="5">不明</option>
                     </select>
+                    @error('blood_type')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
                 </div>
                 <div class="col-md-3">
-                    <select id="blood_rh" class="form-control" name="blood_rh" required>
+                    <select id="blood_rh" class="form-control @error('blood_rh') is-invalid @enderror" name="blood_rh" required>
                         <option value="">Rhを選択してください</option>
                         <option value="1">+</option>
                         <option value="2">-</option>
                         <option value="3">不明</option>
                     </select>
+                    @error('blood_rh')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
                 </div>
             </div>
             

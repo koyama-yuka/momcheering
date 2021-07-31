@@ -20,6 +20,10 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
+            $table->integer('relationship_id')->length(1); //関係性 外部キー
+            $table->integer('notice_flag')->length(1)->default(1); //通知
+            $table->softDeletes(); //論理削除
+            
             $table->timestamps();
         });
     }

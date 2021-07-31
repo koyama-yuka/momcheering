@@ -5,6 +5,10 @@ namespace App\Http\Controllers\Users;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
+use App\Child;
+use App\User;
+
+
 class UserController extends Controller
 {
     public function loginTop(){  //ログイン画面の表示
@@ -17,6 +21,12 @@ class UserController extends Controller
     
     public function registerDone(Request $request){
         
+        //2つモデルを使用して、2テーブルにデータをそれぞれ保存させる
+        // $this->validate($request, Child::$rules);
+        // $this->validate($request, UserProfile::$rules);
+        
+        $form = $request->all();
+        dd($form);
         
         
     }
