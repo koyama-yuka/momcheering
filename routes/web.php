@@ -31,7 +31,7 @@ Route::group(['prefix' => 'user'], function(){
 
 
 
-Route::get('/home', 'Users\UserController@homeDisplay');
+Route::get('/home', 'Users\UserController@homeDisplay')->middleware('auth');
 
 
 Route::group(['prefix' => 'vaccine'],function(){

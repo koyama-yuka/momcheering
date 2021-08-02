@@ -75,7 +75,7 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         
-        $user =  new User([
+        $user =  User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
@@ -83,7 +83,7 @@ class RegisterController extends Controller
             'notice_flag' => $data['notice_flag'],
         ]);
         
-        $child = new Child([
+        $child = Child::create([
             'user_id' => $user->id,
             'child_name' => $data['child_name'],
             'gender_id' => $data['gender_id'],
@@ -95,6 +95,11 @@ class RegisterController extends Controller
         ]);
         
         //トランザクション入れるならここ
+        // DB::transaction(function() use($user, $child) {
+        //     $user->save();
+        //     $child->user_id = $user->id;
+        //     $child->save();
+        // });
     
         
         
