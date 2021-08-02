@@ -19,8 +19,9 @@ Route::get('/', function () {
 
 Route::get('/', 'Users\UserController@loginTop'); //ログイン画面
 
-Route::get('/register', 'Users\UserController@register'); //新規登録画面
-Route::post('/register', 'Users\UserController@registerDone'); //新規登録したら情報をDBへ保存してログイン画面へ
+// Route::get('/register', 'Users\UserController@register'); //新規登録画面
+// Route::post('/register', 'Users\UserController@registerDone'); //新規登録したら情報をDBへ保存してログイン画面へ
+//上記については、/vendor/laravel/framework/src/Illuminate/Routing/Router.phpにて変更入れてみた。Auth::routesが機能するはず
 
 
 Route::group(['prefix' => 'user'], function(){
@@ -47,4 +48,4 @@ Route::group(['prefix' => 'child', 'middleware' => 'auth'],function(){
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/home', 'HomeController@index')->name('home');

@@ -19,17 +19,6 @@ class UserController extends Controller
         return view('auth.register');
     }
     
-    public function registerDone(Request $request){
-        
-        //2つモデルを使用して、2テーブルにデータをそれぞれ保存させる
-        // $this->validate($request, Child::$rules);
-        // $this->validate($request, UserProfile::$rules);
-        
-        $form = $request->all();
-        dd($form);
-        
-        
-    }
     
     
     public function profileEdit(){

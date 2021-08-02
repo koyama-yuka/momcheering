@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Child extends Model
 {
+    protected $table = 't_children'; //モデルとテーブルの紐付け
     protected $guarded = array('id');
     
     public static $rules = array(

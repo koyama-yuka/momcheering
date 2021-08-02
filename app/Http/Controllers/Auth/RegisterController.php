@@ -74,7 +74,8 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        
+        $user =  new User([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
@@ -82,7 +83,8 @@ class RegisterController extends Controller
             'notice_flag' => $data['notice_flag'],
         ]);
         
-        return Child::create([
+        $child = new Child([
+            'user_id' => $user->id,
             'child_name' => $data['child_name'],
             'gender_id' => $data['gender_id'],
             'birthday' => $data['birthday'],
@@ -92,5 +94,10 @@ class RegisterController extends Controller
             'birth_height' => $data['birth_height'],
         ]);
         
+        //トランザクション入れるならここ
+    
+        
+        
+        return $user;
     }
 }

@@ -23,9 +23,9 @@ class CreateTChildrenTable extends Migration
             $table->integer('blood_rh_id')->length(1); //Rh　外部キー(m_blood_rh.id)
             $table->integer('birth_weight')->length(10); //出生体重
             $table->integer('birth_height')->length(10); //出生身長
-            $table->string('allergy',256); //アレルギー
-            $table->string('sick',256); //主な病気
-            $table->string('child_memo',256); //メモ
+            $table->string('allergy',256)->nullable(); //アレルギー
+            $table->string('sick',256)->nullable(); //主な病気
+            $table->string('child_memo',256)->nullable(); //メモ
             $table->softDeletes(); //論理削除
             $table->timestamps();
         });
