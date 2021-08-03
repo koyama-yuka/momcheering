@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Users;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth; //Authを使用するために導入
 
 use App\Child;
 use App\User;
@@ -25,11 +26,24 @@ class ChildController extends Controller
     }
     
     public function addDone(Request $request){
-    
-        $child_data = new Child;
         
+        // user_idをとってからvalidateにかけないといけない？
+        // _tokenは不要
+        
+        $form = $request->all();
+        unset($form['_token']);
+        
+        $child_data = new Child;
         $child_data->user_id = Auth::id();
         
+        dd($child_data);
+        
+        $child_data->fill($form);
+        
+        
+        $this->validate($child_data::$rules);
+        
+        $child_data->save();
         
     }
     

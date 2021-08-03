@@ -82,14 +82,15 @@
             <div class="form-group row">
                 
                 {{-- こどもの名前ボタン --}}
-                <div class="col-md-3">
                     {{-- ここにレコード分のこどもの名前ボタン表示する --}}
                     @foreach(Auth::user()->children as $child)
                     
-                    <a class="btn btn-primary btn-lg btn-block" href="/">{{ $child->child_name }}</a> {{-- こども毎の情報でページ表示する --}}
-                    
+                    <div class="col-md-3">
+                    <button class="btn btn-primary btn-lg btn-block" >{{ $child->child_name }}</a> {{-- こども毎の情報でページ表示する,
+                    こどものidとか保持しておいて～？とか--}}
+                    </div>
                     @endforeach
-                </div>
+                
                 
                 {{-- 追加ボタン --}}
                 <div class="col-md-1">

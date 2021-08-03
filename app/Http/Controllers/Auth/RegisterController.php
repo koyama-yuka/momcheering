@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
+use Illuminate\Support\Facades\DB;
+
 class RegisterController extends Controller
 {
     /*
@@ -75,15 +77,19 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         
-        $user =  User::create([
+        //トランザクション　2つのテーブルどっちもOKだったら保存する
+        
+        return DB::transaction(function() use($data) {
+            
+            $user =  User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'relationship_id' => $data['relationship_id'],
             'notice_flag' => $data['notice_flag'],
-        ]);
+            ]);
         
-        $child = Child::create([
+            $child = Child::create([
             'user_id' => $user->id,
             'child_name' => $data['child_name'],
             'gender_id' => $data['gender_id'],
@@ -92,17 +98,11 @@ class RegisterController extends Controller
             'blood_rh_id' => $data['blood_rh_id'],
             'birth_weight' => $data['birth_weight'],
             'birth_height' => $data['birth_height'],
-        ]);
-        
-        //トランザクション入れるならここ
-        // DB::transaction(function() use($user, $child) {
-        //     $user->save();
-        //     $child->user_id = $user->id;
-        //     $child->save();
-        // });
+            ]);
+            
+            return $user;
+       
+        });
     
-        
-        
-        return $user;
     }
 }

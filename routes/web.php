@@ -50,7 +50,7 @@ Route::group(['prefix' => 'child', 'middleware' => 'auth'],function(){
     Route::get('edit', 'Users\ChildController@edit');
     Route::get('/', 'Users\ChildController@index');
     Route::get('add', 'Users\ChildController@add');
-    Route::post('add', 'Users\ChildController@addDone');
+    Route::post('add', 'Users\ChildController@addDone'); //child_add.blade.phpにてaction入れているが、こちらにも残す必要性があるか聞く
 });
 
 Auth::routes();
