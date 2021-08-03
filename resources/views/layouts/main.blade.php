@@ -79,6 +79,25 @@
             
             
             {{-- こどものボタン表示 --}}
+            <div class="form-group row">
+                
+                {{-- こどもの名前ボタン --}}
+                <div class="col-md-3">
+                    {{-- ここにレコード分のこどもの名前ボタン表示する --}}
+                    @foreach(Auth::user()->children as $child)
+                    
+                    <a class="btn btn-primary btn-lg btn-block" href="/">{{ $child->child_name }}</a> {{-- こども毎の情報でページ表示する --}}
+                    
+                    @endforeach
+                </div>
+                
+                {{-- 追加ボタン --}}
+                <div class="col-md-1">
+                    <a class="btn btn-primary btn-lg btn-block" href="/child/add">＋</a>
+                </div>
+                
+            </div>
+            
             
             <main class="py-4">
                 {{-- コンテンツを入れる場所として@yield --}}

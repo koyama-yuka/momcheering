@@ -19,31 +19,38 @@ Route::get('/', function () {
 
 Route::get('/', 'Users\UserController@loginTop'); //ログイン画面
 
-// Route::get('/register', 'Users\UserController@register'); //新規登録画面
-// Route::post('/register', 'Users\UserController@registerDone'); //新規登録したら情報をDBへ保存してログイン画面へ
-//上記については、/vendor/laravel/framework/src/Illuminate/Routing/Router.phpにて変更入れてみた。Auth::routesが機能するはず
 
 
-Route::group(['prefix' => 'user'], function(){
+//ユーザーの情報に関するもの
+Route::group(['prefix' => 'user', 'middleware' => 'auth'], function(){
     Route::get('edit', 'Users\UserController@profileEdit');
     Route::get('/', 'Users\UserController@userProfieIndex');
 });
 
 
-
+//ホーム
 Route::get('/home', 'Users\UserController@homeDisplay')->middleware('auth');
 
 
-Route::group(['prefix' => 'vaccine'],function(){
+//カレンダーに関するものを入れるスペース
+
+
+
+
+//予防接種に関するもの
+Route::group(['prefix' => 'vaccine', 'middleware' => 'auth'],function(){
     Route::get('/', 'Users\VaccineController@index');
     Route::get('details', 'Users\VaccineController@details');
     Route::get('details/edit', 'Users\VaccineController@edit');
 });
 
+
+//こどもに関するもの
 Route::group(['prefix' => 'child', 'middleware' => 'auth'],function(){
     Route::get('edit', 'Users\ChildController@edit');
     Route::get('/', 'Users\ChildController@index');
     Route::get('add', 'Users\ChildController@add');
+    Route::post('add', 'Users\ChildController@addDone');
 });
 
 Auth::routes();

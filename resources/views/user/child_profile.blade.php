@@ -9,7 +9,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-4 mx-auto">
-            <h3>《こどものデータ》</h3>  {{-- 後でこどもの名前が出るようにする --}}
+            <h3>《{{ Auth::user()->name }}のこどものデータ》</h3>  {{-- 後でこどもの名前が出るようにする --}}
         </div>
     </div>
     
@@ -96,10 +96,6 @@
     
     <div class="form-group row">
         <div class="col-md-3 mx-auto">
-            {{--
-            <input type="" name="" value="">
-            {{ csrf_field() }}
-            --}}
             <input type="submit" class="btn btn-primary btn-lg btn-block" value="削除">
         </div>
         <div class="col-md-3 mx-auto">

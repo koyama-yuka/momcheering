@@ -33,7 +33,9 @@ class UserController extends Controller
     
     
     
-    public function homeDisplay(){
+    public function homeDisplay(){ //ホーム画面の表示
+    
+    
         return view('user.home');
     }
     

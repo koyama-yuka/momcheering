@@ -19,21 +19,31 @@
         
         <div class="form-group row">
             <div class="col-md-6 mx-auto">
-                <input type="submit" class="btn btn-primary btn-lg btn-block" value="カレンダー">
+                <a class="btn btn-primary btn-lg btn-block" href="/home">カレンダー</a>
             </div>
         </div>
         
         <div class="form-group row">
             <div class="col-md-6 mx-auto">
-                <input type="submit" class="btn btn-primary btn-lg btn-block" value="予防接種">
+                <a class="btn btn-primary btn-lg btn-block" href="/vaccine">予防接種</a>
             </div>
         </div>
         
+        <div class="form-group row">
+            <div class="col-md-6 mx-auto">
+                <a class="btn btn-primary btn-lg btn-block" href="/child">こどものデータ</a>
+            </div>
+        </div>
+        
+        {{--
         <div class="form-group row">
             <div class="col-md-6 mx-auto">
                 <input type="submit" class="btn btn-primary btn-lg btn-block" value="こどものデータ">
             </div>
         </div>
+        
+        --}}
+        
         
     </div>
 
