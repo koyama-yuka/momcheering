@@ -10,7 +10,6 @@ class Child extends Model
     protected $guarded = array('id');
     
     public static $rules = array(
-        'user_id' => 'required',
         'child_name' => 'required',
         'gender_id' => 'required',
         'birthday' => 'required',

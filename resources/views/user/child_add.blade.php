@@ -9,7 +9,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-4 mx-auto">
-                <h3>《◯人目のこどもの情報登録》</h3>  {{-- 後で何人目のこどもなのか出るようにする --}}
+                <h3>《{{ count(Auth::user()->children)+1 }}人目のこどもの情報登録》</h3>
             </div>
         </div>
         
@@ -32,15 +32,15 @@
             
             
                 <div class="form-group row">
-                    <label class="col-md-3" for="gender">性別</label>
+                    <label class="col-md-3" for="gender_id">性別</label>
                     <div class="col-md-3">
-                        <select id="gender" class="form-control @error('gender') is-invalid @enderror" name="gender_id" required>
+                        <select id="gender_id" class="form-control @error('gender_id') is-invalid @enderror" name="gender_id" required>
                             <option value="">性別を選択してください</option>
                             <option value="1">男の子</option>
                             <option value="2">女の子</option>
                             <option value="3">その他</option>
                         </select>
-                        @error('gender')
+                        @error('gender_id')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
@@ -49,7 +49,7 @@
                 </div>
             
             
-                <div class="form-group row"> {{-- あまり美しくないなぁ・・・ということで再考の必要性あり --}}
+                <div class="form-group row">
                     <label class="col-md-3" for="birthday">生年月日</label>
                     <div class="col-md-3">
                         <input id="birthday" type="date" class="form-control @error('birthday') is-invalid @enderror" name="birthday" required>
@@ -63,9 +63,9 @@
                 
                 
                 <div class="form-group row">
-                    <label class="col-md-3" for="blood_type">血液型</label>
+                    <label class="col-md-3" for="blood_type_id">血液型</label>
                     <div class="col-md-3">
-                        <select id="blood_type" class="form-control @error('blood_type') is-invalid @enderror" name="blood_type_id" required>
+                        <select id="blood_type_id" class="form-control @error('blood_type_id') is-invalid @enderror" name="blood_type_id" required>
                             <option value="">血液型を選択してください</option>
                             <option value="1">A型</option></option>
                             <option value="2">B型</option>
@@ -73,20 +73,20 @@
                             <option value="4">AB型</option>
                             <option value="5">不明</option>
                         </select>
-                        @error('blood_type')
+                        @error('blood_type_id')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
                         @enderror
                     </div>
                     <div class="col-md-3">
-                        <select id="blood_rh" class="form-control @error('blood_rh') is-invalid @enderror" name="blood_rh_id" required>
+                        <select id="blood_rh_id" class="form-control @error('blood_rh_id') is-invalid @enderror" name="blood_rh_id" required>
                             <option value="">Rhを選択してください</option>
                             <option value="1">+</option>
                             <option value="2">-</option>
                             <option value="3">不明</option>
                         </select>
-                        @error('blood_rh')
+                        @error('blood_rh_id')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>

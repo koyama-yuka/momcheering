@@ -6,9 +6,6 @@
 
 {{-- contentここから --}}
 @section('content')
-    <div class="container">
-        {{-- こどもの現在選択中であることとボタンは後で考える、というかlayoutsに入れる --}}
-    </div>
     
     <div class="container">
         <div class="row">

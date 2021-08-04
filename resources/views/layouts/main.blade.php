@@ -85,9 +85,9 @@
                     {{-- ここにレコード分のこどもの名前ボタン表示する --}}
                     @foreach(Auth::user()->children as $child)
                     
-                    <div class="col-md-3">
-                    <button class="btn btn-primary btn-lg btn-block" >{{ $child->child_name }}</a> {{-- こども毎の情報でページ表示する,
-                    こどものidとか保持しておいて～？とか--}}
+                    <div class="col-md-2">
+                    // <button type="button" class="btn btn-primary btn-lg btn-block" >{{ $child->child_name }}</button>
+                    <a class="btn btn-primary btn-lg btn-block" href="{{ url()->current() }}?child_id={{ $child->Child_id }}">{{ $child->child_name }}</a>  {{--ここ考える！！8/5！！--}}
                     </div>
                     @endforeach
                 

@@ -25,10 +25,12 @@ class ChildController extends Controller
         return view('user.child_add');
     }
     
+    
+    // ＋で追加のこども情報の登録
     public function addDone(Request $request){
         
-        // user_idをとってからvalidateにかけないといけない？
-        // _tokenは不要
+        $this->validate($request, Child::$rules);
+        
         
         $form = $request->all();
         unset($form['_token']);
@@ -36,15 +38,12 @@ class ChildController extends Controller
         $child_data = new Child;
         $child_data->user_id = Auth::id();
         
-        dd($child_data);
-        
         $child_data->fill($form);
         
         
-        $this->validate($child_data::$rules);
-        
         $child_data->save();
         
+        return redirect('/home');
     }
     
     
