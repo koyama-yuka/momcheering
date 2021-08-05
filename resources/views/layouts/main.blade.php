@@ -86,8 +86,9 @@
                     @foreach(Auth::user()->children as $child)
                     
                     <div class="col-md-2">
-                    // <button type="button" class="btn btn-primary btn-lg btn-block" >{{ $child->child_name }}</button>
-                    <a class="btn btn-primary btn-lg btn-block" href="{{ url()->current() }}?child_id={{ $child->Child_id }}">{{ $child->child_name }}</a>  {{--ここ考える！！8/5！！--}}
+                    {{-- <button type="button" class="btn btn-primary btn-lg btn-block" >{{ $child->child_name }}</button> --}}
+                    {{-- 上記を一旦コメントアウトしておく、↓ので試す --}}
+                    <a class="btn btn-primary btn-lg btn-block" href="{{ url()->current() }}?id={{ $child->id }}" role="button">{{ $child->child_name }}</a>  {{--ここ考える！！8/5！！--}}
                     </div>
                     @endforeach
                 

@@ -33,10 +33,13 @@ class UserController extends Controller
     
     
     
-    public function homeDisplay(){ //ホーム画面の表示
+    public function homeDisplay(Request $request){ //ホーム画面の表示
     
+    //dd($request);
+    $form = $request['id'];
+ //   dd($form);
     
-        return view('user.home');
+        return view('user.home', ['id'=>$form] );
     }
     
 }

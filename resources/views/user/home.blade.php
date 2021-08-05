@@ -10,7 +10,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6 mx-auto">
-                <h3>今日の予定の有無</h3>  {{-- 今日の予定の有無によって個々の表示変える --}}
+                <h3>{{ $id }}の今日の予定の有無</h3>  {{-- 今日の予定の有無によって個々の表示変える --}}
             </div>
         </div>
         
@@ -31,15 +31,6 @@
                 <a class="btn btn-primary btn-lg btn-block" href="/child">こどものデータ</a>
             </div>
         </div>
-        
-        {{--
-        <div class="form-group row">
-            <div class="col-md-6 mx-auto">
-                <input type="submit" class="btn btn-primary btn-lg btn-block" value="こどものデータ">
-            </div>
-        </div>
-        
-        --}}
         
         
     </div>
