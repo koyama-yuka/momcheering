@@ -82,13 +82,15 @@
             <div class="form-group row">
                 
                 {{-- こどもの名前ボタン --}}
-                    {{-- ここにレコード分のこどもの名前ボタン表示する --}}
                     @foreach(Auth::user()->children as $child)
                     
                     <div class="col-md-2">
                     {{-- <button type="button" class="btn btn-primary btn-lg btn-block" >{{ $child->child_name }}</button> --}}
                     {{-- 上記を一旦コメントアウトしておく、↓ので試す --}}
                     <a class="btn btn-primary btn-lg btn-block" href="{{ url()->current() }}?id={{ $child->id }}" role="button">{{ $child->child_name }}</a>  {{--ここ考える！！8/5！！--}}
+                    
+                    
+                    
                     </div>
                     @endforeach
                 

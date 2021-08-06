@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Users;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth; //Authを使用するために導入
 
 use App\Child;
 use App\User;
@@ -35,10 +36,12 @@ class UserController extends Controller
     
     public function homeDisplay(Request $request){ //ホーム画面の表示
     
-    //dd($request);
     $form = $request['id'];
- //   dd($form);
+
     
+    if(empty($form)){
+        
+    }
         return view('user.home', ['id'=>$form] );
     }
     
