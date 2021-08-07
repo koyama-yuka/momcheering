@@ -19,31 +19,22 @@ Route::get('/', function () {
 
 Route::get('/', 'Users\UserController@loginTop'); //ログイン画面
 
-
-
 //ユーザーの情報に関するもの
 Route::group(['prefix' => 'user', 'middleware' => 'auth'], function(){
     Route::get('edit', 'Users\UserController@profileEdit');
     Route::get('/', 'Users\UserController@userProfieIndex');
 });
 
-
 //ホーム
 Route::get('/home', 'Users\UserController@homeDisplay')->middleware('auth');
 
-
-//カレンダーに関するものを入れるスペース
-
-
-
-
+/** TODO カレンダーに関するものを入れるスペース*/
 //予防接種に関するもの
 Route::group(['prefix' => 'vaccine', 'middleware' => 'auth'],function(){
     Route::get('/', 'Users\VaccineController@index');
     Route::get('details', 'Users\VaccineController@details');
     Route::get('details/edit', 'Users\VaccineController@edit');
 });
-
 
 //こどもに関するもの
 Route::group(['prefix' => 'child', 'middleware' => 'auth'],function(){

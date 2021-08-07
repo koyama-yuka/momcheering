@@ -13,7 +13,7 @@
         
         <!-- Scripts -->
         {{-- Laravel標準で用意されているJavascriptの読み込み --}}
-        <script src="{{ secure_asset('js/app.js') }}" defer></script>
+        <script src="{{ asset('js/app.js') }}" defer></script>
         
         <!-- Fonts -->
         <link rel="dns-prefetch" href="https://fonts.gstatic.com">
@@ -21,7 +21,7 @@
         
         <!-- Styles -->
         {{-- Laravel標準で用意されているCSSの読み込み --}}
-        <link href="{{ secure_asset('css/app.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         {{-- 自分で作成したCSSの読み込み予定 --}}
         
     </head>

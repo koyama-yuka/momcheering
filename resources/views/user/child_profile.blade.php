@@ -96,14 +96,24 @@
     
     <div class="form-group row">
         <div class="col-md-3 mx-auto">
+            <a href="">
+                <button type="button" class="btn btn-danger btn-lg btn-block">削除</button>
+            </a>
+            <!--
             <input type="submit" class="btn btn-primary btn-lg btn-block" value="削除">
+            -->
         </div>
         <div class="col-md-3 mx-auto">
-            {{--
+        <!--
             <input type="" name="" value="">
             {{ csrf_field() }}
-            --}}
-            <input type="submit" class="btn btn-primary btn-lg btn-block" value="編集">
+        -->
+            <a href="/child/edit?id={{ $id }}">
+                <button type="button" class="btn btn-primary btn-lg btn-block">編集</button>
+            </a>
+            <!--            
+            <input type="submit" class="btn btn-primary btn-lg btn-block" value="編集">        
+            -->
         </div>
     </div>
     

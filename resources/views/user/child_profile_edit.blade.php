@@ -9,106 +9,85 @@
     <div class="container">
         <div class="row">
             <div class="col-md-4 mx-auto">
-                <h3>《こどものデータ》</h3>  {{-- 後でこどもの名前が出るようにする --}}
+                <h3> {{$childData->child_name}}</h3>  {{-- 後でこどもの名前が出るようにする --}}
             </div>
         </div>
         
         <div class="form-group row">
             <label class="col-md-3" for="child_name">こどもの名前</label>
             <div class="col-md-5">
-                <input type="text" class="form-control" name="child_name" id="child_name">  {{-- id後で全箇所入れとく --}}
+                <input type="text" class="form-control" name="child_name" id="child_name" value="{{$childData->child_name}}"> 
             </div>
         </div>
         
         <div class="form-group row">
             <label class="col-md-3" for="gender">性別</label>
             <div class="col-md-3">
-                <select class="form-control" name="gender">
-                    <option value="">選択してください</option>
-                    <option value="1">男の子</option>
-                    <option value="2">女の子</option>
-                    <option value="3">その他</option>
-                </select>
+                {{ Form::select('gender', ['選択してください', '男の子','女の子','その他'], $childData->gender_id, ['class'=>'form-control']) }}
             </div>
         </div>
     
         <div class="form-group row">
             <label class="col-md-3" for="birthday">生年月日</label>
             <div class="col-md-2">
-                <select class="form-control" name="year">  {{-- もし付けるならspanの装飾はscssへ --}}
-                    <option value="">年</option>
-                </select>
+                <?php 
+                    $start_year = today()->year -20;
+                    $end_year = today()->year + 2;
+                ?>
+                {{ Form::selectRange('year', $start_year, $end_year, $birthdayYear,['class'=>'form-control']) }}
             </div>
             <div class="col-md-2">
-                <select class="form-control" name="month">
-                    <option value="">月</option>
-                </select>
+                {{ Form::selectRange('month', 01, 12, $birthdayMonth,['class'=>'form-control']) }}
             </div>
             <div class="col-md-2">
-                <select class="form-control" name="day">
-                    <option value="">日</option>
-                </select>
+                {{ Form::selectRange('day', 01, 31, $birthdayDay,['class'=>'form-control']) }}
             </div>
         </div>
     
         <div class="form-group row">
             <label class="col-md-3" for="blood_type">血液型</label>
             <div class="col-md-3">
-                <select class="form-control" name="blood_type">
-                    <option value="">選択してください</option>  {{-- 後で入れる方法考える --}}
-                    <option value="1">A型</option>
-                    <option value="2">B型</option>
-                    <option value="3">O型</option>
-                    <option value="4">AB型</option>
-                    <option value="5">不明</option>
-                </select>
+                {{ Form::select('blood_type', ['選択してください', 'A型','B型','O型', 'AB型', '不明'], $childData->blood_type_id, ['class'=>'form-control']) }}
             </div>
             <div class="col-md-3">
-                <select class="form-control" name="blood_rh">
-                    <option value="">選択してください</option>  {{-- 後で入れる方法考える --}}
-                    <option value="1">+</option>
-                    <option value="2">-</option>
-                    <option value="3">不明</option>
-                </select>
+                {{ Form::select('blood_rh', ['選択してください', '+','-','不明'], $childData->blood_rh_id, ['class'=>'form-control']) }}
             </div>
         </div>
     
         <div class="form-group row">
             <label class="col-md-3" for="birth_weight">出生体重</label>
             <div class="col-md-3 form-inline">
-                <input type="text" class="form-control" name="birth_weight" id="birth_weight"> <span style="margin-left:10px;">g</span> {{-- spanのところは後でscssの方へ書く --}}
+                <input type="text" class="form-control" name="birth_weight" id="birth_weight" value="{{$childData->birth_weight}}"> <span style="margin-left:10px;">g</span>
             </div>
         </div>
     
         <div class="form-group row">
             <label class="col-md-3" for="birth_height">出生身長</label>
             <div class="col-md-3 form-inline">
-                <input type="text" class="form-control" name="birth_height" id="birth_height"> <span style="margin-left:10px;">cm</span> {{-- spanの装飾はscssへ --}}
+                <input type="text" class="form-control" name="birth_height" id="birth_height" value="{{$childData->birth_height}}"> <span style="margin-left:10px;">cm</span> {{-- spanの装飾はscssへ --}}
             </div>
         </div>
         
         <div class="form-group row">
             <label class="col-md-3" for="allergy">アレルギー</label>
             <div class="col-md-5">
-                <textarea class="form-control" name="allergy" rows="4"></textarea>
+                <textarea class="form-control" name="allergy" rows="4" value="{{$childData->allergy}}"></textarea>
             </div>
         </div>
         
         <div class="form-group row">
             <label class="col-md-3" for="sick">これまでにかかった主な病気</label>
             <div class="col-md-5">
-                <textarea class="form-control" name="sick" rows="4"></textarea>
+                <textarea class="form-control" name="sick" rows="4" value="{{$childData->sick}}"></textarea>
             </div>
         </div>
         
         <div class="form-group row">
             <label class="col-md-3" for="child_memo">メモ</label>
             <div class="col-md-5">
-                <textarea class="form-control" name="child_memo" rows="6"></textarea>
+                <textarea class="form-control" name="child_memo" rows="6" value="{{$childData->child_memo}}"></textarea>
             </div>
-        </div>
-        
-        
+        </div>     
         <div class="form-group row">
             <div class="col-md-3 mx-auto">
                 {{--

@@ -30,19 +30,37 @@ class UserController extends Controller
         return view('user.user_profile');
     }
     
-    
-    
-    
-    
-    public function homeDisplay(Request $request){ //ホーム画面の表示
-    
-    $form = $request['id'];
+    public function homeDisplay(Request $request){ //ホーム画面の表示        
+        $isUserFlg = false;
+        $requestChildId = $request['id'];
+        $userId = Auth::id();
+        $child = new Child;
+        $isUserFlg = $this->isHaveChildId($requestChildId);
+        $childRecord = $child->getParentId($requestChildId);
+        $isUserId = $childRecord['user_id'];
+//        $isUserFlg = $this->isUserId($userId,$isUserId);
 
-    
-    if(empty($form)){
-        
+        if($isUserFlg){
+            $childName = $childRecord['child_name']; 
+            return view('user.home', ['item'=>$childName] );    
+        } 
+        /** TODO エラーページに飛ばしたい */
+//        return view('user.home', ['id'=>$form, 'item'=>$childName] );
+
     }
-        return view('user.home', ['id'=>$form] );
+
+    public function isUserId($userId, $isUserId){
+        if($userId === $isUserId){
+            return true;
+        } 
+        return false;
     }
-    
+
+    public function isHaveChildId($childId){
+        if(empty($childId)){
+            return false;
+        }
+        return true;
+    }
+
 }

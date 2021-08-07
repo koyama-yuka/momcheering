@@ -18,4 +18,15 @@ class Child extends Model
         'birth_weight' => 'required',
         'birth_height' => 'required',
         );
+
+    public function getParentId($childId){
+        $item = Child::find($childId);
+        return $item;
+    }
+
+    public function getChildDataAll($childId){
+        $data = Child::find($childId);
+        return $data;
+    }
+
 }
