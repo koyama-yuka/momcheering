@@ -87,8 +87,8 @@
                     <div class="col-md-2">
                     {{-- <button type="button" class="btn btn-primary btn-lg btn-block" >{{ $child->child_name }}</button> --}}
                     {{-- 上記を一旦コメントアウトしておく、↓ので試す --}}
-                    <a class="btn btn-primary btn-lg btn-block" href="{{ url()->current() }}?id={{ $child->id }}" role="button">{{ $child->child_name }}</a>  {{--ここ考える！！8/5！！--}}
                     
+                    <a class="btn btn-primary btn-lg btn-block" href="{{ url()->current() }}?id={{ $child->id }}" role="button">{{ $child->child_name }}</a>
                     
                     
                     </div>

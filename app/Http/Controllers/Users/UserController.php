@@ -37,12 +37,17 @@ class UserController extends Controller
     public function homeDisplay(Request $request){ //ホーム画面の表示
     
     $form = $request['id'];
-
     
     if(empty($form)){
-        
+        $users_child = Auth::user()->children;
+        $form = $users_child[0]->id;
     }
-        return view('user.home', ['id'=>$form] );
+    
+    $display = Child::find($form);
+    
+    //ここに親のこどもでないなら表示できないようにするルールを入れとく
+    
+        return view('user.home', ['display'=>$display] );
     }
     
 }
