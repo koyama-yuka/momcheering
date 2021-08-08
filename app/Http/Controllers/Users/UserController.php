@@ -45,7 +45,10 @@ class UserController extends Controller
     
     $display = Child::find($form);
     
-    //ここに親のこどもでないなら表示できないようにするルールを入れとく
+    //親のこどもでないなら表示できないようにするルール
+    if($display->user_id != Auth::id()){
+        abort(404);
+    }
     
         return view('user.home', ['display'=>$display] );
     }

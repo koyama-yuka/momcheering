@@ -16,19 +16,19 @@
         
         <div class="form-group row">
             <div class="col-md-6 mx-auto">
-                <a class="btn btn-primary btn-lg btn-block" href="/home">カレンダー</a>
+                <a class="btn btn-primary btn-lg btn-block" href="/home?id={{ $display->id }}">カレンダー</a>
             </div>
         </div>
         
         <div class="form-group row">
             <div class="col-md-6 mx-auto">
-                <a class="btn btn-primary btn-lg btn-block" href="/vaccine">予防接種</a>
+                <a class="btn btn-primary btn-lg btn-block" href="/vaccine?id={{ $display->id }}">予防接種</a>
             </div>
         </div>
         
         <div class="form-group row">
             <div class="col-md-6 mx-auto">
-                <a class="btn btn-primary btn-lg btn-block" href="/child">こどものデータ</a>
+                <a class="btn btn-primary btn-lg btn-block" href="/child?id={{ $display->id }}">こどものデータ</a>
             </div>
         </div>
         
