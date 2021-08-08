@@ -96,7 +96,7 @@
     
     <div class="form-group row">
         <div class="col-md-3 mx-auto">
-            <input type="submit" class="btn btn-primary btn-lg btn-block" value="削除">
+            <input type="submit" class="btn btn-primary btn-lg btn-block" value="削除"> {{-- まだ作ってない --}}
         </div>
         <div class="col-md-3 mx-auto">
             <a class="btn btn-primary btn-lg btn-block" href="{{ action('Users\ChildController@edit', ['id' => $display->id]) }}">編集</a>

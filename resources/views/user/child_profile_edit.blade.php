@@ -147,7 +147,7 @@
                 
                 <div class="form-group row">
                     <div class="col-md-3 mx-auto">
-                        <input type="submit" class="btn btn-primary btn-lg btn-block"  onclick="history.back(-1)" value="戻る(本来はここ削除ボタン)">
+                        <a class="btn btn-primary btn-lg btn-block" href="/child?id={{ $child_form->id }}">キャンセル</a>
                     </div>
                     <div class="col-md-3 mx-auto">
                         <input type="hidden" name="id" value="{{ $child_form->id }}">

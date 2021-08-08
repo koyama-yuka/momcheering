@@ -13,6 +13,7 @@ use Carbon\Carbon;
 
 class ChildController extends Controller
 {
+    
     //こどもの情報編集ページ表示
     public function edit(Request $request){
         $display = Child::find($request->id);
