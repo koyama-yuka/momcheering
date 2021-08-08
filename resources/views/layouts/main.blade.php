@@ -23,7 +23,9 @@
         {{-- Laravel標準で用意されているCSSの読み込み --}}
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         {{-- 自分で作成したCSSの読み込み予定 --}}
-        
+        <link href="{{ asset('css/lib/main.css') }}" rel="stylesheet">
+        <script src="{{ asset('js/lib/main.min.js') }}" defer></script>
+        <script src="{{ asset('js/lib/locales/ja.js') }}" defer></script>
     </head>
     
     <body>
@@ -88,9 +90,6 @@
                     {{-- <button type="button" class="btn btn-primary btn-lg btn-block" >{{ $child->child_name }}</button> --}}
                     {{-- 上記を一旦コメントアウトしておく、↓ので試す --}}
                     <a class="btn btn-primary btn-lg btn-block" href="{{ url()->current() }}?id={{ $child->id }}" role="button">{{ $child->child_name }}</a>  {{--ここ考える！！8/5！！--}}
-                    
-                    
-                    
                     </div>
                     @endforeach
                 
@@ -109,5 +108,4 @@
             </main>
         </div>
     </body>
-    
 </html>

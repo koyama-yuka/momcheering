@@ -16,8 +16,9 @@
         
         <div class="form-group row">
             <div class="col-md-6 mx-auto">
-                <a class="btn btn-primary btn-lg btn-block" href="/home">カレンダー</a>
+                <a class="btn btn-primary btn-lg btn-block" href="/calendar?id={{$childId}}">カレンダー</a>
             </div>
+
         </div>
         
         <div class="form-group row">
@@ -34,6 +35,5 @@
         
         
     </div>
-
-
 @endsection
+

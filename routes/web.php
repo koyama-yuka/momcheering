@@ -28,7 +28,9 @@ Route::group(['prefix' => 'user', 'middleware' => 'auth'], function(){
 //ホーム
 Route::get('/home', 'Users\UserController@homeDisplay')->middleware('auth');
 
-/** TODO カレンダーに関するものを入れるスペース*/
+/**カレンダー */
+Route::get('/calendar', 'Users\CalendarController@index')->middleware('auth');
+
 //予防接種に関するもの
 Route::group(['prefix' => 'vaccine', 'middleware' => 'auth'],function(){
     Route::get('/', 'Users\VaccineController@index');

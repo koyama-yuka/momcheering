@@ -42,7 +42,7 @@ class UserController extends Controller
 
         if($isUserFlg){
             $childName = $childRecord['child_name']; 
-            return view('user.home', ['item'=>$childName] );    
+            return view('user.home', ['item'=>$childName, 'childId'=>$requestChildId] );    
         } 
         /** TODO エラーページに飛ばしたい */
 //        return view('user.home', ['id'=>$form, 'item'=>$childName] );
