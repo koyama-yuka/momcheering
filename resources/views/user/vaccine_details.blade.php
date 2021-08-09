@@ -9,7 +9,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-4 mx-auto">
-                <h3>ワクチン名を表示</h3>  {{-- ワクチン名の表示を持ってくる --}}
+                <h3>{{ $vaccine->vaccine_name }}</h3>
             </div>
         </div>
         
@@ -25,17 +25,9 @@
         
         <div class="form-group row">
             <div class="col-md-3 mx-auto">
-                {{--
-                <input type="" name="" value="">
-                {{ csrf_field() }}
-                --}}
                 <input type="submit" class="btn btn-primary btn-lg btn-block" value="一覧へ戻る">
             </div>
             <div class="col-md-3 mx-auto">
-                {{--
-                <input type="" name="" value="">
-                {{ csrf_field() }}
-                --}}
                 <input type="submit" class="btn btn-primary btn-lg btn-block" value="　編集　">
             </div>
             

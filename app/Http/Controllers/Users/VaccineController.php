@@ -29,9 +29,20 @@ class VaccineController extends Controller
     
     
     
-    
-    public function details(){
-        return view('user.vaccine_details');
+    //予防接種各種の詳細
+    public function details(Request $request){
+        
+        
+        $display = Child::find($request['id']);
+        $vaccine = Vaccine::find($request['vaccine_id']);
+        
+        //親のこどもでないなら表示できないようにするルール
+        if($display->user_id != Auth::id()){
+            abort(404);
+        }
+        
+        
+        return view('user.vaccine_details', ['display' => $display, 'vaccine' => $vaccine]);
     }
     
     public function edit(){

@@ -98,7 +98,7 @@ class ChildController extends Controller
         }elseif($display->gender_id == 3){
             $display->gender_id = "その他";
         }
-        
+
         //血液型
         if($display->blood_type_id == 1){
             $display->blood_type_id = "A型";

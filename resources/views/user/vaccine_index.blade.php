@@ -13,15 +13,13 @@
             </div>
         </div>
         
-        <div class="form-group row">
-            
-            @foreach($vaccines as $vaccine)
-            
-            <div class="col-md-2">
-                    <a class="btn btn-primary btn-lg btn-block" href="/vaccine?id={{ $display->id }}&&vaccine_id={{ $vaccine->id }}" role="button">{{ $vaccine->vaccine_name }}</a>
-            
-            @endforeach
-            
+        
+        <div class="row">    
+        @foreach($vaccines as $vaccine)
+            <div class="col-md-4">
+                <a class="btn btn-primary btn-lg btn-block" href="/vaccine/details?id={{ $display->id }}&vaccine_id={{ $vaccine->id }}" role="button">{{ $vaccine->vaccine_name }}</a>
+            </div>
+        @endforeach
         </div>
         
         <div class="form-group row">
