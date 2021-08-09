@@ -48,4 +48,11 @@ class VaccineController extends Controller
     public function edit(){
         return view('user.vaccine_history_edit');
     }
+    
+    
+    //各予防接種の記録編集
+    
+    
+    
+    
 }

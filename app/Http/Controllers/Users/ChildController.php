@@ -76,7 +76,8 @@ class ChildController extends Controller
             $child_update->blood_rh_id = "不明";
         }
         
-        return view('user.child_profile', ["display" => $child_update]);
+        
+        return redirect('/child?id='.$child_update->id);
     }
     
     

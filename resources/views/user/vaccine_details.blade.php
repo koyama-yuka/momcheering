@@ -25,10 +25,10 @@
         
         <div class="form-group row">
             <div class="col-md-3 mx-auto">
-                <input type="submit" class="btn btn-primary btn-lg btn-block" value="一覧へ戻る">
+                <a class="btn btn-primary btn-lg btn-block" href="/vaccine?id={{ $display->id }}">一覧へ戻る</a>
             </div>
             <div class="col-md-3 mx-auto">
-                <input type="submit" class="btn btn-primary btn-lg btn-block" value="　編集　">
+                <a class="btn btn-primary btn-lg btn-block" href="/details/edit?id={{ $display->id }}&vaccine_id={{ $vaccine->id }}">編集</a>
             </div>
             
             
