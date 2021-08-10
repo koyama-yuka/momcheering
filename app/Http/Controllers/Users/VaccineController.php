@@ -32,6 +32,26 @@ class VaccineController extends Controller
     //予防接種各種の詳細
     public function details(Request $request){
         
+        $display = Child::find($request['id']);
+        $vaccine = Vaccine::find($request['vaccine_id']);
+        
+        //親のこどもでないなら表示できないようにするルール
+        if($display->user_id != Auth::id()){
+            abort(404);
+        }
+        
+        /*
+        $vaccineHistory = VaccineHistory::where(
+            ['child_id', $request['id']],
+            ['vaccine_id', $request['vaccine_id'],
+            ])->get();
+        
+        */
+        
+        return view('user.vaccine_details', ['display' => $display, 'vaccine' => $vaccine]);
+    }
+    
+    public function edit(Request $request){
         
         $display = Child::find($request['id']);
         $vaccine = Vaccine::find($request['vaccine_id']);
@@ -42,16 +62,16 @@ class VaccineController extends Controller
         }
         
         
-        return view('user.vaccine_details', ['display' => $display, 'vaccine' => $vaccine]);
-    }
-    
-    public function edit(){
+        
         return view('user.vaccine_history_edit');
     }
     
     
     //各予防接種の記録編集
-    
+    public function vaccineHistoryUpdate(){
+        
+        return redirect('/vaccine/details');
+    }
     
     
     

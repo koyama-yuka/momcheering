@@ -2,7 +2,7 @@
 @extends('layouts.main')
 
 {{-- title --}}
-@section('title', '予防接種詳細') {{-- ワクチン名＋履歴　で名前出せればさらにgoodで --}}
+@section('title', '予防接種の記録')
 
 {{-- contentここから --}}
 @section('content')
@@ -13,14 +13,19 @@
             </div>
         </div>
         
+        {{-- そのうちm_vaccinesに推奨期間いれたりしたら、こどもの生年月日から推奨期間出すこと考える
         <div class="row">
             <div class="col-md-4 mx-auto">
-                <h4>推奨時期</h4> {{-- 生年月日から時期出せたらいいな・・・ --}}
+                <h4>推奨時期</h4>
             </div>
         </div>
+        --}}
         
         <div class="row">
-            {{-- 履歴があれば表示するので、コントローラーでその時の指示を出したい --}}
+            {{-- ここに接種の記録表示になる
+            @if()
+            @endif
+            --}}
         </div>
         
         <div class="form-group row">

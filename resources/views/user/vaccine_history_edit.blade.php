@@ -65,17 +65,9 @@
         
         <div class="form-group row">
             <div class="col-md-3 mx-auto">
-                {{--
-                <input type="" name="" value="">
-                {{ csrf_field() }}
-                --}}
                 <input type="submit" class="btn btn-primary btn-lg btn-block" value="キャンセル">
             </div>
             <div class="col-md-3 mx-auto">
-                {{--
-                <input type="" name="" value="">
-                {{ csrf_field() }}
-                --}}
                 <input type="submit" class="btn btn-primary btn-lg btn-block" value="　更新　">
             </div>
             

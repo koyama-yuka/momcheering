@@ -10,8 +10,8 @@ class Vaccine extends Model
     protected $guarded = array('id');
     
     
-    //ここなのか・・・？historyのほうに入れるのか？？
-    public function vaccine(){
+    //ワクチンの接種記録と関連付け？
+    public function vaccineHistories(){
         return $this->hasMany('App\VaccineHistory');
     }
 }

@@ -20,8 +20,8 @@ class Child extends Model
     );
     
     
-    //ワクチンモデルの方にこどもの関連付けしたほうがいいのか？？というか、ここと関連付けであってる？？
-    public function vaccine(){
+    //ワクチンの接種記録と関連付け？ Vaccineモデルのほうに書いたものと同名でいいのか？
+    public function vaccineHistories(){
         return $this->hasMany('App\VaccineHistory');
     }
     

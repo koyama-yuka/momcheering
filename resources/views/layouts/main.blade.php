@@ -88,14 +88,15 @@
                     {{-- <button type="button" class="btn btn-primary btn-lg btn-block" >{{ $child->child_name }}</button> --}}
                     {{-- 上記を一旦コメントアウトしておく、↓ので試す --}}
                     
-                    {{--  <a class="btn btn-primary btn-lg btn-block" href="{{ url()->current() }}?id={{ $child->id }}" role="button">{{ $child->child_name }}</a> --}}
+                    <a class="btn btn-primary btn-lg btn-block" href="{{ url()->current() }}?id={{ $child->id }}" role="button">{{ $child->child_name }}</a>
                     
+                    {{-- 選択されてたら色変えるときの一案　sessionとかできたらこっちも対応する
                     @if($child->id == )
                         <a class="btn btn-success btn-lg btn-block" href="{{ url()->current() }}?id={{ $child->id }}" role="button">{{ $child->child_name }}</a>
                     @else
                         <a class="btn btn-primary btn-lg btn-block" href="{{ url()->current() }}?id={{ $child->id }}" role="button">{{ $child->child_name }}</a>
                     @endif
-                    
+                    --}}
                     
                     </div>
                     @endforeach
