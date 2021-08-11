@@ -30,6 +30,7 @@ Route::get('/home', 'Users\UserController@homeDisplay')->middleware('auth');
 
 /**カレンダー */
 Route::get('/calendar', 'Users\CalendarController@index')->middleware('auth');
+Route::get('/calendar/detail', 'Users\CalendarController@detail')->middleware('auth');
 
 //予防接種に関するもの
 Route::group(['prefix' => 'vaccine', 'middleware' => 'auth'],function(){

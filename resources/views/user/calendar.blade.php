@@ -1,40 +1,31 @@
-{{-- loginしているのでmainの読み込み --}}
-@extends('layouts.main')
-
-{{-- title --}}
-@section('title', 'ホーム')
-
-{{-- contentここから --}}
-@section('content')
-
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-    var calendarEl = document.getElementById('calendar');
-
-    var calendar = new FullCalendar.Calendar(calendarEl, {
-      headerToolbar: {
-        left: '',
-        center: 'title',
-        right:'prev,next'
-//        right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
-      },
-//      initialDate: '2020-09-12',
-      locale: 'ja',
-      navLinks: true, // can click day/week names to navigate views
-      businessHours: true, // display business hours
-      editable: true,
-      selectable: true,
-      dateClick: function(date, jsEvent, view) {
-        window.location.href = '/calendar?id=2&calendar_id='+date['dateStr'];      
-      },
-      eventClick: function(info) {
-        info.el.onclick=function(){
+    document.addEventListener('DOMContentLoaded', function() {
+        var calendarEl = document.getElementById('calendar');
+//        var param = location.search;
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+            headerToolbar: {
+            left: '',
+            center: 'title',
+            right:'prev,next'
+            //right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
+        },
+            //initialDate: '2020-09-12',
+        locale: 'ja',
+        navLinks: true, // can click day/week names to navigate views
+        businessHours: true, // display business hours
+        editable: true,
+        selectable: true,
+        dateClick: function(date, jsEvent, view) {
+            window.location.href = '/calendar/detail?id={{$id}}&date='+date['dateStr'];      
+        },
+        eventClick: function(info) {
+            info.el.onclick=function(){
             //alert(info.event.id);
             window.location.href = '/calendar?id=2&calendar_id='+info.event.id;
-          //alert(info.event.id + ":" + info.event.extendedProps.status);
-        };
-      },
-      events: [
+            //alert(info.event.id + ":" + info.event.extendedProps.status);
+            };
+        },
+        events: [
         {
           id: '1',
           title: 'Business Lunch',
@@ -88,14 +79,23 @@ document.addEventListener('DOMContentLoaded', function() {
           color: '#ff9f89'
         }
         */
-      ],
+        ],
+        });
+        setTimeout(function(){
+            calendar.render();
+        }, 1000);
     });
-    setTimeout(function(){
-        calendar.render();
-    }, 1000);
-  });
 
 </script>
-<div id="calendar"></div>
+{{-- loginしているのでmainの読み込み --}}
+@extends('layouts.main')
 
+{{-- title --}}
+@section('title', 'ホーム')
+
+{{-- contentここから --}}
+@section('content')
+
+
+<div id="calendar"></div>
 @endsection

@@ -1,14 +1,11 @@
 <?php
 
 namespace App\Http\Controllers\Users;
-
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth; //Authを使用するために導入
-
 use App\Child;
 use App\User;
-
 
 class UserController extends Controller
 {
@@ -19,8 +16,6 @@ class UserController extends Controller
     public function register(){ //新規登録画面の表示
         return view('auth.register');
     }
-    
-    
     
     public function profileEdit(){
         return view('user.user_profile_edit');
@@ -62,5 +57,4 @@ class UserController extends Controller
         }
         return true;
     }
-
 }

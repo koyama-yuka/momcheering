@@ -1,7 +1,6 @@
 <?php
 
 namespace App;
-
 use Illuminate\Database\Eloquent\Model;
 
 class Schedule extends Model
@@ -16,5 +15,18 @@ class Schedule extends Model
         'medical_flag' => 'required',
         'medical_id' => 'required',
         'start_time' => 'required',
-        );
+    );
+
+    /**
+     * スケジュールテーブルから、該当の予定を取得する
+     * 
+     * @param $childId 子どものID
+     * @param $date 選択した日付
+     * 
+     * @return $schedule 取得したスケジュール
+     */
+    public function getScheduleDatasByDate($childId,$date){
+        $schedule = Schedule::where('child_id', $childId)->where('date', $date)->get();
+        return $schedule;
+    }
 }

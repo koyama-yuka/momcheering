@@ -26,6 +26,7 @@
         <link href="{{ asset('css/lib/main.css') }}" rel="stylesheet">
         <script src="{{ asset('js/lib/main.min.js') }}" defer></script>
         <script src="{{ asset('js/lib/locales/ja.js') }}" defer></script>
+
     </head>
     
     <body>
@@ -33,7 +34,7 @@
             {{-- ナビゲーションバー --}}
             <nav class="navbar navbar-expand-md navbar-light bg-dark" navbar-mom>
                 <div class="container">
-                    <a class="navbar-brand" href="{{ url('/') }}">子育て応援！母子手帳サポートシステム</a>
+                    <a class="navbar-brand" href="{{ url('/home') }}">子育て応援！母子手帳サポートシステム</a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Togglenavigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
