@@ -42,6 +42,7 @@ Route::group(['prefix' => 'vaccine', 'middleware' => 'auth'],function(){
     Route::get('/', 'Users\VaccineController@index');
     Route::get('details', 'Users\VaccineController@details');
     Route::get('details/edit', 'Users\VaccineController@edit');
+    Route::post('details/edit', 'Users\VaccineController@update');
 });
 
 

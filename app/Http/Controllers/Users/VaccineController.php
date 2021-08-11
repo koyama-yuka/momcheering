@@ -40,15 +40,14 @@ class VaccineController extends Controller
             abort(404);
         }
         
-        /*
-        $vaccineHistory = VaccineHistory::where(
+        
+        $vaccineHistories = VaccineHistory::where([
             ['child_id', $request['id']],
-            ['vaccine_id', $request['vaccine_id'],
+            ['vaccine_id', $request['vaccine_id']],
             ])->get();
-        
-        */
-        
-        return view('user.vaccine_details', ['display' => $display, 'vaccine' => $vaccine]);
+         
+            
+        return view('user.vaccine_details', ['display' => $display, 'vaccine' => $vaccine, 'vaccine_histories' => $vaccineHistories]);
     }
     
     public function edit(Request $request){
@@ -61,14 +60,19 @@ class VaccineController extends Controller
             abort(404);
         }
         
+        $vaccineHistories = VaccineHistory::where([
+            ['child_id', $request['id']],
+            ['vaccine_id', $request['vaccine_id']],
+            ])->get();
         
-        
-        return view('user.vaccine_history_edit');
+        return view('user.vaccine_history_edit', ['display' => $display, 'vaccine' => $vaccine, 'vaccine_histories' => $vaccineHistories]);
     }
     
     
-    //各予防接種の記録編集
-    public function vaccineHistoryUpdate(){
+    //各予防接種の記録編集、更新
+    public function update(Request $request){
+        
+        dd($request);
         
         return redirect('/vaccine/details');
     }

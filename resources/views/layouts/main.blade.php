@@ -90,7 +90,7 @@
                     
                     <a class="btn btn-primary btn-lg btn-block" href="{{ url()->current() }}?id={{ $child->id }}" role="button">{{ $child->child_name }}</a>
                     
-                    {{-- 選択されてたら色変えるときの一案　sessionとかできたらこっちも対応する
+                    {{-- 選択されてたら色変えるときの一案　sessionとかできたらこっちも対応する　vaccineのidも入れとかないと狂う
                     @if($child->id == )
                         <a class="btn btn-success btn-lg btn-block" href="{{ url()->current() }}?id={{ $child->id }}" role="button">{{ $child->child_name }}</a>
                     @else

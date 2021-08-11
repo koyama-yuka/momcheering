@@ -22,10 +22,32 @@
         --}}
         
         <div class="row">
-            {{-- ここに接種の記録表示になる
-            @if()
-            @endif
-            --}}
+            {{ $vaccine_histories }}
+            
+            @for($i = 1; $i <= $vaccine->vaccine_times; $i++)
+                <div class="row">
+                    <div class="row">{{ $i }}回目</div>
+                    
+                    <div class="row">
+                        <div class="col-md-3">
+                            <h3>接種日</h3>
+                        </div>
+                        <div class="col-md-5">
+                            <h3>{{ $vaccine_histories[$i-1]->inoculation_date }}</h3>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-3">
+                            <h3>医療機関</h3>
+                        </div>
+                        <div class="col-md-5">
+                            <h3>{{ $vaccine_histories[$i-1]->hospital }}</h3>
+                        </div>
+                    </div>
+                    
+                </div>
+            @endfor
         </div>
         
         <div class="form-group row">
@@ -33,7 +55,7 @@
                 <a class="btn btn-primary btn-lg btn-block" href="/vaccine?id={{ $display->id }}">一覧へ戻る</a>
             </div>
             <div class="col-md-3 mx-auto">
-                <a class="btn btn-primary btn-lg btn-block" href="/details/edit?id={{ $display->id }}&vaccine_id={{ $vaccine->id }}">編集</a>
+                <a class="btn btn-primary btn-lg btn-block" href="/vaccine/details/edit?id={{ $display->id }}&vaccine_id={{ $vaccine->id }}">編集</a>
             </div>
             
             
