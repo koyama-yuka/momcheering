@@ -9,17 +9,22 @@
     <div class="container">
         <div class="row">
             <div class="col-md-4 mx-auto">
-                <h3>《予防接種一覧》</h3>
+                <h3>《{{ $display->child_name }}の予防接種一覧》</h3>
             </div>
         </div>
         
-        <div class="form-group row">
-            {{-- 各ワクチンのボタン表示 --}}
+        
+        <div class="row">    
+        @foreach($vaccines as $vaccine)
+            <div class="col-md-4">
+                <a class="btn btn-primary btn-lg btn-block" href="/vaccine/details?id={{ $display->id }}&vaccine_id={{ $vaccine->id }}" role="button">{{ $vaccine->vaccine_name }}</a>
+            </div>
+        @endforeach
         </div>
         
         <div class="form-group row">
             <div class="col-md-4 mx-auto">
-                <input type="submit" class="btn btn-primary btn-lg btn-block" value="データPDF出力ボタン">
+                <input type="submit" class="btn btn-primary btn-lg btn-block" value="データPDF出力ボタン"> {{-- PDF化については最後の最後かな… --}}
             </div>
         </div>
     </div>

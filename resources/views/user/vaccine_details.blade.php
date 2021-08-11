@@ -2,41 +2,38 @@
 @extends('layouts.main')
 
 {{-- title --}}
-@section('title', '予防接種詳細') {{-- ワクチン名＋履歴　で名前出せればさらにgoodで --}}
+@section('title', '予防接種の記録')
 
 {{-- contentここから --}}
 @section('content')
     <div class="container">
         <div class="row">
             <div class="col-md-4 mx-auto">
-                <h3>ワクチン名を表示</h3>  {{-- ワクチン名の表示を持ってくる --}}
+                <h3>{{ $vaccine->vaccine_name }}</h3>
             </div>
         </div>
         
+        {{-- そのうちm_vaccinesに推奨期間いれたりしたら、こどもの生年月日から推奨期間出すこと考える
         <div class="row">
             <div class="col-md-4 mx-auto">
-                <h4>推奨時期</h4> {{-- 生年月日から時期出せたらいいな・・・ --}}
+                <h4>推奨時期</h4>
             </div>
         </div>
+        --}}
         
         <div class="row">
-            {{-- 履歴があれば表示するので、コントローラーでその時の指示を出したい --}}
+            {{-- ここに接種の記録表示になる
+            @if()
+            @endif
+            --}}
         </div>
         
         <div class="form-group row">
             <div class="col-md-3 mx-auto">
-                {{--
-                <input type="" name="" value="">
-                {{ csrf_field() }}
-                --}}
-                <input type="submit" class="btn btn-primary btn-lg btn-block" value="一覧へ戻る">
+                <a class="btn btn-primary btn-lg btn-block" href="/vaccine?id={{ $display->id }}">一覧へ戻る</a>
             </div>
             <div class="col-md-3 mx-auto">
-                {{--
-                <input type="" name="" value="">
-                {{ csrf_field() }}
-                --}}
-                <input type="submit" class="btn btn-primary btn-lg btn-block" value="　編集　">
+                <a class="btn btn-primary btn-lg btn-block" href="/details/edit?id={{ $display->id }}&vaccine_id={{ $vaccine->id }}">編集</a>
             </div>
             
             
