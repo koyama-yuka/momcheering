@@ -17,16 +17,49 @@
             <form method="POST" action="{{ action('Users\VaccineController@update') }}">
                 @csrf
                 
+                
+                @for($i = 1; $i <= $vaccine->vaccine_times; $i++)
+                
                 <div class="form-group row">
                     <div class="col-md-3">
-                        <h4>何回目</h4>  {{-- 繰り返しで表示の方法はコントローラー？ --}}
+                        <h4>{{$i}}回目</h4>
+                    </div>
+                </div>
+                
+                
+                @empty($vaccine_histories[$i-1])
+                <div class="form-group row">
+                    <label class="col-md-3" for="inoculation_date">接種日</label>
+                    <div class="col-md-3">
+                        <input id="inoculation_date" type="date" class="form-control" name="inoculation_date{{$i}}" value="{{ old('inoculation_date') }}">
+                        
                     </div>
                 </div>
                 
                 <div class="form-group row">
+                    <label class="col-md-3" for="hospital">医療機関</label>
+                    <div class="col-md-3 form-inline">
+                        <input id="hospital" type="text" class="form-control" name="hospital{{$i}}" value="{{ old('hospital') }}" placeholder="医療機関名">
+                        
+                    </div>
+                </div>
+                
+                
+                <div class="form-group row">
+                    <label class="col-md-3" for="vaccine_memo">メモ</label>
+                    <div class="col-md-5">
+                        <textarea class="form-control" name="vaccine_memo{{$i}}" rows="6" placeholder="メモスペース"></textarea>
+                    </div>
+                </div>
+                
+                
+                @else
+                {{-- 中身があるとき --}}
+                
+                <div class="form-group row">
                     <label class="col-md-3" for="inoculation_date">接種日</label>
                     <div class="col-md-3">
-                        <input id="inoculation_date" type="date" class="form-control @error('inoculation_date') is-invalid @enderror" name="inoculation_date" value="{{ $vaccine_histories->inoculation_date }}" required>
+                        <input id="inoculation_date" type="date" class="form-control @error('inoculation_date') is-invalid @enderror" name="inoculation_date{{$i}}" value="{{ $vaccine_histories->inoculation_date }}" required>
                         @error('inoculation_date')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -38,7 +71,7 @@
                 <div class="form-group row">
                     <label class="col-md-3" for="hospital">医療機関</label>
                     <div class="col-md-3 form-inline">
-                        <input id="hospital" type="text" class="form-control @error('hospital') is-invalid @enderror" name="hospital" value="{{ $vaccine_histories->hospital }}" required>
+                        <input id="hospital" type="text" class="form-control @error('hospital') is-invalid @enderror" name="hospital{{$i}}" value="{{ $vaccine_histories->hospital }}" required>
                         @error('hospital')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -51,14 +84,25 @@
                 <div class="form-group row">
                     <label class="col-md-3" for="vaccine_memo">メモ</label>
                     <div class="col-md-5">
-                        <textarea class="form-control" name="vaccine_memo" rows="6" placeholder="メモスペース">{{ $child_form->allergy }}</textarea>
+                        <textarea class="form-control" name="vaccine_memo{{$i}}" rows="6" placeholder="メモスペース">{{ $vaccine_histories->vaccine_memo }}</textarea>
                     </div>
                 </div>
+                
+                @endempty
+                
+                @endfor
+                
+                
+                
+                
+                
+                
+                
                 
                 
                 <div class="form-group row form-check">
                     <div class="col-md-4 mx-auto">
-                        <input type="checkbox" class="form-check-input" id="done_check">
+                        <input type="checkbox" class="form-check-input" id="done_check" name="done_check" value="1">
                         <label class="form-check-label" for="done_check">この予防接種は完了！</label>
                     </div>
                 </div>
@@ -66,9 +110,11 @@
                 
                 <div class="form-group row">
                     <div class="col-md-3 mx-auto">
-                        <a class="btn btn-primary btn-lg btn-block" href="/details?id={{ $child_form->id }}&vaccine_id={{ $vaccine->id }}">キャンセル</a>
+                        <a class="btn btn-primary btn-lg btn-block" href="/details?id={{ $display->id }}&vaccine_id={{ $vaccine->id }}">キャンセル</a>
                     </div>
                     <div class="col-md-3 mx-auto">
+                        <input type="hidden" name="id" value="{{ $display->id }}">
+                        <input type="hidden" name="vaccine_id" value="{{ $vaccine->id }}">
                         <input type="submit" class="btn btn-primary btn-lg btn-block" value="　更新　">
                     </div>
                 </div>

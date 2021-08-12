@@ -36,21 +36,23 @@ class UserController extends Controller
     
     public function homeDisplay(Request $request){ //ホーム画面の表示
     
-    $form = $request['id'];
+        $id = $request['id'];
     
-    if(empty($form)){
-        $users_child = Auth::user()->children;
-        $form = $users_child[0]->id;
-    }
+        if(empty($id)){
+            $users_child = Auth::user()->children;
+            $id = $users_child[0]->id;
+            
+            return redirect('/home?id='.$id);
+        }
     
-    $display = Child::find($form);
+        $display = Child::find($id);
     
-    //親のこどもでないなら表示できないようにするルール
-    if($display->user_id != Auth::id()){
-        abort(404);
-    }
+        //親のこどもでないなら表示できないようにするルール
+        if($display->user_id != Auth::id()){
+            abort(404);
+        }
     
         return view('user.home', ['display'=>$display] );
-    }
+        }
     
 }

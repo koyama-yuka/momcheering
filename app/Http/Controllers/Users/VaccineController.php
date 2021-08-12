@@ -17,10 +17,6 @@ class VaccineController extends Controller
     public function index(Request $request){
         $display = Child::find($request->id);
         
-        //親のこどもでないなら表示できないようにするルール
-        if($display->user_id != Auth::id()){
-            abort(404);
-        }
         
         $vaccines = Vaccine::all();
         
@@ -35,11 +31,6 @@ class VaccineController extends Controller
         $display = Child::find($request['id']);
         $vaccine = Vaccine::find($request['vaccine_id']);
         
-        //親のこどもでないなら表示できないようにするルール
-        if($display->user_id != Auth::id()){
-            abort(404);
-        }
-        
         
         $vaccineHistories = VaccineHistory::where([
             ['child_id', $request['id']],
@@ -47,18 +38,16 @@ class VaccineController extends Controller
             ])->get();
          
             
-        return view('user.vaccine_details', ['display' => $display, 'vaccine' => $vaccine, 'vaccine_histories' => $vaccineHistories]);
+        return view('user.vaccine_details', ['display' => $display, 'vaccine' => $vaccine, 'vaccine_histories' => $vaccineHistories,]);
     }
     
+    
+    //接種記録の編集
     public function edit(Request $request){
         
         $display = Child::find($request['id']);
         $vaccine = Vaccine::find($request['vaccine_id']);
         
-        //親のこどもでないなら表示できないようにするルール
-        if($display->user_id != Auth::id()){
-            abort(404);
-        }
         
         $vaccineHistories = VaccineHistory::where([
             ['child_id', $request['id']],

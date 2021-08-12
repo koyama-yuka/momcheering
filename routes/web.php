@@ -38,7 +38,7 @@ Route::get('/home', 'Users\UserController@homeDisplay')->middleware('auth');
 
 
 //予防接種に関するもの
-Route::group(['prefix' => 'vaccine', 'middleware' => 'auth'],function(){
+Route::group(['prefix' => 'vaccine', 'middleware' => ['auth', 'checkchild',]],function(){
     Route::get('/', 'Users\VaccineController@index');
     Route::get('details', 'Users\VaccineController@details');
     Route::get('details/edit', 'Users\VaccineController@edit');
@@ -47,7 +47,7 @@ Route::group(['prefix' => 'vaccine', 'middleware' => 'auth'],function(){
 
 
 //こどもに関するもの
-Route::group(['prefix' => 'child', 'middleware' => 'auth'],function(){
+Route::group(['prefix' => 'child', 'middleware' => ['auth','checkchild',]],function(){
     Route::get('edit', 'Users\ChildController@edit');
     Route::post('edit', 'Users\ChildController@update');
     Route::get('/', 'Users\ChildController@index');

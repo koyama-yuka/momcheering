@@ -18,11 +18,6 @@ class ChildController extends Controller
     public function edit(Request $request){
         $display = Child::find($request->id);
         
-        //親のこどもでないなら表示できないようにするルール
-        if($display->user_id != Auth::id()){
-            abort(404);
-        }
-        
         return view('user.child_profile_edit',['child_form' => $display]);
     }
     
@@ -83,13 +78,9 @@ class ChildController extends Controller
     
     //こどもの詳細ページ
     public function index(Request $request){
+        
         $form = $request['id'];
         $display = Child::find($form);
-    
-        //親のこどもでないなら表示できないようにするルール
-        if($display->user_id != Auth::id()){
-            abort(404);
-        }
         
         //性別
         if($display->gender_id == 1){
