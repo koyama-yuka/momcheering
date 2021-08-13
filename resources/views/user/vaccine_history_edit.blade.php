@@ -26,7 +26,7 @@
                     </div>
                 </div>
                 
-                
+                {{-- 中身が無いとき --}}
                 @empty($vaccine_histories[$i-1])
                 <div class="form-group row">
                     <label class="col-md-3" for="inoculation_date">接種日</label>
@@ -48,13 +48,15 @@
                 <div class="form-group row">
                     <label class="col-md-3" for="vaccine_memo">メモ</label>
                     <div class="col-md-5">
-                        <textarea class="form-control" name="vaccine_memo{{$i}}" rows="6" placeholder="メモスペース"></textarea>
+                        <textarea class="form-control" name="vaccine_memo{{$i}}" rows="6" placeholder="メモスペース">{{ old('vaccine_memo') }}</textarea>
                     </div>
                 </div>
                 
+                <input type="hidden" name="new{{$i}}" value="1">
                 
-                @else
+                
                 {{-- 中身があるとき --}}
+                @else
                 
                 <div class="form-group row">
                     <label class="col-md-3" for="inoculation_date">接種日</label>
@@ -87,6 +89,8 @@
                         <textarea class="form-control" name="vaccine_memo{{$i}}" rows="6" placeholder="メモスペース">{{ $vaccine_histories->vaccine_memo }}</textarea>
                     </div>
                 </div>
+                
+                <input type="hidden" name="update{{$i}}" value="1">
                 
                 @endempty
                 

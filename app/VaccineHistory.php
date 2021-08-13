@@ -11,7 +11,7 @@ class VaccineHistory extends Model
     
     public static $rules = array(
         'vaccine_id' => 'required',
-        'inoculation_date' => 'required',
-        'hospital' => 'required',
+        // 'inoculation_date' => 'required',
+        // 'hospital' => 'required',
         );
 }
