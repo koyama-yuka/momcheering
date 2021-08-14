@@ -69,7 +69,6 @@ class VaccineController extends Controller
         //入力のバリデーションは無理がある？2回目以降の入力はないときもあるし、添番号つけているのもあるし
         //保存するときに、日付と医療機関が揃っているものは保存可、の決め事のほうがいいかも
         
-        dd($request);
         
         
         //ここで何個あるかわからないけど、ワクチンの記録は取得する必要があるのでは？
@@ -86,9 +85,26 @@ class VaccineController extends Controller
             
             
             
+
+        for($i = 1; $i <= 4; $i++){
+            if($request->new.$i == 1){
+                $history = new VaccineHistory;
+                
+                $history->child_id = $request->id;
+                $history->vaccine_id = $request->vaccine_id;
+                $history->inoculation_date = $request->inoculation_date.$i;
+                $history->hospital = $request->hospital.$i;
+                $history->vaccine_memo = $request->vaccine_memo.$i;
+                
+                dd($history);
+                
+                //$history->save();
+            }
             
+        }
         
-        if(新規登録時 ){
+        
+        if($request->new){
             $history = new VaccineHistory;
             $form = $request->all();
             unset($form['_token']);
