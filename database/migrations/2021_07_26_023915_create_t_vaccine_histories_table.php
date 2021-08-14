@@ -17,8 +17,8 @@ class CreateTVaccineHistoriesTable extends Migration
             $table->bigIncrements('id'); //ID
             $table->integer('child_id')->length(10); //こどものID 外部キー(t_children.id)
             $table->integer('vaccine_id')->length(10); //ワクチンのID 外部キー(m_vaccine.id)
-            $table->date('inoculation_date'); //接種日
-            $table->string('hospital',256); //医療機関名
+            $table->date('inoculation_date')->nullable(); //接種日
+            $table->string('hospital',256)->nullable(); //医療機関名
             $table->string('vaccine_memo',256)->nullable(); //メモ
             $table->integer('done_check')->length(1)->default(0); //完了チェック
             $table->softDeletes(); //論理削除

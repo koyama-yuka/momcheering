@@ -20,6 +20,7 @@ class CheckChild
         $display = Child::find($request->id);
         
         //親のこどもでないなら表示できないようにするルール
+        //dd($display);
         if($display->user_id != Auth::id()){
             abort(404);
         }

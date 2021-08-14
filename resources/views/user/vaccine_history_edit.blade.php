@@ -52,7 +52,7 @@
                     </div>
                 </div>
                 
-                <input type="hidden" name="new{{$i}}" value="1">
+                <input type="hidden" name="insert_flag{{$i}}" value="1">
                 
                 
                 {{-- 中身があるとき --}}
@@ -61,7 +61,7 @@
                 <div class="form-group row">
                     <label class="col-md-3" for="inoculation_date">接種日</label>
                     <div class="col-md-3">
-                        <input id="inoculation_date" type="date" class="form-control @error('inoculation_date') is-invalid @enderror" name="inoculation_date{{$i}}" value="{{ $vaccine_histories->inoculation_date }}" required>
+                        <input id="inoculation_date" type="date" class="form-control @error('inoculation_date') is-invalid @enderror" name="inoculation_date{{$i}}" value="{{ $vaccine_histories[$i-1]->inoculation_date}}" required>
                         @error('inoculation_date')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -73,7 +73,7 @@
                 <div class="form-group row">
                     <label class="col-md-3" for="hospital">医療機関</label>
                     <div class="col-md-3 form-inline">
-                        <input id="hospital" type="text" class="form-control @error('hospital') is-invalid @enderror" name="hospital{{$i}}" value="{{ $vaccine_histories->hospital }}" required>
+                        <input id="hospital" type="text" class="form-control @error('hospital') is-invalid @enderror" name="hospital{{$i}}" value="{{ $vaccine_histories[$i-1]->hospital }}" required>
                         @error('hospital')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -86,11 +86,12 @@
                 <div class="form-group row">
                     <label class="col-md-3" for="vaccine_memo">メモ</label>
                     <div class="col-md-5">
-                        <textarea class="form-control" name="vaccine_memo{{$i}}" rows="6" placeholder="メモスペース">{{ $vaccine_histories->vaccine_memo }}</textarea>
+                        <textarea class="form-control" name="vaccine_memo{{$i}}" rows="6" placeholder="メモスペース">{{ $vaccine_histories[$i-1]->vaccine_memo }}</textarea>
                     </div>
                 </div>
                 
-                <input type="hidden" name="update{{$i}}" value="1">
+                <input type="hidden" name="update_flag{{$i}}" value="1">
+                <input type="hidden" name="update_history{{$i}}" value="{{ $vaccine_histories[$i-1]->id }}">
                 
                 @endempty
                 
@@ -114,7 +115,7 @@
                 
                 <div class="form-group row">
                     <div class="col-md-3 mx-auto">
-                        <a class="btn btn-primary btn-lg btn-block" href="/details?id={{ $display->id }}&vaccine_id={{ $vaccine->id }}">キャンセル</a>
+                        <a class="btn btn-primary btn-lg btn-block" href="/vaccine/details?id={{ $display->id }}&vaccine_id={{ $vaccine->id }}">キャンセル</a>
                     </div>
                     <div class="col-md-3 mx-auto">
                         <input type="hidden" name="id" value="{{ $display->id }}">
