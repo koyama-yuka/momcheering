@@ -16,7 +16,7 @@
         
         <div class="form-group row">
             <div class="col-md-6 mx-auto">
-                <a class="btn btn-primary btn-lg btn-block" href="/home?id={{ $display->id }}">カレンダー</a>
+                <a class="btn btn-primary btn-lg btn-block" href="/calendar?id={{ $display->id }}">カレンダー</a>
             </div>
         </div>
         

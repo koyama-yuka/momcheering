@@ -22,7 +22,14 @@
         <!-- Styles -->
         {{-- Laravel標準で用意されているCSSの読み込み --}}
         <link href="{{ secure_asset('css/app.css') }}" rel="stylesheet">
+        
         {{-- 自分で作成したCSSの読み込み予定 --}}
+        
+        {{-- カレンダーのためのjsとcss --}}
+        <link href="{{ secure_asset('css/lib/main.min.css') }}" rel="stylesheet">
+        <script src="{{ secure_asset('js/lib/main.min.js') }}" defer></script>
+        <script src="{{ secure_asset('js/lib/locales/ja.js') }}" defer></script>
+
         
     </head>
     

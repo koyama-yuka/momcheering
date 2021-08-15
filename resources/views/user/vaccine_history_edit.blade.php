@@ -61,24 +61,14 @@
                 <div class="form-group row">
                     <label class="col-md-3" for="inoculation_date">接種日</label>
                     <div class="col-md-3">
-                        <input id="inoculation_date" type="date" class="form-control @error('inoculation_date') is-invalid @enderror" name="inoculation_date{{$i}}" value="{{ $vaccine_histories[$i-1]->inoculation_date}}" required>
-                        @error('inoculation_date')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
+                        <input id="inoculation_date" type="date" class="form-control" name="inoculation_date{{$i}}" value="{{ $vaccine_histories[$i-1]->inoculation_date}}">
                     </div>
                 </div>
                 
                 <div class="form-group row">
                     <label class="col-md-3" for="hospital">医療機関</label>
                     <div class="col-md-3 form-inline">
-                        <input id="hospital" type="text" class="form-control @error('hospital') is-invalid @enderror" name="hospital{{$i}}" value="{{ $vaccine_histories[$i-1]->hospital }}" required>
-                        @error('hospital')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
+                        <input id="hospital" type="text" class="form-control" name="hospital{{$i}}" value="{{ $vaccine_histories[$i-1]->hospital }}">
                     </div>
                 </div>
                 

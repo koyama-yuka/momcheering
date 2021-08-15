@@ -38,10 +38,6 @@ class VaccineController extends Controller
             ])->orderBy('inoculation_date')->get();
          
         
-        //日付順に並べる必要があるのでは？
-        
-        
-        
         return view('user.vaccine_details', ['display' => $display, 'vaccine' => $vaccine, 'vaccine_histories' => $vaccineHistories,]);
     }
     
@@ -59,8 +55,6 @@ class VaccineController extends Controller
             ])->orderBy('inoculation_date')->get();
         
         
-
-        
         return view('user.vaccine_history_edit', ['display' => $display, 'vaccine' => $vaccine, 'vaccine_histories' => $vaccineHistories]);
     }
     
@@ -68,11 +62,7 @@ class VaccineController extends Controller
     //各予防接種の記録編集、更新
     public function update(Request $request){
         
-        //入力のバリデーションは無理がある？2回目以降の入力はないときもあるし、添番号つけているのもあるし
-        
-        
-        
-        //ここで何個あるかわからないけど、ワクチンの記録は取得する必要があるのでは？
+        /*
         $display = Child::find($request['id']);
         $vaccine = Vaccine::find($request['vaccine_id']);
         
@@ -82,17 +72,18 @@ class VaccineController extends Controller
             ['vaccine_id', $request['vaccine_id']],
             ])->orderBy('inoculation_date')->get();
             
-            
+        */    
 
         for($i = 1; $i <= 4; $i++){
             //新規保存
             if($request['insert_flag'.$i] == 1){
                 
-                //dd($request);
+                
+                //何も入力がなければ飛ばして次へ
                 if($request['inoculation_date'.$i] == null && $request['hospital'.$i] == null && $request['vaccine_memo'.$i] == null ){
                     continue;    
                 }                
-                //if($request['inoculation_date'.$i] ||  $request['hospital'.$i]){
+                
                     
                     $history = new VaccineHistory;
                     
@@ -119,9 +110,7 @@ class VaccineController extends Controller
             }
             
             
-            
-            
-            
+            //完了チェックのこと考える
             
         }
         
