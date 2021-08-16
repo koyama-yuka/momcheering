@@ -111,6 +111,7 @@ class VaccineController extends Controller
             
             
             //完了チェックのこと考える
+            //テーブル新たに作る、完了checkだけ別デーブル　で、そのIDをt_vaccine_historiesなテーブルに持たせる方向で
             
         }
         

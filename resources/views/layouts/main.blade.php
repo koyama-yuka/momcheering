@@ -96,11 +96,11 @@
                     <a class="btn btn-primary btn-lg btn-block" href="{{ url()->current() }}?id={{ $child->id }}" role="button">{{ $child->child_name }}</a>
                     --}}
                     
-                    {{-- 選択されてたら色変えるとき　vaccineのid、日付バージョンも入れとかないと狂う --}}
+                    {{-- 選択されてたら色変えるとき　vaccineのid、日付バージョンも入れとかないと狂う→＠yieldで --}}
                     @if($child->id == $display->id)
-                        <a class="btn btn-success btn-lg btn-block" href="{{ url()->current() }}?id={{ $child->id }}" role="button">{{ $child->child_name }}</a>
+                        <a class="btn btn-success btn-lg btn-block" href="{{ url()->current() }}?id={{ $child->id }}@yield('get_param')" role="button">{{ $child->child_name }}</a>
                     @else
-                        <a class="btn btn-primary btn-lg btn-block" href="{{ url()->current() }}?id={{ $child->id }}" role="button">{{ $child->child_name }}</a>
+                        <a class="btn btn-primary btn-lg btn-block" href="{{ url()->current() }}?id={{ $child->id }}@yield('get_param')" role="button">{{ $child->child_name }}</a>
                     @endif
                     
                     </div>

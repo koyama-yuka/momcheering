@@ -40,7 +40,7 @@
                 @else
                 
                 <div class="form-group row">
-                    <label class="col-md-3" for="inoculation_date">接種日</label>
+                    <label class="col-md-3" for="inoculation_date">あああ</label>
                     <div class="col-md-3">
                         <input id="inoculation_date" type="date" class="form-control" name="inoculation_date{{$i}}" value="{{ $vaccine_histories[$i-1]->inoculation_date}}">
                     </div>
