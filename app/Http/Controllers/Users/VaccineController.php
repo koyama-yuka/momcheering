@@ -42,7 +42,7 @@ class VaccineController extends Controller
     }
     
     
-    //接種記録の編集
+    //接種記録の編集画面表示
     public function edit(Request $request){
         
         $display = Child::find($request['id']);

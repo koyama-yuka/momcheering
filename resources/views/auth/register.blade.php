@@ -88,10 +88,10 @@
             <div class="form-group row">
                 <label class="col-md-3" for="notice_flag">前日メールの受け取り</label>
                 <div class="col-md-6 radio-inline">
-                    <input type="radio" value="1" name="notice_flag" id="yes" value="1">
+                    <input type="radio" name="notice_flag" id="yes" value="1">
                     <label for="yes">受け取る</label>
                 
-                    <input type="radio" value="2" name="notice_flag" id="no" value="0">
+                    <input type="radio" name="notice_flag" id="no" value="0">
                     <label for="no">受け取らない</label>
                 </div>
             </div>
