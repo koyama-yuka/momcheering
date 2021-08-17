@@ -20,9 +20,17 @@ class Child extends Model
     );
     
     
-    //ワクチンの接種記録と関連付け？ Vaccineモデルのほうに書いたものと同名でいいのか？
-    public function vaccineHistories(){
-        return $this->hasMany('App\VaccineHistory');
+    //ワクチンの接種記録と関連付け 不要？
+    //public function vaccineHistories(){
+    //    return $this->hasMany('App\VaccineHistory');
+    //}
+    
+    public function check(){
+        return $this->hasMany('App\Check');
+    }
+    
+    public function schedule(){
+        return $this->hasMany('App\Schedule');
     }
     
 }

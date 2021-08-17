@@ -4,6 +4,9 @@
 {{-- title --}}
 @section('title', 'スケジュールの編集')
 
+{{-- 後半のクエリ文字列 --}}
+@section('get_param','&date='.$date) 
+
 {{-- contentここから --}}
 @section('content')
     <div class="container">
@@ -25,11 +28,70 @@
                     <div class="col-md-6 radio-inline">
                         <input type="radio" name="vaccine_flag" id="yes" value="1">
                         <label for="yes">あり</label>
-                
+                        
                         <input type="radio" name="vaccine_flag" id="no" value="0">
                         <label for="no">なし</label>
                     </div>
                 </div>
+                
+                
+                <div class="form-group row">
+                    <label class="col-md-3" for="vaccine_kind">予防接種の種類</label> {{-- ワクチンIDとワクチン名もって来て使いたい --}}
+                    <div class="col-md-3">
+                    <select id="vaccine_kind" class="form-control" name="vaccine_kind">
+                        <option value="">選択してください</option>
+                        <option value="1">Hib(ヒブ)ワクチン</option>
+                        <option value="2">小児用肺炎球菌ワクチン</option>
+                        <option value="3">B型肝炎ワクチン</option>
+                    </select>
+                    </div>
+                </div>
+                
+                
+                <div class="form-group row">
+                    <label class="col-md-3" for="medical_flag">健診の有無</label>
+                    <div class="col-md-6 radio-inline">
+                        <input type="radio" name="medical_flag" id="yes" value="1">
+                        <label for="yes">あり</label>
+                        
+                        <input type="radio" name="medical_flag" id="no" value="0">
+                        <label for="no">なし</label>
+                    </div>
+                </div>
+                
+                
+                <div class="form-group row">
+                    <label class="col-md-3" for="medical_kind">健診の種類</label> {{-- 健診のIDと名前もって来て使いたい --}}
+                    <div class="col-md-3">
+                    <select id="medical_kind" class="form-control" name="medical_kind">
+                        <option value="">選択してください</option>
+                        <option value="1">生後１ヶ月健診</option>
+                        <option value="2">生後３～４ヶ月健診</option>
+                        <option value="3">生後６～７ヶ月健診</option>
+                    </select>
+                    </div>
+                </div>
+                
+                
+                <div class="form-group row">
+                    <label class="col-md-3" for="start_time">開始時間</label>
+                    <div class="col-md-3">
+                        <input id="start_time" type="time" class="form-control" name="start_time">
+                    </div>
+                </div>
+                
+                
+                <div class="form-group row">
+                    <label class="col-md-3" for="schedule_memo">メモ</label>
+                    <div class="col-md-5">
+                        <textarea class="form-control" name="schedule_memo" rows="6" placeholder="メモスペース">{{ old('schedule_memo') }}</textarea>
+                    </div>
+                </div>
+                
+                
+                
+                
+                
                 
                 
                 

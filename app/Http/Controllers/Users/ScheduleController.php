@@ -11,6 +11,7 @@ use App\Child;
 use App\User;
 use App\Vaccine;
 use App\Schedule;
+use App\VaccineSchedule;
 
 
 //マンスリーカレンダー表示

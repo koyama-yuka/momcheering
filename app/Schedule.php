@@ -17,4 +17,10 @@ class Schedule extends Model
         'medical_id' => 'required',
         'start_time' => 'required',
         );
+        
+        
+    public function vaccineSchedule(){
+        return $this->hasMany('App\VaccineSchedule');
+    }
+        
 }

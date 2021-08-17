@@ -4,6 +4,9 @@
 {{-- title --}}
 @section('title', '接種状況の編集')
 
+{{-- 後半のクエリ文字列 --}}
+@section('get_param','&vaccine_id='.$vaccine->id)
+
 {{-- contentここから --}}
 @section('content')
     <div class="container">

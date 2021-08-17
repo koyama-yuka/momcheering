@@ -10,6 +10,7 @@ use App\Child;
 use App\User;
 use App\VaccineHistory;
 use App\Vaccine;
+use App\Check;
 
 class VaccineController extends Controller
 {

@@ -10,8 +10,6 @@ class VaccineHistory extends Model
     protected $guarded = array('id');
     
     public static $rules = array(
-        'vaccine_id' => 'required',
-        // 'inoculation_date' => 'required',
-        // 'hospital' => 'required',
+        'check_id' => 'required',
         );
 }

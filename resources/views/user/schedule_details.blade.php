@@ -4,6 +4,9 @@
 {{-- title --}}
 @section('title', 'この日の予定')
 
+{{-- 後半のクエリ文字列 --}}
+@section('get_param','&date='.$date)
+
 {{-- contentここから --}}
 @section('content')
     <div class="container">
