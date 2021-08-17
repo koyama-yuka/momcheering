@@ -10,10 +10,10 @@ class Vaccine extends Model
     protected $guarded = array('id');
     
     
-    //ワクチンの接種記録と関連付け 不要？
-    //public function vaccineHistories(){
-    //    return $this->hasMany('App\VaccineHistory');
-    //}
+    ワクチンの接種記録と関連付け
+    public function vaccineHistories(){
+        return $this->hasMany('App\VaccineHistory');
+    }
     
     
     //チェックと関連付け

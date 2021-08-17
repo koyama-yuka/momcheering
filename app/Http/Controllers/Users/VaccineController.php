@@ -83,8 +83,7 @@ class VaccineController extends Controller
                 //何も入力がなければ飛ばして次へ
                 if($request['inoculation_date'.$i] == null && $request['hospital'.$i] == null && $request['vaccine_memo'.$i] == null ){
                     continue;    
-                }                
-                
+                }
                     
                     $history = new VaccineHistory;
                     
@@ -94,7 +93,7 @@ class VaccineController extends Controller
                     $history->hospital = $request['hospital'.$i];
                     $history->vaccine_memo = $request['vaccine_memo'.$i];
                     $history->save();
-                //}
+            
             }
             
             //更新保存
@@ -112,7 +111,13 @@ class VaccineController extends Controller
             
             
             //完了チェックのこと考える
-            //テーブル新たに作る、完了checkだけ別デーブル　で、そのIDをt_vaccine_historiesなテーブルに持たせる方向で
+            $check = $Check::where([
+            ['child_id', $request['id']],
+            ['vaccine_id', $request['vaccine_id']],
+            ])->get();
+            
+            //もしテーブルあったら０か１かで更新するし、もしテーブルがなければ追加しとく
+            
             
         }
         

@@ -58,53 +58,59 @@ class ScheduleController extends Controller
     
     
     
-    //スケジュールの登録と更新　コピって持ってきただけ↓　編集する
+    //スケジュールの登録と更新
     public function update(Request $request){
         
         
         $display = Child::find($request['id']);
+        $vaccine_kind = $request->vaccine_kind;
            
         dd($request); 
            
-           
-           
-        for($i = 1; $i <= 4; $i++){
-            //新規保存
-            if($request['insert_flag'.$i] == 1){
-                
-                
-                //何も入力がなければ飛ばして次へ
-                if($request['inoculation_date'.$i] == null && $request['hospital'.$i] == null && $request['vaccine_memo'.$i] == null ){
-                    continue;    
-                }                
-                
-                    
-                    $history = new VaccineHistory;
-                    
-                    $history->child_id = $request->id;
-                    $history->vaccine_id = $request->vaccine_id;
-                    $history->inoculation_date = $request['inoculation_date'.$i];
-                    $history->hospital = $request['hospital'.$i];
-                    $history->vaccine_memo = $request['vaccine_memo'.$i];
-                    //$history->save();
-                //}
-            }
+        
+        //新規保存
+        if($request['insert_flag'] == 1){
             
-            //更新保存
-            if($request['update_flag'.$i] == 1){
-
-                $update_history_id = $request['update_history'.$i];
-                $history = VaccineHistory::find($update_history_id);
-                    $history->child_id = $request->id;
-                    $history->vaccine_id = $request->vaccine_id;
-                    $history->inoculation_date = $request['inoculation_date'.$i];
-                    $history->hospital = $request['hospital'.$i];
-                    $history->vaccine_memo = $request['vaccine_memo'.$i];
-                    //$history->save();
-            }
+            $schedule = new Schedule;
+                    
+            $schedule->child_id = $request->id;
+            $schedule['date']= $request['date'];
+            $schedule->vaccine_flag = $request->vaccine_flag;
+            $schedule->medical_flag = $request->medical_flag;
+            $schedule->medical_id = $request->medical_kind;
+            $schedule->start_time = $request->start_time;
+            $schedule->schedule_memo = $request->schedule_memo;
+            //$schedule->save();
+            
+            //予防接種の種類分の保存
+            $schedule_id = $schedule->id;
+            $vaccine_schedule = New::VaccineSchedule;
+            
+            
             
             
         }
+        
+        
+        //更新保存
+        if($request['update_flag'] == 1){
+            
+            $update_schedule_id = $request->update_schedule;
+            
+            $schedule = Schedule::find($update_schedule_id);
+            //こどものIDはいらない？該当するこどもの予定を変更するのだから・・・
+            //$schedule->child_id = $request->id;
+            $schedule->vaccine_flag = $request->vaccine_flag;
+            $schedule->medical_flag = $request->medical_flag;
+            $schedule->medical_id = $request->medical_kind;
+            $schedule->start_time = $request->start_time;
+            $schedule->schedule_memo = $request->schedule_memo;
+            //$schedule->save();
+            
+        }
+        
+        
+        
         
         
         
