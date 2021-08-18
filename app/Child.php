@@ -20,7 +20,7 @@ class Child extends Model
     );
     
     
-    ワクチンの接種記録と関連付け
+    //ワクチンの接種記録と関連付け
     public function vaccineHistories(){
         return $this->hasMany('App\VaccineHistory');
     }

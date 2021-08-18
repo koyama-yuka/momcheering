@@ -12,11 +12,5 @@ class Check extends Model
     public static $rules = array(
         'vaccine_id' => 'required',
         );
-        
-        
-        
-        
-    public function vaccineHistory(){
-        return $this->hasMany('App\VaccineHistory');
-    }
+    
 }

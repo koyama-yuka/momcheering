@@ -56,7 +56,22 @@ class VaccineController extends Controller
             ])->orderBy('inoculation_date')->get();
         
         
-        return view('user.vaccine_history_edit', ['display' => $display, 'vaccine' => $vaccine, 'vaccine_histories' => $vaccineHistories]);
+        $check = Check::where([
+            ['child_id', $request['id']],
+            ['vaccine_id', $request['vaccine_id']],
+            ])->get();
+            
+           
+            
+            if(empty($check[0])) {
+                $done_check = 0;
+            }else {
+                $done_check = $check->done_check;
+            }
+            
+        
+        
+        return view('user.vaccine_history_edit', ['display' => $display, 'vaccine' => $vaccine, 'vaccine_histories' => $vaccineHistories, 'done_check' => $done_check,]);
     }
     
     
@@ -73,8 +88,11 @@ class VaccineController extends Controller
             ['vaccine_id', $request['vaccine_id']],
             ])->orderBy('inoculation_date')->get();
             
-        */    
+        */
+        
+        
 
+        //最高４回接種
         for($i = 1; $i <= 4; $i++){
             //新規保存
             if($request['insert_flag'.$i] == 1){
@@ -85,42 +103,65 @@ class VaccineController extends Controller
                     continue;    
                 }
                     
-                    $history = new VaccineHistory;
+                $history = new VaccineHistory;
                     
-                    $history->child_id = $request->id;
-                    $history->vaccine_id = $request->vaccine_id;
-                    $history->inoculation_date = $request['inoculation_date'.$i];
-                    $history->hospital = $request['hospital'.$i];
-                    $history->vaccine_memo = $request['vaccine_memo'.$i];
-                    $history->save();
+                $history->child_id = $request->id;
+                $history->vaccine_id = $request->vaccine_id;
+                $history->inoculation_date = $request['inoculation_date'.$i];
+                $history->hospital = $request['hospital'.$i];
+                $history->vaccine_memo = $request['vaccine_memo'.$i];
+                
+                $history->save();
             
             }
             
             //更新保存
             if($request['update_flag'.$i] == 1){
-
+                
                 $update_history_id = $request['update_history'.$i];
                 $history = VaccineHistory::find($update_history_id);
-                    $history->child_id = $request->id;
-                    $history->vaccine_id = $request->vaccine_id;
-                    $history->inoculation_date = $request['inoculation_date'.$i];
-                    $history->hospital = $request['hospital'.$i];
-                    $history->vaccine_memo = $request['vaccine_memo'.$i];
-                    $history->save();
+                
+                $history->child_id = $request->id;
+                $history->vaccine_id = $request->vaccine_id;
+                $history->inoculation_date = $request['inoculation_date'.$i];
+                $history->hospital = $request['hospital'.$i];
+                $history->vaccine_memo = $request['vaccine_memo'.$i];
+                
+                $history->save();
             }
-            
-            
-            //完了チェックのこと考える
-            $check = $Check::where([
-            ['child_id', $request['id']],
-            ['vaccine_id', $request['vaccine_id']],
-            ])->get();
-            
-            //もしテーブルあったら０か１かで更新するし、もしテーブルがなければ追加しとく
             
             
         }
         
+        
+        //完了チェックについて
+        if(empty($request->done_check)) {
+            $done_check = 0;
+        }else {
+            $done_check = $request->done_check;
+        }
+        
+        
+        $check = Check::where([
+        ['child_id', $request['id']],
+        ['vaccine_id', $request['vaccine_id']],
+        ])->get();
+        
+        //もしテーブルがなければ追加するし、もしテーブルあったら０か１かで更新する
+        
+        if(empty($check[0])){
+            $check = new Check;
+            $check->child_id = $request->id;
+            $check->vaccine_id = $request->vaccine_id;
+            $check->done_check = $done_check;
+            
+            $check->save();
+            
+        } else {
+            $check->done_check = $done_check;
+            
+            $check->save();
+        }
         
         
         return redirect('/vaccine/details?id='.$request->id."&vaccine_id=".$request->vaccine_id);

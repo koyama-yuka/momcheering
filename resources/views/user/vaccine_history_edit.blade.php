@@ -92,15 +92,10 @@
                 
                 
                 
-                
-                
-                
-                
-                
-                
+                //完了チェック
                 <div class="form-group row form-check">
                     <div class="col-md-4 mx-auto">
-                        <input type="checkbox" class="form-check-input" id="done_check" name="done_check" value="1">
+                        <input type="checkbox" class="form-check-input" id="done_check" name="done_check" value="1" {{ ($done_check == 1) ? "checked" : "" }}>
                         <label class="form-check-label" for="done_check">この予防接種は完了！</label>
                     </div>
                 </div>
