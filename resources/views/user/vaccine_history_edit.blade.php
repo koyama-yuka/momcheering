@@ -92,7 +92,7 @@
                 
                 
                 
-                //完了チェック
+                {{-- 完了チェック --}}
                 <div class="form-group row form-check">
                     <div class="col-md-4 mx-auto">
                         <input type="checkbox" class="form-check-input" id="done_check" name="done_check" value="1" {{ ($done_check == 1) ? "checked" : "" }}>

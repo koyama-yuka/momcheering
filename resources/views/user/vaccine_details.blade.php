@@ -24,49 +24,47 @@
         </div>
         --}}
         
-        <div class="row">
+        
             
             @for($i = 1; $i <= $vaccine->vaccine_times; $i++)
                 <div class="row">
-                    <div class="row">{{ $i }}回目</div>
+                    <div class="col-md-1"><h3>{{ $i }}回目</h3></div>
                     
+                    {{-- 記録がないとき --}}
                     @empty($vaccine_histories[$i-1])
-                    <div class="row">
-                        <div class="col-md-3">
+                    
+                        <div class="col-md-2">
                             <h3>接種日</h3>
                         </div>
-                        <div class="col-md-5">
+                        <div class="col-md-3">
                             <h3>接種日がありません</h3>
                         </div>
-                    </div>
-                    
-                    <div class="row">
-                        <div class="col-md-3">
+                        
+                        <div class="col-md-2">
                             <h3>医療機関</h3>
                         </div>
-                        <div class="col-md-5">
+                        <div class="col-md-4">
                             <h3>接種記録がありません</h3>
                         </div>
-                    </div>
                     
+                    
+                    {{-- 記録がないとき --}}
                     @else
-                    <div class="row">
-                        <div class="col-md-3">
+                    
+                        <div class="col-md-2">
                             <h3>接種日</h3>
                         </div>
-                        <div class="col-md-5">
+                        <div class="col-md-3">
                             <h3>{{ $vaccine_histories[$i-1]->inoculation_date }}</h3>
                         </div>
-                    </div>
-                    
-                    <div class="row">
-                        <div class="col-md-3">
+                        
+                        <div class="col-md-2">
                             <h3>医療機関</h3>
                         </div>
-                        <div class="col-md-5">
+                        <div class="col-md-4">
                             <h3>{{ $vaccine_histories[$i-1]->hospital }}</h3>
                         </div>
-                    </div>
+                    
                     
                     @endempty
                     
@@ -74,7 +72,7 @@
                     
                 </div>
             @endfor
-        </div>
+        
         
         <div class="form-group row">
             <div class="col-md-3 mx-auto">

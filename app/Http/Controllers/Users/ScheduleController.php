@@ -64,9 +64,7 @@ class ScheduleController extends Controller
         
         $display = Child::find($request['id']);
         $vaccine_kind = $request->vaccine_kind;
-           
-        dd($request); 
-           
+        
         
         //新規保存
         if($request['insert_flag'] == 1){
@@ -80,13 +78,17 @@ class ScheduleController extends Controller
             $schedule->medical_id = $request->medical_kind;
             $schedule->start_time = $request->start_time;
             $schedule->schedule_memo = $request->schedule_memo;
-            //$schedule->save();
+            
+            $schedule->save();
             
             //予防接種の種類分の保存
             $schedule_id = $schedule->id;
-            $vaccine_schedule = New::VaccineSchedule;
+            $vaccine_schedule = new VaccineSchedule;
             
+            $vaccine_schedule->schedule_id = $schedule_id;
+            $vaccine_schedule->vaccine_id = $vaccine_kind;
             
+            $vaccine_schedule->save();
             
             
         }
@@ -105,7 +107,11 @@ class ScheduleController extends Controller
             $schedule->medical_id = $request->medical_kind;
             $schedule->start_time = $request->start_time;
             $schedule->schedule_memo = $request->schedule_memo;
-            //$schedule->save();
+            
+            $schedule->update();
+            
+            
+            //予防接種の種類分の保存、更新
             
         }
         
@@ -114,7 +120,7 @@ class ScheduleController extends Controller
         
         
         
-        //return redirect('/vaccine/details?id='.$request->id."&vaccine_id=".$request->vaccine_id);
+        return redirect('/calendar/details?id='.$request->id."&date=".$request['date']);
     }
     
     

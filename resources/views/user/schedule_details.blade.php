@@ -18,10 +18,10 @@
         
         <div class="row">
             <div class="col-md-2">
-                予防接種予定
+                予防接種予定 {{ @if($details[0]->vaccine_flag == 1) "あり" @else "なし" }}
             </div>
             <div class="col-md-5">
-                ワクチンの名前表示
+                ワクチンの名前
             </div>
         </div>
         

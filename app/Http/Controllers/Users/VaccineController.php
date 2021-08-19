@@ -59,11 +59,11 @@ class VaccineController extends Controller
         $check = Check::where([
             ['child_id', $request['id']],
             ['vaccine_id', $request['vaccine_id']],
-            ])->get();
+            ])->first();
             
            
             
-            if(empty($check[0])) {
+            if(empty($check)) {
                 $done_check = 0;
             }else {
                 $done_check = $check->done_check;
@@ -89,7 +89,6 @@ class VaccineController extends Controller
             ])->orderBy('inoculation_date')->get();
             
         */
-        
         
 
         //最高４回接種
@@ -127,7 +126,7 @@ class VaccineController extends Controller
                 $history->hospital = $request['hospital'.$i];
                 $history->vaccine_memo = $request['vaccine_memo'.$i];
                 
-                $history->save();
+                $history->update();
             }
             
             
@@ -145,11 +144,12 @@ class VaccineController extends Controller
         $check = Check::where([
         ['child_id', $request['id']],
         ['vaccine_id', $request['vaccine_id']],
-        ])->get();
+        ])->first();
         
-        //もしテーブルがなければ追加するし、もしテーブルあったら０か１かで更新する
         
-        if(empty($check[0])){
+        //もしテーブルがなければ追加するし、テーブルあったらdone_checkカラムを０か１かで更新する
+        
+        if(empty($check)){
             $check = new Check;
             $check->child_id = $request->id;
             $check->vaccine_id = $request->vaccine_id;
@@ -160,7 +160,7 @@ class VaccineController extends Controller
         } else {
             $check->done_check = $done_check;
             
-            $check->save();
+            $check->update();
         }
         
         
