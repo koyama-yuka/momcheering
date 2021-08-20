@@ -38,6 +38,11 @@ class ScheduleController extends Controller
             
         
         
+        
+        
+        
+        
+        
         return view('user.schedule_details', ['display' => $display, 'details' => $details, "date" => $request['date']]);
     }
     

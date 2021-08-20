@@ -66,7 +66,7 @@
         
         <div class="form-group row">
             <div class="col-md-3 mx-auto">
-                <a class="btn btn-primary btn-lg btn-block" href="calendar?id={{ $display->id }}">カレンダーへ戻る</a>
+                <a class="btn btn-primary btn-lg btn-block" href="/calendar?id={{ $display->id }}">カレンダーへ戻る</a>
             </div>
             <div class="col-md-3 mx-auto">
                 <a class="btn btn-primary btn-lg btn-block" href="/calendar/details/edit?id={{ $display->id }}&date={{ $date }}">編集</a>

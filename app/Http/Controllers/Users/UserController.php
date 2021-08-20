@@ -12,29 +12,45 @@ use App\User;
 
 class UserController extends Controller
 {
-    public function loginTop(){  //ログイン画面の表示
+    //ログイン画面の表示
+    public function loginTop(){
         return view('auth.login');
     }
     
-    public function register(){ //新規登録画面の表示
+    //新規登録画面の表示
+    public function register(){
         return view('auth.register');
     }
     
     
-    
-    public function profileEdit(){
-        return view('user.user_profile_edit');
+    //プロフィール表示
+    public function userProfieIndex(Request $request){
+        
+        $display = Child::find($request['id']);
+        
+        $user = Auth::user();
+        
+        
+        return view('user.user_profile', ['display' => $display, "user" => $user]);
     }
     
-    public function userProfieIndex(){
-        return view('user.user_profile');
+    
+    
+    //プロフィール編集
+    public function profileEdit(Request $request){
+        
+        $display = Child::find($request['id']);
+        
+        
+        return view('user.user_profile_edit', ['display' => $display]);
     }
     
     
     
     
     
-    public function homeDisplay(Request $request){ //ホーム画面の表示
+    //ホーム画面の表示
+    public function homeDisplay(Request $request){
     
         $id = $request['id'];
     
