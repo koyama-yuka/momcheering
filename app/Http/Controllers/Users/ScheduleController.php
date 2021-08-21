@@ -14,6 +14,7 @@ use App\Schedule;
 use App\VaccineSchedule;
 
 
+
 //マンスリーカレンダー表示
 class ScheduleController extends Controller
 {
@@ -21,8 +22,20 @@ class ScheduleController extends Controller
         
         $display = Child::find($request->id);
         
+        //今日の日付取得
+        $today = date("Y-m-d");
         
-        return view('user.calendar_main', ['display' => $display]);
+        //前月と翌月
+        $lastMonth = date('Y-m-d', strtotime($today." -1 month"));
+        $nextMonth = date('Y-m-d', strtotime($today." +1 month"));
+        
+        //前月と翌月の間のスケジュールを取得
+        $schedules = Schedule::where('child_id',$request['id'])
+                            ->whereBetween('date',[$lastMonth, $nextMonth])
+                            ->get();
+                            
+                            
+        return view('user.calendar_main', ['display' => $display, "schedules" => $schedules]);
     }
     
     
@@ -30,6 +43,7 @@ class ScheduleController extends Controller
     public function details(Request $request){
         
         $display = Child::find($request->id);
+        
         
         $details = Schedule::where([
             ['child_id', $request['id']],

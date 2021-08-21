@@ -88,7 +88,9 @@ class RegisterController extends Controller
             'relationship_id' => $data['relationship_id'],
             'notice_flag' => $data['notice_flag'],
             ]);
-        
+            
+            
+            
             $child = Child::create([
             'user_id' => $user->id,
             'child_name' => $data['child_name'],
@@ -99,6 +101,7 @@ class RegisterController extends Controller
             'birth_weight' => $data['birth_weight'],
             'birth_height' => $data['birth_height'],
             ]);
+            
             
             return $user;
        

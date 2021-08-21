@@ -18,14 +18,19 @@
         dateClick: function(date, jsEvent, view) {
             window.location.href = '/calendar/details?id={{ $display->id }}&date='+date['dateStr'];      
         },
-
+        
+        
         events: [
+        
+        @foreach($schedules as $schedule)
+        
         {
-          id: '1',
-          title: 'なんかテスト的に入れているだけ',
-          start: '2021-09-03T13:00:00',
-          constraint: 'なんかテスト的に入れているだけ'
+          id: {{ $schedule->id }},
+          title: '{{ $schedule->start_time }}',
+          start: '{{ $schedule->date }}T{{ $schedule->start_time }}'
         },
+        
+        @endforeach
         
         ],
         });
