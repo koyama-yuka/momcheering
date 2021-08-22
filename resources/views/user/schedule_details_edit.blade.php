@@ -12,7 +12,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-4 mx-auto">
-                <h3>{{ $date }}の予定　編集</h3>
+                <h3>予定編集</h3>
             </div>
         </div>
         
@@ -23,6 +23,21 @@
                 
                 {{-- 予定が無いとき --}}
                 @empty($schedule[0])
+                
+                <div class="form-group row">
+                    <label class="col-md-3" for="schedule_date">日時</label>
+                    <div class="col-md-3">
+                        <input id="schedule_date" type="date" class="form-control @error('schedule_date') is-invalid @enderror" name="schedule_date" value="{{ $date }}" required>
+                        @error('schedule_date')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                </div>
+                
+                
+                
                 <div class="form-group row">
                     <label class="col-md-3" for="vaccine_flag">予防接種の有無</label>
                     <div class="col-md-6 radio-inline">

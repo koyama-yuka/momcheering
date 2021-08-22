@@ -14,12 +14,13 @@
         
         {{-- 予定があるとき --}}
         @isset($details[0])
-        <h3>{{ $details[0]->date }}</h3>
+        @foreach($details as $detail)
+        <h3>{{ $detail->date }}</h3>
         
         <div class="row">
             <div class="col-md-2">
                 予防接種予定 
-                @if($details[0]->vaccine_flag == 1)
+                @if($detail->vaccine_flag == 1)
                 "あり"
                 @else
                 "なし"
@@ -45,16 +46,16 @@
                 開始時間
             </div>
             <div class="col-md-3">
-                {{ $details[0]->start_time }}
+                {{ $detail->start_time }}
             </div>
         </div> 
         
         <div class="row">
             <div class="col-md-8">
-                {{ $details[0]->schedule_memo }}
+                {{ $detail->schedule_memo }}
             </div>
         </div>
-        
+        @endforeach
         
         
         

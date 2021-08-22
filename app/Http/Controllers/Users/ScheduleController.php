@@ -44,12 +44,17 @@ class ScheduleController extends Controller
         
         $display = Child::find($request->id);
         
+        if(isset($request->schedule_id)){
+            $details = Schedule::where('id',$request['schedule_id'])->get();
         
-        $details = Schedule::where([
-            ['child_id', $request['id']],
-            ['date', $request['date']],
-            ])->orderBy('date')->get();
             
+        } else {
+            $details = Schedule::where([
+                ['child_id', $request['id']],
+                ['date', $request['date']],
+                ])->orderBy('date')->get();
+        }
+        
         
         
         
@@ -91,13 +96,14 @@ class ScheduleController extends Controller
             $schedule = new Schedule;
                     
             $schedule->child_id = $request->id;
-            $schedule['date']= $request['date'];
+            $schedule['date']= $request->schedule_date;
             $schedule->vaccine_flag = $request->vaccine_flag;
             $schedule->medical_flag = $request->medical_flag;
             $schedule->medical_id = $request->medical_kind;
             $schedule->start_time = $request->start_time;
             $schedule->schedule_memo = $request->schedule_memo;
             
+            dd($schedule);
             $schedule->save();
             
             //予防接種の種類分の保存
