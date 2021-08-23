@@ -10,8 +10,5 @@ class Medical extends Model
     protected $guarded = array('id');
     
     
-    //スケジュールと関連付け
-    public function schedule(){
-        return $this->hasMany('App\Schedule');
-    }
+    
 }

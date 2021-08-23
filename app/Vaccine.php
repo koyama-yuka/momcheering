@@ -21,7 +21,4 @@ class Vaccine extends Model
         return $this->hasMany('App\Check');
     }
     
-    public function vaccineSchedule(){
-        return $this->hasMany('App\VaccineSchedule');
-    }
 }

@@ -51,20 +51,11 @@ class ScheduleController extends Controller
                 ['child_id', $request['id']],
                 ['date', $request['date']],
                 ])->orderBy('date')->get();
-            
-        //ワクチンの名前と健診の名前取得
-        $vaccineName = Vaccine::get(['id', 'vaccine_name']);
-        $medicalcheckName = Medical::get(['id', 'medicalcheck_name']);
         
-        //各スケジュールに対しての予防接種の種類
-        $vaccine_kind = VaccineSchedule::where([
-                ['schedule_id', $daySchedules['id']]
-            ])->get();
-            
-        dd($daySchedules);
+        //dd($daySchedules[0]->vaccineSchedule);
+        //各スケジュールに対しての予防接種の種類はviewで取る モデルの中に書いている紐付け使う
         
-        
-        return view('user.day', ['display' => $display, 'daySchedules' => $daySchedules, "date" => $request['date'], "vaccineName" => $vaccineName, "medicalcheckName" =>$medicalcheckName, "vaccine_kind" => $vaccine_kind ]);
+        return view('user.day', ['display' => $display, 'daySchedules' => $daySchedules, "date" => $request['date']]);
     }
     
     
@@ -120,15 +111,10 @@ class ScheduleController extends Controller
     public function details(Request $request){
         
         $display = Child::find($request->id);
+        $schedule = Schedule::find($request['schedule_id']);
         
-        //if(isset($request->schedule_id)){
-            $details = Schedule::where('id',$request['schedule_id'])->first();
-        
-    //}
-        return view('user.schedule_details', ['display' => $display, 'details' => $details]);
+        return view('user.schedule_details', ['display' => $display, 'schedule' => $schedule]);
     }
-    
-    
     
     
     
@@ -137,13 +123,10 @@ class ScheduleController extends Controller
         
         $display = Child::find($request['id']);
         
-        $schedule = Schedule::where([
-            ['child_id', $request['id']],
-            ['date', $request['date']],
-            ])->get();
+        $schedule = Schedule::where('id',$request['schedule_id'])->first();
         
         
-        return view('user.schedule_details_edit', ['display' => $display, 'schedule' => $schedule, "date" => $request['date']]);
+        return view('user.schedule_details_edit', ['display' => $display, 'schedule' => $schedule]);
     }
     
     

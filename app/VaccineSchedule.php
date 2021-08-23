@@ -14,4 +14,8 @@ class VaccineSchedule extends Model
         );
     
     
+    public function vaccine(){
+        return $this->hasOne('App\Vaccine','id','vaccine_id');
+    }
+    
 }

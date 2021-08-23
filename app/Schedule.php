@@ -22,5 +22,10 @@ class Schedule extends Model
     public function vaccineSchedule(){
         return $this->hasMany('App\VaccineSchedule');
     }
-        
+    
+    
+    //Medicalと関連付け
+    public function medical(){
+        return $this->hasOne('App\Medical', 'id', 'medical_id');
+    }
 }

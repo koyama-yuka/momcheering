@@ -30,9 +30,9 @@
             <div class="col-md-5">
                 ワクチンの名前:
                 @if($daySchedule->vaccine_flag == 1)
-                    @if($daySchedule->id == $vaccine_kind->schedule_id)
-                    {{ $vaccine_name[$vaccine_kind->vaccine_id]->vaccine_name."\n" }}
-                    @endif
+                    @foreach($daySchedule->vaccineSchedule as $vaccineName)  {{-- スケジュールに紐づくt_vaccine_schedulesを回す --}}
+                        {{$vaccineName->vaccine->vaccine_name}}  {{-- ↑のt_vaccine_schedulesに紐づくm_vaccinesのvaccine_nameカラムを表示する --}}
+                    @endforeach
                 @endif
                 
             </div>
@@ -51,8 +51,7 @@
             <div class="col-md-5">
                 検診の名前表示:
                 @if($daySchedule->medical_flag == 1)
-                    @foreach($medicalcheckName as $medicalcheck_name)
-                    {{ $medicalcheck_name->medicalcheck_name."\n" }}
+                    {{$daySchedule->medical->medicalcheck_name}}
                 @endif
             </div>
         </div>
