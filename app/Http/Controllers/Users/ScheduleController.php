@@ -11,13 +11,16 @@ use App\Child;
 use App\User;
 use App\Vaccine;
 use App\Schedule;
+use App\Medical;
 use App\VaccineSchedule;
 
 
 
-//マンスリーカレンダー表示
+
 class ScheduleController extends Controller
 {
+    
+    //マンスリーカレンダー表示
     public function index(Request $request){
         
         $display = Child::find($request->id);
@@ -39,34 +42,97 @@ class ScheduleController extends Controller
     }
     
     
-    //日付詳細
+    //日付詳細　日付クリック時
+    public function day(Request $request){
+        
+        $display = Child::find($request->id);
+        
+        $daySchedules = Schedule::where([
+                ['child_id', $request['id']],
+                ['date', $request['date']],
+                ])->orderBy('date')->get();
+            
+        //ワクチンの名前と健診の名前取得
+        $vaccineName = Vaccine::get(['id', 'vaccine_name']);
+        $medicalcheckName = Medical::get(['id', 'medicalcheck_name']);
+        
+        //各スケジュールに対しての予防接種の種類
+        $vaccine_kind = VaccineSchedule::where([
+                ['schedule_id', $daySchedules['id']]
+            ])->get();
+            
+        dd($daySchedules);
+        
+        
+        return view('user.day', ['display' => $display, 'daySchedules' => $daySchedules, "date" => $request['date'], "vaccineName" => $vaccineName, "medicalcheckName" =>$medicalcheckName, "vaccine_kind" => $vaccine_kind ]);
+    }
+    
+    
+    //新規作成画面
+    public function add(Request $request){
+        
+        $display = Child::find($request->id);
+        
+        
+        
+        
+        return view('user.schedule_add', ['display' => $display, ]);
+    }
+    
+    
+    
+    //新規登録
+    public function addDone(Request $request){
+        
+        $display = Child::find($request->id);
+        $vaccine_kind = $request->vaccine_kind;
+            
+            $schedule = new Schedule;
+                    
+            $schedule->child_id = $request->id;
+            $schedule['date']= $request->schedule_date;
+            $schedule->vaccine_flag = $request->vaccine_flag;
+            $schedule->medical_flag = $request->medical_flag;
+            $schedule->medical_id = $request->medical_kind;
+            $schedule->start_time = $request->start_time;
+            $schedule->schedule_memo = $request->schedule_memo;
+            
+            dd($schedule);
+            $schedule->save();
+            
+            //予防接種の種類分の保存
+            $schedule_id = $schedule->id;
+            $vaccine_schedule = new VaccineSchedule;
+            
+            $vaccine_schedule->schedule_id = $schedule_id;
+            $vaccine_schedule->vaccine_id = $vaccine_kind;
+            
+            $vaccine_schedule->save();
+        
+        
+        
+        return redirect('user.schedule_details', ['display' => $display, 'details' => $schedule]);
+    }
+    
+    
+    
+    //予定詳細　各予定クリック時
     public function details(Request $request){
         
         $display = Child::find($request->id);
         
-        if(isset($request->schedule_id)){
-            $details = Schedule::where('id',$request['schedule_id'])->get();
+        //if(isset($request->schedule_id)){
+            $details = Schedule::where('id',$request['schedule_id'])->first();
         
-            
-        } else {
-            $details = Schedule::where([
-                ['child_id', $request['id']],
-                ['date', $request['date']],
-                ])->orderBy('date')->get();
-        }
-        
-        
-        
-        
-        
-        
-        
-        
-        return view('user.schedule_details', ['display' => $display, 'details' => $details, "date" => $request['date']]);
+    //}
+        return view('user.schedule_details', ['display' => $display, 'details' => $details]);
     }
     
     
-    //日付詳細の編集画面表示
+    
+    
+    
+    //予定詳細の編集画面表示
     public function edit(Request $request){
         
         $display = Child::find($request['id']);

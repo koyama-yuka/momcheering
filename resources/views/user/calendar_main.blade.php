@@ -16,7 +16,7 @@
         selectable: true,
         
         dateClick: function(date, jsEvent, view) {
-            window.location.href = '/calendar/details?id={{ $display->id }}&date='+date['dateStr'];      
+            window.location.href = '/calendar/day?id={{ $display->id }}&date='+date['dateStr'];      
         },
         
         eventClick: function(info) {

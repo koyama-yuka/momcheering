@@ -2,25 +2,27 @@
 @extends('layouts.main')
 
 {{-- title --}}
-@section('title', 'この日の予定')
+@section('title', '予定詳細')
 
 {{-- 後半のクエリ文字列 --}}
-@section('get_param','&date='.$date)
+@section('get_param','&schedule_id='.$details->id)
 
 {{-- contentここから --}}
 @section('content')
     <div class="container">
         <h3>予定！</h3>
         
-        {{-- 予定があるとき --}}
-        @isset($details[0])
+        {{--
+        @isset($details)
         @foreach($details as $detail)
-        <h3>{{ $detail->date }}</h3>
+        --}}
+        
+        <h3>{{ $details->date }}</h3>
         
         <div class="row">
             <div class="col-md-2">
                 予防接種予定 
-                @if($detail->vaccine_flag == 1)
+                @if($details->vaccine_flag == 1)
                 "あり"
                 @else
                 "なし"
@@ -46,24 +48,23 @@
                 開始時間
             </div>
             <div class="col-md-3">
-                {{ $detail->start_time }}
+                {{ $details->start_time }}
             </div>
         </div> 
         
         <div class="row">
             <div class="col-md-8">
-                {{ $detail->schedule_memo }}
+                {{ $details->schedule_memo }}
             </div>
         </div>
+        {{--
         @endforeach
         
-        
-        
-        {{-- 予定がないとき --}}
         @else
         <h3>予定はありません</h3>
         
         @endisset
+        --}}
         
         <div class="form-group row">
             <div class="col-md-3 mx-auto">

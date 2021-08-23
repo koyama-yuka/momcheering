@@ -5,7 +5,7 @@
 @section('title', 'スケジュールの編集')
 
 {{-- 後半のクエリ文字列 --}}
-@section('get_param','&date='.$date) 
+@section('get_param','&schedule_id='.$) 
 
 {{-- contentここから --}}
 @section('content')

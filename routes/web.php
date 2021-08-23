@@ -34,6 +34,10 @@ Route::get('/home', 'Users\UserController@homeDisplay')->middleware('auth');
 
 //カレンダーに関するものを入れるスペース
 Route::get('/calendar', 'Users\ScheduleController@index')->middleware('auth');
+Route::get('/calendar/day', 'Users\ScheduleController@day')->middleware('auth');
+Route::get('/calendar/day/add', 'Users\ScheduleController@add')->middleware('auth');
+Route::post('/calendar/day/add', 'Users\ScheduleController@addDone')->middleware('auth');
+
 Route::get('/calendar/details', 'Users\ScheduleController@details')->middleware('auth');
 Route::get('/calendar/details/edit', 'Users\ScheduleController@edit')->middleware('auth');
 Route::post('/calendar/details/edit', 'Users\ScheduleController@update')->middleware('auth');
