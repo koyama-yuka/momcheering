@@ -118,7 +118,7 @@ class ScheduleController extends Controller
     
     
     
-    //予定詳細の編集画面表示
+    //予定詳細の編集画面表示 TODO:8/25
     public function edit(Request $request){
         
         $display = Child::find($request['id']);
