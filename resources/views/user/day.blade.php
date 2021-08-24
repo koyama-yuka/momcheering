@@ -19,16 +19,16 @@
         
         <div class="row">
             <div class="col-md-2">
-                予防接種予定 
+                予防接種予定： 
                 @if($daySchedule->vaccine_flag == 1)
-                "あり"
+                あり
                 @else
-                "なし"
+                なし
                 @endif
                 
             </div>
             <div class="col-md-5">
-                ワクチンの名前:
+                ワクチンの名前：
                 @if($daySchedule->vaccine_flag == 1)
                     @foreach($daySchedule->vaccineSchedule as $vaccineName)  {{-- スケジュールに紐づくt_vaccine_schedulesを回す --}}
                         {{$vaccineName->vaccine->vaccine_name}}  {{-- ↑のt_vaccine_schedulesに紐づくm_vaccinesのvaccine_nameカラムを表示する --}}
@@ -40,16 +40,16 @@
         
         <div class="row">
             <div class="col-md-2">
-                健診予定
+                健診予定： 
                 @if($daySchedule->medical_flag == 1)
-                "あり"
+                あり
                 @else
-                "なし"
+                なし
                 @endif
                 
             </div>
             <div class="col-md-5">
-                検診の名前表示:
+                検診の名前表示：
                 @if($daySchedule->medical_flag == 1)
                     {{$daySchedule->medical->medicalcheck_name}}
                 @endif
@@ -75,7 +75,7 @@
         {{-- 編集ボタン --}}
         <div class="form-group row">
             <div class="col-md-3 mx-auto">
-                <a class="btn btn-primary btn-lg btn-block" href="/calendar/details/edit?id={{ $display->id }}&={{ $daySchedule->id }}">編集</a>
+                <a class="btn btn-primary btn-lg btn-block" href="/calendar/details?id={{ $display->id }}&={{ $daySchedule->id }}">詳細へ</a>
             </div>    
         </div>
         

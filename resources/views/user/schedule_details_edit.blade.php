@@ -5,7 +5,7 @@
 @section('title', 'スケジュールの編集')
 
 {{-- 後半のクエリ文字列 --}}
-@section('get_param','&schedule_id='.$$schedule->id) 
+@section('get_param','&schedule_id='.$schedule->id) 
 
 {{-- contentここから --}}
 @section('content')
@@ -23,45 +23,54 @@
                 <div class="form-group row">
                     <label class="col-md-3" for="vaccine_flag">予防接種の有無</label>
                     <div class="col-md-6 radio-inline">
-                        <input type="radio" name="vaccine_flag" id="yes" value="1" {{ ($$schedule->vaccine_flag == 1) ? "checked" : "" }}>
+                        <input type="radio" name="vaccine_flag" id="yes" value="1" {{ ($schedule->vaccine_flag == 1) ? "checked" : "" }}>
                         <label for="yes">あり</label>
                         
-                        <input type="radio" name="vaccine_flag" id="no" value="0" {{ ($$schedule->vaccine_flag == 0) ? "checked" : "" }}>
+                        <input type="radio" name="vaccine_flag" id="no" value="0" {{ ($schedule->vaccine_flag == 0) ? "checked" : "" }}>
                         <label for="no">なし</label>
                     </div>
                 </div>
                 
                 
+                {{-- 今$vac_arr[0]になっているところを複数対応にしたい、おそらくforeachの外側にも$vac_arrのforeachかな　あとは保存の仕方…--}}
                 <div class="form-group row">
-                    <label class="col-md-3" for="vaccine_kind">予防接種の種類</label> {{-- ワクチンIDとワクチン名もって来て使いたい --}}
+                    <label class="col-md-3" for="vaccine_id">予防接種の種類</label>
                     <div class="col-md-3">
-                    <select id="vaccine_kind" class="form-control" name="vaccine_kind">
+                    <select id="vaccine_id" class="form-control" name="vaccine_id">
                         <option value="">選択してください</option>
-                        <option value="1">Hib(ヒブ)ワクチン</option>
-                        <option value="2">小児用肺炎球菌ワクチン</option>
-                        <option value="3">B型肝炎ワクチン</option>
+                        
+                        @foreach($vaccines as $vaccineName)
+                            <option value="{{ $vaccineName->id }}" @if($vac_arr[0]->vaccine_id == $vaccineName->id) selected @endif>{{ $vaccineName->vaccine_name }}</option>
+                        @endforeach
+                        
                     </select>
                     </div>
                 </div>
                 
                 
+                
                 <div class="form-group row">
                     <label class="col-md-3" for="medical_flag">健診の有無</label>
                     <div class="col-md-6 radio-inline">
-                        <input type="radio" name="medical_flag" id="yes" value="1" {{ ($$schedule->medical_flag == 1) ? "checked" : "" }}>
+                        <input type="radio" name="medical_flag" id="yes" value="1" {{ ($schedule->medical_flag == 1) ? "checked" : "" }}>
                         <label for="yes">あり</label>
                         
-                        <input type="radio" name="medical_flag" id="no" value="0" {{ ($$schedule->medical_flag == 1) ? "checked" : "" }}>
+                        <input type="radio" name="medical_flag" id="no" value="0" {{ ($schedule->medical_flag == 1) ? "checked" : "" }}>
                         <label for="no">なし</label>
                     </div>
                 </div>
                 
                 
                 <div class="form-group row">
-                    <label class="col-md-3" for="medical_kind">健診の種類</label> {{-- 健診のIDと名前もって来て使いたい --}}
+                    <label class="col-md-3" for="medical_kind">健診の種類</label>
                     <div class="col-md-3">
                     <select id="medical_kind" class="form-control" name="medical_kind">
                         <option value="">選択してください</option>
+                        @foreach($medicals as $medicalName)
+                            <option value="{{ $medicalName->id }}" @if($med->id == $medicalName->id) selected @endif>{{ $medicalName->medicalcheck_name }}</option>
+                        @endforeach
+                        
+                        
                         <option value="1">生後１ヶ月健診</option>
                         <option value="2">生後３～４ヶ月健診</option>
                         <option value="3">生後６～７ヶ月健診</option>
@@ -96,11 +105,11 @@
                 
                 <div class="form-group row">
                     <div class="col-md-3 mx-auto">
-                        <a class="btn btn-primary btn-lg btn-block" href="/calendar/details?id={{ $display->id }}&date={{ $date }}">キャンセル</a>
+                        <a class="btn btn-primary btn-lg btn-block" href="/calendar/details?id={{ $display->id }}&date={{ $schedule['date'] }}">キャンセル</a>
                     </div>
                     <div class="col-md-3 mx-auto">
                         <input type="hidden" name="id" value="{{ $display->id }}">
-                        <input type="hidden" name="date" value="{{ $date }}">
+                        <input type="hidden" name="date" value="{{ $schedule['date'] }}">
                         <input type="submit" class="btn btn-primary btn-lg btn-block" value="　更新　">
                     </div>
                 </div>
@@ -114,91 +123,3 @@
 
 
 
-
-
-
-
-                {{-- 予定が無いとき  一応残しておいた分↓
-                @empty($schedule[0])
-                
-                <div class="form-group row">
-                    <label class="col-md-3" for="schedule_date">日時</label>
-                    <div class="col-md-3">
-                        <input id="schedule_date" type="date" class="form-control @error('schedule_date') is-invalid @enderror" name="schedule_date" value="{{ $date }}" required>
-                        @error('schedule_date')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div>
-                </div>
-                
-                
-                
-                <div class="form-group row">
-                    <label class="col-md-3" for="vaccine_flag">予防接種の有無</label>
-                    <div class="col-md-6 radio-inline">
-                        <input type="radio" name="vaccine_flag" id="yes" value="1">
-                        <label for="yes">あり</label>
-                        
-                        <input type="radio" name="vaccine_flag" id="no" value="0">
-                        <label for="no">なし</label>
-                    </div>
-                </div>
-                
-                
-                <div class="form-group row">
-                    <label class="col-md-3" for="vaccine_kind">予防接種の種類</label>
-                    <div class="col-md-3">
-                    <select id="vaccine_kind" class="form-control" name="vaccine_kind">
-                        <option value="">選択してください</option>
-                        <option value="1">Hib(ヒブ)ワクチン</option>
-                        <option value="2">小児用肺炎球菌ワクチン</option>
-                        <option value="3">B型肝炎ワクチン</option>
-                    </select>
-                    </div>
-                </div>
-                
-                
-                <div class="form-group row">
-                    <label class="col-md-3" for="medical_flag">健診の有無</label>
-                    <div class="col-md-6 radio-inline">
-                        <input type="radio" name="medical_flag" id="yes" value="1">
-                        <label for="yes">あり</label>
-                        
-                        <input type="radio" name="medical_flag" id="no" value="0">
-                        <label for="no">なし</label>
-                    </div>
-                </div>
-                
-                
-                <div class="form-group row">
-                    <label class="col-md-3" for="medical_kind">健診の種類</label>
-                    <div class="col-md-3">
-                    <select id="medical_kind" class="form-control" name="medical_kind">
-                        <option value="">選択してください</option>
-                        <option value="1">生後１ヶ月健診</option>
-                        <option value="2">生後３～４ヶ月健診</option>
-                        <option value="3">生後６～７ヶ月健診</option>
-                    </select>
-                    </div>
-                </div>
-                
-                
-                <div class="form-group row">
-                    <label class="col-md-3" for="start_time">開始時間</label>
-                    <div class="col-md-3">
-                        <input id="start_time" type="time" class="form-control" name="start_time">
-                    </div>
-                </div>
-                
-                
-                <div class="form-group row">
-                    <label class="col-md-3" for="schedule_memo">メモ</label>
-                    <div class="col-md-5">
-                        <textarea class="form-control" name="schedule_memo" rows="6" placeholder="メモスペース">{{ old('schedule_memo') }}</textarea>
-                    </div>
-                </div>
-                
-                <input type="hidden" name="insert_flag" value="1">
-                --}}

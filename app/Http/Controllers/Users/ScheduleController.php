@@ -53,7 +53,7 @@ class ScheduleController extends Controller
                 ])->orderBy('date')->get();
         
         //dd($daySchedules[0]->vaccineSchedule);
-        //各スケジュールに対しての予防接種の種類はviewで取る モデルの中に書いている紐付け使う
+        //各スケジュールに対しての予防接種の種類と健診の種類はviewで取る モデルの中に書いている紐付け使う
         
         return view('user.day', ['display' => $display, 'daySchedules' => $daySchedules, "date" => $request['date']]);
     }
@@ -123,10 +123,17 @@ class ScheduleController extends Controller
         
         $display = Child::find($request['id']);
         
-        $schedule = Schedule::where('id',$request['schedule_id'])->first();
+        $schedule = Schedule::find($request['schedule_id']);
         
+        //マスターテーブル
+        $vaccines = Vaccine::all();
+        $medicals = Medical::all();
         
-        return view('user.schedule_details_edit', ['display' => $display, 'schedule' => $schedule]);
+        //この予定のワクチンと健診の情報
+        $vac_arr =$schedule->vaccineSchedule;
+        $med =$schedule->medical;
+        
+        return view('user.schedule_details_edit', ['display' => $display, 'schedule' => $schedule, 'vaccines' => $vaccines, 'medicals' => $medicals, 'vac_arr' => $vac_arr, 'med' => $med]);
     }
     
     
