@@ -59,7 +59,7 @@ class ScheduleController extends Controller
     }
     
     
-    //新規作成画面
+    //新規作成画面 TODO:8/25
     public function add(Request $request){
         
         $display = Child::find($request->id);
@@ -72,7 +72,7 @@ class ScheduleController extends Controller
     
     
     
-    //新規登録
+    //新規登録 TODO:8/25
     public function addDone(Request $request){
         
         $display = Child::find($request->id);
@@ -118,7 +118,7 @@ class ScheduleController extends Controller
     
     
     
-    //予定詳細の編集画面表示 TODO:8/25
+    //予定詳細の編集画面表示 TODO:8/25 jsの分をviewのやつ、ユキちゃんに聞く
     public function edit(Request $request){
         
         $display = Child::find($request['id']);
@@ -130,7 +130,12 @@ class ScheduleController extends Controller
         $medicals = Medical::all();
         
         //この予定のワクチンと健診の情報
-        $vac_arr =$schedule->vaccineSchedule;
+        $vac_array =$schedule->vaccineSchedule;
+        $vac_arr = array();
+        foreach($vac_array as $v_id){
+            array_push($vac_arr, $v_id->vaccine_id);
+        }
+        
         $med =$schedule->medical;
         
         return view('user.schedule_details_edit', ['display' => $display, 'schedule' => $schedule, 'vaccines' => $vaccines, 'medicals' => $medicals, 'vac_arr' => $vac_arr, 'med' => $med]);
@@ -141,67 +146,75 @@ class ScheduleController extends Controller
     //スケジュールの登録と更新
     public function update(Request $request){
         
-        
         $display = Child::find($request['id']);
-        $vaccine_kind = $request->vaccine_kind;
+        $update_schedule = Schedule::find($request['schedule_id']);
+        
+        $update_schedule['date'] = $request['date'];
+        $update_schedule->vaccine_flag = $request->vaccine_flag;
+        $update_schedule->medical_flag = $request->medical_flag;
+        $update_schedule->medical_id = $request->medical_kind;
+        $update_schedule->start_time = $request->start_time;
+        $update_schedule->schedule_memo = $request->schedule_memo;
+            
+        //$update_schedule->update();
+            
+            
+        //予防接種の種類分の保存、更新
+        $update_vaccine_schedule = VaccineSchedule::where('schedule_id',$request['schedule_id'])->get();
+        
+        //requestで送られてきた予防接種のID配列
+        $request_vaccine_id = $request->vaccine_id;
         
         
-        //新規保存
-        if($request['insert_flag'] == 1){
+        //レコード数の差分
+        $difference = count($update_vaccine_schedule) - count($request_vaccine_id);
+        
+        if($difference == 0){
+            //該当するt_vaccine_schedulesのレコード数とリクエストの数が一致するとき
+            for($i = 0; $i < count($request_vaccine_id); $i++){
+                $update_vaccine_schedule[$i]->vaccine_id = $request_vaccine_id[$i];
+                if($update_vaccine_schedule[$i]->delete_flag != null){
+                    $update_vaccine_schedule[$i]->delete_flag = null;
+                }
+                $update_vaccine_schedule[$i]->update();
+            }
+        }elseif ($difference < 0) {
+            //t_vaccine_schedulesのレコード数のほうが少ないとき　新しいレコード追加して保存
+            for($i = 1; $i <= abs($difference); $i++){
+                $empty_array = new VaccineSchedule;
+                $empty_array->schedule_id = $request['schedule_id'];
+                
+                $update_vaccine_schedule = array_merge($update_vaccine_schedule,$empty_array);
+                dd($update_vaccine_schedule);
+                $update_vaccine_schedule = array_values($update_vaccine_schedule);
+            }
             
-            $schedule = new Schedule;
-                    
-            $schedule->child_id = $request->id;
-            $schedule['date']= $request->schedule_date;
-            $schedule->vaccine_flag = $request->vaccine_flag;
-            $schedule->medical_flag = $request->medical_flag;
-            $schedule->medical_id = $request->medical_kind;
-            $schedule->start_time = $request->start_time;
-            $schedule->schedule_memo = $request->schedule_memo;
-            
-            dd($schedule);
-            $schedule->save();
-            
-            //予防接種の種類分の保存
-            $schedule_id = $schedule->id;
-            $vaccine_schedule = new VaccineSchedule;
-            
-            $vaccine_schedule->schedule_id = $schedule_id;
-            $vaccine_schedule->vaccine_id = $vaccine_kind;
-            
-            $vaccine_schedule->save();
-            
-            
+            for($i = 0; $i < count($request_vaccine_id); $i++){
+                if($update_vaccine_schedule[$i] == []){
+                    $update_vaccine_schedule[$i] = new VaccineSchedule;
+                    $update_vaccine_schedule[$i]->schedule_id = $request['schedule_id'];
+                    $update_vaccine_schedule[$i]->vaccine_id = $request_vaccine_id[$i];
+                    $update_vaccine_schedule[$i]->save();
+                } else {
+                    $update_vaccine_schedule[$i]->vaccine_id = $request_vaccine_id[$i];
+                    $update_vaccine_schedule[$i]->update();
+                }
+            }
+        }elseif (0 < $difference) {
+            //使わないt_vaccine_schedulesのレコードが存在するとき
+            for($i = 0; $i < count($update_vaccine_schedule); $i++){
+                if(empty($request_vaccine_id[$i])){
+                    $update_vaccine_schedule[$i]->delete();
+                    $update_vaccine_schedule[$i]->update();
+                } else {
+                    $update_vaccine_schedule[$i]->vaccine_id = $request_vaccine_id[$i];
+                    $update_vaccine_schedule[$i]->update();
+                }
+            }
         }
         
         
-        //更新保存
-        if($request['update_flag'] == 1){
-            
-            $update_schedule_id = $request->update_schedule;
-            
-            $schedule = Schedule::find($update_schedule_id);
-            //こどものIDはいらない？該当するこどもの予定を変更するのだから・・・
-            //$schedule->child_id = $request->id;
-            $schedule->vaccine_flag = $request->vaccine_flag;
-            $schedule->medical_flag = $request->medical_flag;
-            $schedule->medical_id = $request->medical_kind;
-            $schedule->start_time = $request->start_time;
-            $schedule->schedule_memo = $request->schedule_memo;
-            
-            $schedule->update();
-            
-            
-            //予防接種の種類分の保存、更新
-            
-        }
-        
-        
-        
-        
-        
-        
-        return redirect('/calendar/details?id='.$request->id."&date=".$request['date']);
+        return redirect('/calendar/details?id='.$request->id."&schedule_id=".$request['schedule_id']);
     }
     
     
