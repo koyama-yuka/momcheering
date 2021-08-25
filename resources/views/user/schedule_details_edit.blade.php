@@ -36,10 +36,10 @@
                 <div class="form-group row">
                     <label class="col-md-3" for="vaccine_flag">予防接種の有無</label>
                     <div class="col-md-6 radio-inline">
-                        <input type="radio" name="vaccine_flag" id="yes" value="1" {{ ($schedule->vaccine_flag == 1) ? "checked" : "" }}>
+                        <input type="radio" name="vaccine_flag" id="vaccine_flag_on" value="1" {{ ($schedule->vaccine_flag == 1) ? "checked" : "" }}>
                         <label for="yes">あり</label>
                         
-                        <input type="radio" name="vaccine_flag" id="no" value="0" {{ ($schedule->vaccine_flag == 0) ? "checked" : "" }}>
+                        <input type="radio" name="vaccine_flag" id="vaccine_flag_off" value="0" {{ ($schedule->vaccine_flag == 0) ? "checked" : "" }}>
                         <label for="no">なし</label>
                     </div>
                 </div>
@@ -50,7 +50,7 @@
                     <div class="col-md-8">
                         @foreach($vaccines as $vaccineName)
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="checkbox{{ $vaccineName->id }}" name="vaccine_id[]" value="{{ $vaccineName->id }}" @if(in_array($vaccineName->id, $vac_arr)) checked @endif>
+                                <input class="form-check-input vaccine_kind" type="checkbox" id="checkbox{{ $vaccineName->id }}" name="vaccine_id[]" value="{{ $vaccineName->id }}" @if(in_array($vaccineName->id, $vac_arr)) checked @endif>
                                 <label class="form-check-label" for="checkbox{{ $vaccineName->id }}">{{ $vaccineName->vaccine_name }}</label>
                             </div>
                         @endforeach
@@ -62,10 +62,10 @@
                 <div class="form-group row">
                     <label class="col-md-3" for="medical_flag">健診の有無</label>
                     <div class="col-md-6 radio-inline">
-                        <input type="radio" name="medical_flag" id="yes" value="1" {{ ($schedule->medical_flag == 1) ? "checked" : "" }}>
+                        <input type="radio" name="medical_flag" id="medical_flag_on" value="1" {{ ($schedule->medical_flag == 1) ? "checked" : "" }}>
                         <label for="yes">あり</label>
                         
-                        <input type="radio" name="medical_flag" id="no" value="0" {{ ($schedule->medical_flag == 0) ? "checked" : "" }}>
+                        <input type="radio" name="medical_flag" id="medical_flag_off" value="0" {{ ($schedule->medical_flag == 0) ? "checked" : "" }}>
                         <label for="no">なし</label>
                     </div>
                 </div>
@@ -116,6 +116,7 @@
         </div>
         
     </div>
+    
 @endsection
 
 

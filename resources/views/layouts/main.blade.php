@@ -136,6 +136,29 @@
                 @yield('content')
             </main>
         </div>
+        
+        {{-- jqueryの読み込み --}}
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        
+        {{-- スケジュールの編集時のチェックボックス有効、無効の処理 --}}
+        <script>
+            $(function(){
+                $('#vaccine_flag_on').click(function() {
+                    $('.vaccine_kind').prop('disabled', false);
+                })
+                $('#vaccine_flag_off').click(function() {
+                    $('.vaccine_kind').prop('disabled', true);
+                })
+                
+                $('#medical_flag_on').click(function() {
+                    $('input[name="medical_kind"]').prop('disabled', false);
+                })
+                $('#medical_flag_off').click(function() {
+                    $('input[name="medical_kind"]').prop('disabled', true);
+                })
+                
+            });
+        </script> 
+        
     </body>
-    
 </html>
