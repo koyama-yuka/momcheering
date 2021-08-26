@@ -27,15 +27,17 @@
                 @endif
                 
             </div>
-            <div class="col-md-5">
-                ワクチンの名前：
+            
+            <div class="col-md-10">
+                ワクチン：
                 @if($daySchedule->vaccine_flag == 1)
-                    @foreach($daySchedule->vaccineSchedule as $vaccineName)  {{-- スケジュールに紐づくt_vaccine_schedulesを回す --}}
-                        {{$vaccineName->vaccine->vaccine_name}}  {{-- ↑のt_vaccine_schedulesに紐づくm_vaccinesのvaccine_nameカラムを表示する --}}
+                    @foreach(explode(",", $daySchedule->vaccineSchedule->vaccine_id) as $vaccineNameID)
+                            {{ $vaccines[$vaccineNameID - 1]->vaccine_name }} /
                     @endforeach
                 @endif
                 
             </div>
+            
         </div>
         
         <div class="row">
@@ -49,7 +51,7 @@
                 
             </div>
             <div class="col-md-5">
-                検診の名前表示：
+                検診：
                 @if($daySchedule->medical_flag == 1)
                     {{$daySchedule->medical->medicalcheck_name}}
                 @endif
@@ -57,25 +59,22 @@
         </div>
         
         <div class="row">
-            <div class="col-md-2">
-                開始時間
-            </div>
-            <div class="col-md-3">
-                {{ $daySchedule->start_time }}
+            <div class="col-md-8">
+                開始時間：{{ $daySchedule->start_time }}
             </div>
         </div> 
         
         <div class="row">
             <div class="col-md-8">
-                {{ $daySchedule->schedule_memo }}
+                メモ：{{ $daySchedule->schedule_memo }}
             </div>
         </div>
         
         
-        {{-- 編集ボタン --}}
+        {{-- 詳細ボタン --}}
         <div class="form-group row">
             <div class="col-md-3 mx-auto">
-                <a class="btn btn-primary btn-lg btn-block" href="/calendar/details?id={{ $display->id }}&={{ $daySchedule->id }}">詳細へ</a>
+                <a class="btn btn-primary btn-lg btn-block" href="/calendar/details?id={{ $display->id }}&schedule_id={{ $daySchedule->id }}">詳細へ</a>
             </div>    
         </div>
         

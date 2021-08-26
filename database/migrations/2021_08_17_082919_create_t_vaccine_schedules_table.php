@@ -16,7 +16,7 @@ class CreateTVaccineSchedulesTable extends Migration
         Schema::create('t_vaccine_schedules', function (Blueprint $table) {
             $table->bigIncrements('id'); //ID
             $table->integer('schedule_id')->length(10); //スケジュールのID　外部キー(t_schedule.id)
-            $table->integer('vaccine_id')->length(10); //ワクチンの種類　外部キー(m_medical.id)
+            $table->string('vaccine_id',256)->nullable(); //ワクチンの種類　外部キー(m_medical.id)を配列で
             $table->softDeletes(); //論理削除
             $table->timestamps();
         });

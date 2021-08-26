@@ -20,7 +20,7 @@ class CreateTSchedulesTable extends Migration
             $table->integer('vaccine_flag')->length(1)->default(0); //ワクチンの有無
             // $table->integer('vaccine_id')->length(10); //ワクチンの種類　外部キー(m_vaccine.id)→別テーブルへ取り出し
             $table->integer('medical_flag')->length(1)->default(0); //健診の有無
-            $table->integer('medical_id')->length(10); //健診の種類　外部キー(m_medical.id)
+            $table->integer('medical_id')->length(10)->nullable(); //健診の種類　外部キー(m_medical.id)
             $table->time('start_time'); //開始時間
             $table->string('schedule_memo',256)->nullable(); //メモ
             $table->softDeletes(); //論理削除

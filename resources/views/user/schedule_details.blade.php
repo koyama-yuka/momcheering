@@ -24,11 +24,13 @@
                 @endif
                 
             </div>
-            <div class="col-md-5">
+        </div>
+        <div class="row">
+            <div class="col-md-10">
                 ワクチンの名前：
                 @if($schedule->vaccine_flag == 1)
-                    @foreach($schedule->vaccineSchedule as $vaccineName)  {{-- スケジュールに紐づくt_vaccine_schedulesを回す --}}
-                        {{$vaccineName->vaccine->vaccine_name}}  {{-- ↑のt_vaccine_schedulesに紐づくm_vaccinesのvaccine_nameカラムを表示する --}}
+                    @foreach($vaccine_kind as $vaccine_kindID)
+                        {{ $vaccines[$vaccine_kindID - 1]->vaccine_name }} / 
                     @endforeach
                 @endif
             </div>
@@ -43,8 +45,10 @@
                 なし
                 @endif
             </div>
+        </div>
+        <div class="row">
             <div class="col-md-5">
-                検診の名前表示：
+                検診の名前：
                 @if($schedule->medical_flag == 1)
                     {{$schedule->medical->medicalcheck_name}}
                 @endif
@@ -52,24 +56,21 @@
         </div>
         
         <div class="row">
-            <div class="col-md-2">
-                開始時間
-            </div>
-            <div class="col-md-3">
-                {{ $schedule->start_time }}
+            <div class="col-md-8">
+                開始時間：{{ $schedule->start_time }}
             </div>
         </div> 
         
         <div class="row">
             <div class="col-md-8">
-                {{ $schedule->schedule_memo }}
+                メモ：{{ $schedule->schedule_memo }}
             </div>
         </div>
         
         
         <div class="form-group row">
             <div class="col-md-3 mx-auto">
-                <a class="btn btn-primary btn-lg btn-block" href="/calendar?id={{ $display->id }}">カレンダーへ戻る</a>
+                <a class="btn btn-primary btn-lg btn-block" href="/calendar?id={{ $display->id }}">削除ボタンにしたい</a>
             </div>
             <div class="col-md-3 mx-auto">
                 <a class="btn btn-primary btn-lg btn-block" href="/calendar/details/edit?id={{ $display->id }}&schedule_id={{ $schedule->id }}">編集</a>

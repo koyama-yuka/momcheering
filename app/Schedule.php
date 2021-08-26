@@ -20,7 +20,7 @@ class Schedule extends Model
         
         
     public function vaccineSchedule(){
-        return $this->hasMany('App\VaccineSchedule');
+        return $this->hasOne('App\VaccineSchedule');
     }
     
     
