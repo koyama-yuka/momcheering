@@ -12,6 +12,7 @@ use App\User;
 
 class UserController extends Controller
 {
+    
     //ログイン画面の表示
     public function loginTop(){
         return view('auth.login');
