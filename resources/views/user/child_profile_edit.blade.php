@@ -13,7 +13,7 @@
             </div>
         </div>
         
-        <div class="add-body">
+        <div class="update-body">
             <form method="POST" action="{{ action('Users\ChildController@update') }}">
                 @csrf
                 

@@ -14,23 +14,32 @@
         </div>
         
         
-        <div class="add-body">
-            <form method="POST" action="{{ action('Users\ScheduleController@update') }}">
+        <div class="update-body">
+            <form method="POST" action="{{ action('Users\UserController@profileUpdate') }}">
                 @csrf
                 
                 
                 <div class="form-group row">
                     <label class="col-md-3" for="user_name">ユーザー名</label>
-                    <div class="col-md-9">
-                        <input type="text" class="form-control" name="user_name">
+                    <div class="col-md-5">
+                        <input type="text" class="form-control @error('user_name') is-invalid @enderror" name="user_name" id="user_name" value="{{ $user->name }}" required>
+                        @error('user_name')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
                 </div>
-                
                 
                 <div class="form-group row">
                     <label class="col-md-3" for="email">メールアドレス</label>
                     <div class="col-md-9">
-                        <input type="email" class="form-control" name="email">
+                        <input type="email" class="form-control" name="email" id="email" value="{{ $user->email }}" required>
+                        @error('email')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
                 </div>
                 
@@ -38,7 +47,7 @@
                 <div class="form-group row">
                     <label class="col-md-3" for="password">現在のパスワード</label>
                     <div class="col-md-9">
-                        <input type="password" class="form-control" name="password"> {{-- あとで表記方法考える… --}}
+                        <input type="password" class="form-control" name="password">
                     </div>
                 </div>
                 
@@ -46,7 +55,7 @@
                 <div class="form-group row">
                     <label class="col-md-3" for="newpassword">新しいパスワード</label>
                     <div class="col-md-9">
-                        <input type="password" class="form-control" name="newpassword"> {{-- あとで表記方法考える… --}}
+                        <input type="password" class="form-control" name="newpassword">
                     </div>
                 </div>
                 
@@ -54,7 +63,7 @@
                 <div class="form-group row">
                     <label class="col-md-3" for="newpassword">新しいパスワード確認</label>
                     <div class="col-md-9">
-                        <input type="password" class="form-control" name="password_check"> {{-- あとで表記方法考える… --}}
+                        <input type="password" class="form-control" name="password_check">
                     </div>
                 </div>
                 

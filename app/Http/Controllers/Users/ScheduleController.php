@@ -19,8 +19,12 @@ use App\VaccineSchedule;
 
 class ScheduleController extends Controller
 {
-    
-    //マンスリーカレンダー表示
+    /**
+     * 
+     * マンスリーカレンダー表示
+     * 
+     * 
+     */
     public function index(Request $request){
         
         $display = Child::find($request->id);
@@ -40,8 +44,12 @@ class ScheduleController extends Controller
         return view('user.calendar_main', ['display' => $display, "schedules" => $schedules]);
     }
     
-    
-    //日付詳細　日付クリック時
+    /**
+     * 
+     * 日付詳細　日付クリック時
+     * 
+     * 
+     */
     public function day(Request $request){
         
         $display = Child::find($request->id);
@@ -59,8 +67,12 @@ class ScheduleController extends Controller
         return view('user.day', ['display' => $display, 'daySchedules' => $daySchedules, "date" => $request['date'], "vaccines" => $vaccines]);
     }
     
-    
-    //新規作成画面
+    /**
+     * 
+     * 新規作成画面
+     * 
+     * 
+     */
     public function add(Request $request){
         
         $display = Child::find($request->id);
@@ -74,8 +86,12 @@ class ScheduleController extends Controller
     }
     
     
-    
-    //新規登録
+    /**
+     * 
+     * 新規登録
+     * 
+     * 
+     */
     public function addDone(Request $request){
         
         $display = Child::find($request->id);
@@ -117,8 +133,12 @@ class ScheduleController extends Controller
     }
     
     
-    
-    //予定詳細　各予定クリック時、新規保存後のリダイレクト
+    /**
+     * 
+     * 予定詳細　各予定クリック時、新規保存後のリダイレクト
+     * 
+     * 
+     */
     public function details(Request $request){
         
         $display = Child::find($request->id);
@@ -134,8 +154,12 @@ class ScheduleController extends Controller
     }
     
     
-    
-    //予定詳細の編集画面表示
+    /**
+     * 
+     * 予定詳細の編集画面表示
+     * 
+     * 
+     */
     public function edit(Request $request){
         
         $display = Child::find($request['id']);
@@ -157,8 +181,12 @@ class ScheduleController extends Controller
     }
     
     
-    
-    //スケジュールの登録と更新
+    /**
+     * 
+     * スケジュールの登録と更新
+     * 
+     * 
+     */
     public function update(Request $request){
         
         $display = Child::find($request['id']);
@@ -166,6 +194,7 @@ class ScheduleController extends Controller
         
         $vaccine_str = 0;
         
+        //スケジュールの更新
         $update_schedule['date'] = $request['date'];
         $update_schedule->vaccine_flag = $request->vaccine_flag;
         $update_schedule->medical_flag = $request->medical_flag;

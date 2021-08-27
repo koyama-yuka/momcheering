@@ -22,31 +22,52 @@ class UserController extends Controller
         return view('auth.register');
     }
     
-    
-    //プロフィール表示
+    /**
+     * 
+     * プロフィール表示
+     * 
+     * 
+     */
     public function userProfieIndex(Request $request){
         
         $display = Child::find($request['id']);
-        
         $user = Auth::user();
-        
         
         return view('user.user_profile', ['display' => $display, "user" => $user]);
     }
     
     
-    
-    //プロフィール編集
+    /**
+     * 
+     * プロフィール編集画面
+     * 
+     * 
+     */
     public function profileEdit(Request $request){
         
         $display = Child::find($request['id']);
+        $user = Auth::user();
         
-        
-        return view('user.user_profile_edit', ['display' => $display]);
+        return view('user.user_profile_edit', ['display' => $display, 'user' => $user]);
     }
     
     
-    
+    /**
+     * 
+     * プロフィールの更新
+     * 
+     * 
+     */
+    public function profileUpdate(Request $request){
+        $display = Child::find($request['id']);
+        $user = Auth::user();
+        
+        dd($request);
+        
+        
+        
+        return redirect('/user?id='.$display->id);
+    }
     
     
     //ホーム画面の表示

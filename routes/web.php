@@ -24,6 +24,7 @@ Route::get('/', 'Users\UserController@loginTop'); //ログイン画面
 //ユーザーの情報に関するもの
 Route::group(['prefix' => 'user', 'middleware' => 'auth'], function(){
     Route::get('edit', 'Users\UserController@profileEdit');
+    Route::post('edit', 'Users\UserController@profileUpdate');
     Route::get('/', 'Users\UserController@userProfieIndex');
 });
 
