@@ -45,10 +45,10 @@
                 
                 
                 <div class="form-group row">
-                    <label class="col-md-3" for="password">現在のパスワード（必須）</label>
+                    <label class="col-md-3" for="current_password">現在のパスワード（必須）</label>
                     <div class="col-md-9">
-                        <input type="password" class="form-control" id="password" name="password" required>
-                        @error('password')
+                        <input type="password" class="form-control" id="current_password" name="current_password" required>
+                        @error('current_password')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
@@ -58,17 +58,17 @@
                 
                 
                 <div class="form-group row">
-                    <label class="col-md-3" for="newpassword">新しいパスワード（任意）</label>
+                    <label class="col-md-3" for="new_password">新しいパスワード（任意）</label>
                     <div class="col-md-9">
-                        <input type="password" class="form-control" id="newpassword" name="newpassword">
+                        <input type="password" class="form-control" id="new_password" name="new_password">
                     </div>
                 </div>
                 
                 
                 <div class="form-group row">
-                    <label class="col-md-3" for="newpassword">新しいパスワード確認（新しく設定の際は必須）</label>
+                    <label class="col-md-3" for="new_password_confirmation">新しいパスワード確認（新しく設定の際は必須）</label>
                     <div class="col-md-9">
-                        <input type="password" class="form-control" id="password_check" name="password_check">
+                        <input type="password" class="form-control" id="new_password_confirmation" name="new_password_confirmation">
                     </div>
                 </div>
                 

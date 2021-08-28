@@ -38,7 +38,7 @@
         <div class="col-md-5">
             @if($user->relationship_id == 1)
                 <h3>母親</h3>
-            @elseif($user->relationship_id == 1)
+            @elseif($user->relationship_id == 2)
                 <h3>父親</h3>
             @else
                 <h3>その他</h3>
