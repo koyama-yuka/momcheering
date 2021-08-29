@@ -33,8 +33,8 @@
                 
                 <div class="form-group row">
                     <label class="col-md-3" for="email">メールアドレス（必須）</label>
-                    <div class="col-md-9">
-                        <input type="email" class="form-control" name="email" id="email" value="{{ $user->email }}" required>
+                    <div class="col-md-5">
+                        <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" id="email" value="{{ $user->email }}" required>
                         @error('email')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -46,8 +46,8 @@
                 
                 <div class="form-group row">
                     <label class="col-md-3" for="current_password">現在のパスワード（必須）</label>
-                    <div class="col-md-9">
-                        <input type="password" class="form-control" id="current_password" name="current_password" required>
+                    <div class="col-md-5">
+                        <input type="password" class="form-control @error('current_password') is-invalid @enderror" id="current_password" name="current_password" required>
                         @error('current_password')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -59,7 +59,7 @@
                 
                 <div class="form-group row">
                     <label class="col-md-3" for="new_password">新しいパスワード（任意）</label>
-                    <div class="col-md-9">
+                    <div class="col-md-5">
                         <input type="password" class="form-control" id="new_password" name="new_password">
                     </div>
                 </div>
@@ -67,7 +67,7 @@
                 
                 <div class="form-group row">
                     <label class="col-md-3" for="new_password_confirmation">新しいパスワード確認（新しく設定の際は必須）</label>
-                    <div class="col-md-9">
+                    <div class="col-md-5">
                         <input type="password" class="form-control" id="new_password_confirmation" name="new_password_confirmation">
                     </div>
                 </div>
@@ -75,8 +75,8 @@
                 
                 <div class="form-group row">
                     <label class="col-md-3" for="relationship">こどもとの関係性（必須）</label>
-                    <div class="col-md-9">
-                        <select class="form-control" name="relationship">
+                    <div class="col-md-3">
+                        <select class="form-control @error('relationship_id') is-invalid @enderror" name="relationship_id">
                             <option value="">選択してください</option>
                             <option value="1" @if($user->relationship_id == 1) selected @endif>母親</option>
                             <option value="2" @if($user->relationship_id == 2) selected @endif>父親</option>
@@ -94,20 +94,21 @@
                 <div class="form-group row">
                     <label class="col-md-3" for="password">前日メールの受け取り（必須）</label>
                     <div class="col-md-9 radio-inline">
-                        <input type="radio" value="1" name="notice_flg" id="necessary" {{ ($user->notice_flag == 1) ? "checked" : "" }}>
+                        <input type="radio" value="1" name="notice_flag" id="necessary" {{ ($user->notice_flag == 1) ? "checked" : "" }}>
                         <label for="yes">受け取る</label>
                         
-                        <input type="radio" value="2" name="notice_flg" id="unnecessary" {{ ($user->notice_flag == 0) ? "checked" : "" }}>
+                        <input type="radio" value="2" name="notice_flag" id="unnecessary" {{ ($user->notice_flag == 0) ? "checked" : "" }}>
                         <label for="no">受け取らない</label>
                     </div>
                 </div>
                 
                 
                 <div class="form-group row">
-                    <div class="col-md-3">
+                    <div class="col-md-3 mx-auto">
                         <a class="btn btn-primary btn-lg btn-block" href="/home?id={{ $display->id }}">ホームへ</a>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-3 mx-auto">
+                        <input type="hidden" name="id" value="{{ $display->id }}">
                         <input type="submit" class="btn btn-primary btn-lg btn-block" value="　更新　">
                     </div>
                 </div>

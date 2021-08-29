@@ -60,12 +60,53 @@ class UserController extends Controller
      * 
      */
     public function profileUpdate(Request $request){
-        $display = Child::find($request['id']);
+        
+        
         $user = Auth::user();
+        $display = Child::find($request['id']);
         
-        dd($request);
         
+        //$this->validate($request, User::$rules);
         
+        $request->validate([
+            'user_name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255',
+            'current_password' => 'required',
+            'relationship_id' => 'required',
+            'notice_flag' => 'required',
+            ]);
+            
+        
+        //もしメールアドレスが新しいものだったら
+        if($request->email != $user->email){
+            $request->validate([
+                'email' => 'unique:users',
+                ]);
+        }
+        
+        //現在のパスワードの確認
+        if(!password_verify($request->current_password, $user->password)){
+            return redirect('/user/edit?id='.$display->id);
+        }
+        
+        //もし新しいパスワードの入力があったなら
+        if(!empty($request->new_password)){
+            $request->validate([
+                    'new_password' => 'string|min:8|confirmed|different:current_password',
+            ]);
+            
+            $user->password = bcrypt($request->new_password);
+        }
+        
+        //保存
+        $user->name = $request->user_name;
+        $user->email = $request->email;
+        $user->relationship_id = $request->relationship_id;
+        $user->notice_flag = $request->notice_flag;
+        
+        $user->update();
+        
+        unset($request['_token']);
         
         return redirect('/user?id='.$display->id);
     }

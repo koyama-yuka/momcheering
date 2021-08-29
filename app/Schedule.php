@@ -12,9 +12,7 @@ class Schedule extends Model
     public static $rules = array(
         'date' => 'required',
         'vaccine_flag' => 'required',
-        'vaccine_id' => 'required',
         'medical_flag' => 'required',
-        'medical_id' => 'required',
         'start_time' => 'required',
         );
         

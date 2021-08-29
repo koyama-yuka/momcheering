@@ -129,6 +129,8 @@ class ScheduleController extends Controller
         
         $vaccine_schedule->save();
         
+        unset($request['_token']);
+        
         return redirect('/calendar/details?id='.$request->id."&schedule_id=".$schedule_id);
     }
     
@@ -225,6 +227,7 @@ class ScheduleController extends Controller
         $vaccine_schedule->vaccine_id = $vaccine_str;
         $vaccine_schedule->update();
         
+        unset($request['_token']);
         
         return redirect('/calendar/details?id='.$request->id."&schedule_id=".$request['schedule_id']);
     }

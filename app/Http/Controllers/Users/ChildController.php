@@ -33,9 +33,8 @@ class ChildController extends Controller
         unset($form['_token']);
         
         $child_update->fill($form);
-        $child_update->updated_at = Carbon::now();
         
-        $child_update->save();
+        $child_update->update();
         
         
         //更新後の表示について

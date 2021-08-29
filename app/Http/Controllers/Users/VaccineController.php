@@ -164,6 +164,8 @@ class VaccineController extends Controller
         }
         
         
+        unset($request['_token']);
+        
         return redirect('/vaccine/details?id='.$request->id."&vaccine_id=".$request->vaccine_id);
     }
     

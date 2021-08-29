@@ -63,8 +63,8 @@ class RegisterController extends Controller
             'birthday' => ['required'],
             'blood_type_id' => ['required'],
             'blood_rh_id' => ['required'],
-            'birth_weight' => ['required'],
-            'birth_height' => ['required'],
+            'birth_weight' => ['required', 'numeric'],
+            'birth_height' => ['required', 'numeric'],
         ]);
     }
 

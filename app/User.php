@@ -41,13 +41,17 @@ class User extends Authenticatable
     /**
      * 
      * ユーザー情報更新時に使用するバリデート用
-     * 8/29
+     * 
      * 
      */
-    public static $rules = array(
-        '' => 'required',
-        
-        );
+    //public static $rules = array(
+    //    'user_name' => 'required|string|max:255',
+    //    'email' => 'required|string|email|max:255',
+    //    'password' => 'required',
+    //    'relationship_id' => 'required',
+    //    'notice_flag' => 'required',
+    //    
+    //    );
     
     
     
