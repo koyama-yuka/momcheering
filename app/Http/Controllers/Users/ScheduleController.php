@@ -22,7 +22,7 @@ class ScheduleController extends Controller
     /**
      * 
      * マンスリーカレンダー表示
-     * 
+     * @param Request $request
      * 
      */
     public function index(Request $request){
@@ -47,7 +47,7 @@ class ScheduleController extends Controller
     /**
      * 
      * 日付詳細　日付クリック時
-     * 
+     * @param Request $request
      * 
      */
     public function day(Request $request){
@@ -70,7 +70,7 @@ class ScheduleController extends Controller
     /**
      * 
      * 新規作成画面
-     * 
+     * @param Request $request
      * 
      */
     public function add(Request $request){
@@ -89,12 +89,16 @@ class ScheduleController extends Controller
     /**
      * 
      * 新規登録
-     * 
+     * @param Request $request
      * 
      */
     public function addDone(Request $request){
         
+        $this->validate($request, Schedule::$rules);
+        $this->validate($request,VaccineSchedule::$rules);
+        
         $display = Child::find($request->id);
+        
         if(!empty($request->vaccine_id)){
             $vaccine_array = $request->vaccine_id;
             
@@ -106,6 +110,8 @@ class ScheduleController extends Controller
         } else{
             $vaccine_str = null;
         }
+        
+        unset($request['_token']);
         
         //スケジュールの保存
         $schedule = new Schedule;
@@ -129,7 +135,7 @@ class ScheduleController extends Controller
         
         $vaccine_schedule->save();
         
-        unset($request['_token']);
+        
         
         return redirect('/calendar/details?id='.$request->id."&schedule_id=".$schedule_id);
     }
@@ -138,7 +144,7 @@ class ScheduleController extends Controller
     /**
      * 
      * 予定詳細　各予定クリック時、新規保存後のリダイレクト
-     * 
+     * @param Request $request
      * 
      */
     public function details(Request $request){
@@ -146,6 +152,12 @@ class ScheduleController extends Controller
         $display = Child::find($request->id);
         $schedule = Schedule::find($request['schedule_id']);
         
+        //予定詳細でこどものボタンを押されたとき用、同じ日付の詳細へ飛ばす
+        if($schedule->child_id != $display->id){
+            return redirect('/calendar/day?id='.$display->id."&date=".$schedule['date']);
+        }
+        
+        //予防接種の予定の情報を取ってきて、配列にする
         $vaccine_kind = $schedule->vaccineSchedule->vaccine_id;
         $vaccine_kind = explode(",", $vaccine_kind);
         
@@ -159,25 +171,29 @@ class ScheduleController extends Controller
     /**
      * 
      * 予定詳細の編集画面表示
-     * 
+     * @param Request $request
      * 
      */
     public function edit(Request $request){
         
         $display = Child::find($request['id']);
-        
         $schedule = Schedule::find($request['schedule_id']);
+        
+        //予定編集画面でこどものボタンを押されたとき用、404エラーで
+        if($display->id != $schedule->child_id){
+            abort(404);
+        }
         
         //マスターテーブル
         $vaccines = Vaccine::all();
         $medicals = Medical::all();
         
         //この予定のワクチンと健診の情報
-        $vac_array =$schedule->vaccineSchedule;
+        $vac_array = $schedule->vaccineSchedule;
         $vac_array = $vac_array->vaccine_id;
         $vac_arr = explode(",", $vac_array);
         
-        $med =$schedule->medical;
+        $med = $schedule->medical;
         
         return view('user.schedule_details_edit', ['display' => $display, 'schedule' => $schedule, 'vaccines' => $vaccines, 'medicals' => $medicals, 'vac_arr' => $vac_arr, 'med' => $med]);
     }
@@ -186,13 +202,22 @@ class ScheduleController extends Controller
     /**
      * 
      * スケジュールの登録と更新
-     * 
+     * @param Request $request
      * 
      */
     public function update(Request $request){
         
+        $this->validate($request, Schedule::$rules);
+        $this->validate($request,VaccineSchedule::$rules);
+        
         $display = Child::find($request['id']);
         $update_schedule = Schedule::find($request['schedule_id']);
+        
+        //更新する予定と、その予定のこどもが一致することを確認する →→→ここ後で考える？、一旦404エラー
+        if($display->id != $update_schedule->child_id){
+            abort(404);
+        }
+        
         
         $vaccine_str = 0;
         
@@ -208,6 +233,7 @@ class ScheduleController extends Controller
         $update_schedule->schedule_memo = $request->schedule_memo;
         
         $update_schedule->update();
+        
         
         //予防接種の種類を保存、更新
         $schedule_id = $update_schedule->id;

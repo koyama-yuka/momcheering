@@ -10,7 +10,7 @@ class VaccineSchedule extends Model
     protected $guarded = array('id');
     
     public static $rules = array(
-        'vaccine_id' => 'required',
+        'vaccine_id' => 'nullable|integer',
         );
     
     

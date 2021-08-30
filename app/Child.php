@@ -9,14 +9,20 @@ class Child extends Model
     protected $table = 't_children'; //モデルとテーブルの紐付け
     protected $guarded = array('id');
     
+    /**
+     * 
+     * バリデーション用ルール
+     * 
+     * 
+     */
     public static $rules = array(
-        'child_name' => 'required',
-        'gender_id' => 'required',
-        'birthday' => 'required',
-        'blood_type_id' => 'required',
-        'blood_rh_id' => 'required',
-        'birth_weight' => 'required',
-        'birth_height' => 'required',
+        'child_name' => 'required|string|max:255',
+        'gender_id' => 'required|integer',
+        'birthday' => 'required|date',
+        'blood_type_id' => 'required|integer',
+        'blood_rh_id' => 'required|integer',
+        'birth_weight' => 'required|numeric',
+        'birth_height' => 'required|numeric',
     );
     
     

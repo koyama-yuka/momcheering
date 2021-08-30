@@ -13,12 +13,24 @@ use App\User;
 class UserController extends Controller
 {
     
-    //ログイン画面の表示
+    /**
+     * 
+     * ログイン画面の表示
+     * 
+     * 
+     * 
+     */
     public function loginTop(){
         return view('auth.login');
     }
     
-    //新規登録画面の表示
+    /**
+     * 
+     * 新規登録画面の表示
+     * 
+     * 
+     * 
+     */
     public function register(){
         return view('auth.register');
     }
@@ -26,7 +38,7 @@ class UserController extends Controller
     /**
      * 
      * プロフィール表示
-     * 
+     * @param Request $request
      * 
      */
     public function userProfieIndex(Request $request){
@@ -41,7 +53,7 @@ class UserController extends Controller
     /**
      * 
      * プロフィール編集画面
-     * 
+     * @param Request $request
      * 
      */
     public function profileEdit(Request $request){
@@ -56,7 +68,7 @@ class UserController extends Controller
     /**
      * 
      * プロフィールの更新
-     * 
+     * @param Request $request
      * 
      */
     public function profileUpdate(Request $request){
@@ -112,7 +124,13 @@ class UserController extends Controller
     }
     
     
-    //ホーム画面の表示
+    /**
+     * 
+     * ホーム画面の表示
+     * @param Request $request
+     * 
+     * 
+     */
     public function homeDisplay(Request $request){
     
         $id = $request['id'];

@@ -14,7 +14,12 @@ use Carbon\Carbon;
 class ChildController extends Controller
 {
     
-    //こどもの情報編集ページ表示
+    /**
+     * 
+     * こどもの情報編集ページ表示
+     * @param Request $request
+     * 
+     */
     public function edit(Request $request){
         $display = Child::find($request->id);
         
@@ -22,7 +27,14 @@ class ChildController extends Controller
     }
     
     
-    //こどもの情報編集して更新
+    /**
+     * 
+     * こどもの情報編集して更新
+     * @param Request $request
+     * 
+     * 
+     * 
+     */
     public function update(Request $request){
         $this->validate($request, Child::$rules);
         
@@ -75,7 +87,14 @@ class ChildController extends Controller
     }
     
     
-    //こどもの詳細ページ
+    /**
+     * 
+     * こどもの詳細ページ
+     * @param Request $request
+     * 
+     * 
+     * 
+     */
     public function index(Request $request){
         
         $form = $request['id'];
@@ -115,13 +134,25 @@ class ChildController extends Controller
         return view('user.child_profile', ['display'=>$display]);
     }
     
-    //こどもの追加ページ表示
+    /**
+     * 
+     * こどもの追加ページ表示
+     * 
+     * 
+     */
     public function add(){
         return view('user.child_add');
     }
     
     
-    // ＋で追加のこども情報の登録
+    /**
+     * 
+     * ＋ボタンで追加のこども情報の登録
+     * @param Request $request
+     * 
+     * 
+     * 
+     */
     public function addDone(Request $request){
         
         $this->validate($request, Child::$rules);
@@ -138,12 +169,9 @@ class ChildController extends Controller
         
         $child_data->save();
         
-        return redirect('/home');
+        return redirect('/home?id='.$child_data->id);
     }
     
-    
-    
-    
-    
+
     
 }

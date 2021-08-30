@@ -14,7 +14,13 @@ use App\Check;
 
 class VaccineController extends Controller
 {
-    //予防接種一覧画面
+    /**
+     * 
+     * 予防接種一覧画面
+     * @param Request $request
+     * 
+     * 
+     */
     public function index(Request $request){
         $display = Child::find($request->id);
         
@@ -25,8 +31,12 @@ class VaccineController extends Controller
     }
     
     
-    
-    //予防接種各種の詳細
+    /**
+     * 
+     * 予防接種各種の詳細
+     * @param Request $request
+     * 
+     */
     public function details(Request $request){
         
         $display = Child::find($request['id']);
@@ -42,8 +52,12 @@ class VaccineController extends Controller
         return view('user.vaccine_details', ['display' => $display, 'vaccine' => $vaccine, 'vaccine_histories' => $vaccineHistories,]);
     }
     
-    
-    //接種記録の編集画面表示
+    /**
+     * 
+     * 接種記録の編集画面表示
+     * @param Request $request
+     * 
+     */
     public function edit(Request $request){
         
         $display = Child::find($request['id']);
@@ -55,7 +69,7 @@ class VaccineController extends Controller
             ['vaccine_id', $request['vaccine_id']],
             ])->orderBy('inoculation_date')->get();
         
-        
+        //完了チェック
         $check = Check::where([
             ['child_id', $request['id']],
             ['vaccine_id', $request['vaccine_id']],
@@ -74,8 +88,13 @@ class VaccineController extends Controller
         return view('user.vaccine_history_edit', ['display' => $display, 'vaccine' => $vaccine, 'vaccine_histories' => $vaccineHistories, 'done_check' => $done_check,]);
     }
     
-    
-    //各予防接種の記録編集、更新
+    /**
+     * 
+     * 各予防接種の記録編集、更新
+     * @param Request $request
+     * 
+     * 
+     */
     public function update(Request $request){
         
         /*

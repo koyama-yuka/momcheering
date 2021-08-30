@@ -10,10 +10,11 @@ class Schedule extends Model
     protected $guarded = array('id');
     
     public static $rules = array(
-        'date' => 'required',
-        'vaccine_flag' => 'required',
-        'medical_flag' => 'required',
-        'start_time' => 'required',
+        'date' => 'required|date',
+        'vaccine_flag' => 'required|integer',
+        'medical_flag' => 'required|integer',
+        'medical_id' => 'nullable|integer',
+        'start_time' => 'required|date_format:H:i',
         );
         
         
