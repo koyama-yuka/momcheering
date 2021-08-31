@@ -10,6 +10,8 @@ class VaccineHistory extends Model
     protected $guarded = array('id');
     
     public static $rules = array(
-        'check_id' => 'required',
+        'inoculation_date' => 'nullable|date',
+        'hospital' => 'nullable|string|max:255',
+        'vaccine_memo' => 'nullable|string'
         );
 }

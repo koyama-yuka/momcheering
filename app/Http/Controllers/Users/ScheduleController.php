@@ -259,6 +259,18 @@ class ScheduleController extends Controller
     }
     
     
+    /**
+     * 
+     * スケジュールの削除
+     * @param Request $request
+     * 
+     */
+    public function detailDelete(Request $request){
+        
+    }
+    
+    
+    
     
     
 }

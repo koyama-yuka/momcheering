@@ -73,7 +73,6 @@ class UserController extends Controller
      */
     public function profileUpdate(Request $request){
         
-        
         $user = Auth::user();
         $display = Child::find($request['id']);
         

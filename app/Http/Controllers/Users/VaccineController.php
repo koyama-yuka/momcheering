@@ -24,7 +24,7 @@ class VaccineController extends Controller
     public function index(Request $request){
         $display = Child::find($request->id);
         
-        
+        //マスターテーブルの情報取得
         $vaccines = Vaccine::all();
         
         return view('user.vaccine_index', ['display' => $display, 'vaccines' => $vaccines]);
@@ -109,6 +109,8 @@ class VaccineController extends Controller
             
         */
         
+        $this->validate($request, VaccineHistory::$rules);
+        $this->validate($request, Check::$rules);
 
         //最高４回接種
         for($i = 1; $i <= 4; $i++){

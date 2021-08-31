@@ -70,15 +70,39 @@
         
         <div class="form-group row">
             <div class="col-md-3 mx-auto">
-                <a class="btn btn-primary btn-lg btn-block" href="/calendar?id={{ $display->id }}">削除ボタンにしたい</a>
+                <button type="button" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#modal1">削除ボタンにしたい</button>
+                <div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+                    <form role="form" class="form-group" method="POST" action="{{ action('Users\ScheduleController@detailDelete') }}">
+                        @csrf
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                            <h3 class="modal-title" id="modalLabelId">確認</h3>
+                            </div>
+                            <div class="modal-body">
+                                <label>本当に削除しますか？</label>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">キャンセル</button>
+                                <input type="hidden" name="id" value="{{ $display->id }}">
+                                <input type="hidden" name="schedule_id" value="{{ $schedule->id }}">
+                                <button type="submit" class="btn btn-danger">削除する</button>
+                            </div>
+                        </div>
+                    </div>
+                    </form>
+                </div>
             </div>
             <div class="col-md-3 mx-auto">
                 <a class="btn btn-primary btn-lg btn-block" href="/calendar/details/edit?id={{ $display->id }}&schedule_id={{ $schedule->id }}">編集</a>
             </div>
-            
-            
         </div>
         
+        <div class="form-group row">
+            <div class="col-md-3 mx-auto">
+                <a class="btn btn-primary btn-lg btn-block" href="/calendar?id={{ $display->id }}">カレンダーに戻る</a>
+            </div>
+        </div>
         
         
         
