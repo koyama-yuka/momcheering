@@ -28,8 +28,8 @@ class VaccineController extends Controller
         $vaccines = Vaccine::all();
         
         //完了チェックの情報取得
-        //$checkStatus = 
-        //dd($checkStatus);
+        $checkStatus = $display->checkC; //配列で取れている
+        //TODO 9/1 ここどうにかするぞ
         
         return view('user.vaccine_index', ['display' => $display, 'vaccines' => $vaccines]);
     }

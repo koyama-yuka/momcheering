@@ -196,6 +196,7 @@ class ScheduleController extends Controller
         
         $med = $schedule->medical;
         
+        
         return view('user.schedule_details_edit', ['display' => $display, 'schedule' => $schedule, 'vaccines' => $vaccines, 'medicals' => $medicals, 'vac_arr' => $vac_arr, 'med' => $med]);
     }
     

@@ -17,7 +17,7 @@ class Vaccine extends Model
     
     
     //チェックと関連付け
-    public function check(){
+    public function checkV(){
         return $this->hasMany('App\Check');
     }
     

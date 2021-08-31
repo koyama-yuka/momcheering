@@ -10,7 +10,7 @@ class Check extends Model
     protected $guarded = array('id');
     
     public static $rules = array(
-        'done_check' => 'nullable|integer',
+        'done_check' => 'nullable',
         );
     
 }

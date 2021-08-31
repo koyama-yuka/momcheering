@@ -31,7 +31,7 @@ class Child extends Model
         return $this->hasMany('App\VaccineHistory');
     }
     
-    public function check(){
+    public function checkC(){
         return $this->hasMany('App\Check');
     }
     

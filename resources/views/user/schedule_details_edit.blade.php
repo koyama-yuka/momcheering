@@ -76,7 +76,7 @@
                     <label class="col-md-3" for="medical_kind">健診の種類</label>
                     <div class="col-md-8 radio-inline">
                         @foreach($medicals as $medicalName)
-                            <input type="radio" name="medical_kind" id="medical_kind{{ $medicalName->id }}" value="{{ $medicalName->id }}" @if($med->id == $medicalName->id) checked @endif>
+                            <input type="radio" name="medical_kind" id="medical_kind{{ $medicalName->id }}" value="{{ $medicalName->id }}" @if($med != null && $med->id == $medicalName->id) checked @endif>
                             <label for="medical_kind{{ $medicalName->id }}">{{ $medicalName->medicalcheck_name }}</label>
                         @endforeach
                         
