@@ -156,6 +156,7 @@
                 $('#medical_flag_off').click(function() {
                     $('input[name="medical_kind"]').prop('disabled', true);
                 })
+            })
             
         </script> 
         

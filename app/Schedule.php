@@ -13,7 +13,7 @@ class Schedule extends Model
         'date' => 'required|date',
         'vaccine_flag' => 'required|integer',
         'medical_flag' => 'required|integer',
-        'medical_id' => 'nullable|integer',
+        'medical_id' => 'nullable',
         'start_time' => 'required|date_format:H:i',
         );
         

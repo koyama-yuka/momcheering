@@ -70,7 +70,7 @@
         
         <div class="form-group row">
             <div class="col-md-3 mx-auto">
-                <button type="button" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#modal1">削除ボタンにしたい</button>
+                <button type="button" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#modal1">削除ボタン</button>
                 <div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
                     <form role="form" class="form-group" method="POST" action="{{ action('Users\ScheduleController@detailDelete') }}">
                         @csrf

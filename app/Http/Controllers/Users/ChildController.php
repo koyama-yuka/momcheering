@@ -36,6 +36,7 @@ class ChildController extends Controller
      * 
      */
     public function update(Request $request){
+        //バリデーション
         $this->validate($request, Child::$rules);
         
         $child_update = Child::find($request->id);
@@ -155,6 +156,7 @@ class ChildController extends Controller
      */
     public function addDone(Request $request){
         
+        //バリデーション
         $this->validate($request, Child::$rules);
         
         

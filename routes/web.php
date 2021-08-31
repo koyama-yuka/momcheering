@@ -40,6 +40,7 @@ Route::get('/calendar/day/add', 'Users\ScheduleController@add')->middleware('aut
 Route::post('/calendar/day/add', 'Users\ScheduleController@addDone')->middleware('auth');
 
 Route::get('/calendar/details', 'Users\ScheduleController@details')->middleware('auth');
+Route::post('/calendar/details', 'Users\ScheduleController@detailDelete')->middleware('auth');
 Route::get('/calendar/details/edit', 'Users\ScheduleController@edit')->middleware('auth');
 Route::post('/calendar/details/edit', 'Users\ScheduleController@update')->middleware('auth');
 

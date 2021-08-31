@@ -27,6 +27,10 @@ class VaccineController extends Controller
         //マスターテーブルの情報取得
         $vaccines = Vaccine::all();
         
+        //完了チェックの情報取得
+        //$checkStatus = 
+        //dd($checkStatus);
+        
         return view('user.vaccine_index', ['display' => $display, 'vaccines' => $vaccines]);
     }
     
@@ -90,7 +94,7 @@ class VaccineController extends Controller
     
     /**
      * 
-     * 各予防接種の記録編集、更新
+     * 各予防接種の記録　登録、編集、更新
      * @param Request $request
      * 
      * 
@@ -109,6 +113,7 @@ class VaccineController extends Controller
             
         */
         
+        //バリデーション
         $this->validate($request, VaccineHistory::$rules);
         $this->validate($request, Check::$rules);
 

@@ -79,6 +79,7 @@ class UserController extends Controller
         
         //$this->validate($request, User::$rules);
         
+        //バリデーション
         $request->validate([
             'user_name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255',

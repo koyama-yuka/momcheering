@@ -94,6 +94,7 @@ class ScheduleController extends Controller
      */
     public function addDone(Request $request){
         
+        //バリデーション
         $this->validate($request, Schedule::$rules);
         $this->validate($request,VaccineSchedule::$rules);
         
@@ -207,8 +208,9 @@ class ScheduleController extends Controller
      */
     public function update(Request $request){
         
+        //バリデーション
         $this->validate($request, Schedule::$rules);
-        $this->validate($request,VaccineSchedule::$rules);
+        $this->validate($request, VaccineSchedule::$rules);
         
         $display = Child::find($request['id']);
         $update_schedule = Schedule::find($request['schedule_id']);
@@ -266,6 +268,25 @@ class ScheduleController extends Controller
      * 
      */
     public function detailDelete(Request $request){
+        
+        $display = Child::find($request['id']);
+        $delete_schedule = Schedule::find($request['schedule_id']);
+        
+        $delete_schedule_id = $delete_schedule->id;
+        $redirect_day = $delete_schedule['date'];
+        
+        //一応そのスケジュールのこどもがあっているか確認？ →→→ここ後で考える？、一旦404エラー
+        if($display->id != $delete_schedule->child_id){
+            abort(404);
+        }
+        
+        Schedule::where('id', $delete_schedule_id)->delete();
+        VaccineSchedule::where('id', $delete_schedule_id)->delete();
+        
+        unset($request['_token']);
+        
+        //同じ日の詳細へリダイレクトする
+        return redirect('/calendar/day?id='.$display->id."&date=".$redirect_day);
         
     }
     
