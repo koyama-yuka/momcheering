@@ -10,7 +10,16 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6 mx-auto">
-                <h3>{{ $display->child_name }}の今日の予定の有無</h3>  {{-- 今日の予定の有無によって個々の表示変える --}}
+                <h3>{{ $display->child_name }}の今日の予定</h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 mx-auto">
+                @if(empty($todaySchedule))
+                    なし
+                @else
+                    あり
+                @endif
             </div>
         </div>
         

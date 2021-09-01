@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth; //Authを使用するために導入
 
 use App\Child;
 use App\User;
+use App\Schedule;
 
 
 class UserController extends Controller
@@ -148,8 +149,16 @@ class UserController extends Controller
         if($display->user_id != Auth::id()){
             abort(404);
         }
-    
-        return view('user.home', ['display'=>$display] );
+        
+        //今日の予定に関して
+        $today = date("Y-m-d");
+        $todaySchedule = Schedule::where([
+            ['child_id', $display['id']],
+            ['date', $today],
+            ])->first();
+            
+        
+        return view('user.home', ['display' => $display, 'todaySchedule' => $todaySchedule] );
         }
     
 }
