@@ -155,10 +155,10 @@ class UserController extends Controller
         $todaySchedule = Schedule::where([
             ['child_id', $display['id']],
             ['date', $today],
-            ])->first();
+            ])->get();
             
         
-        return view('user.home', ['display' => $display, 'todaySchedule' => $todaySchedule] );
+        return view('user.home', ['display' => $display, 'todaySchedule' => $todaySchedule, "today" => $today] );
         }
     
 }

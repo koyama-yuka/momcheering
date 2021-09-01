@@ -10,16 +10,11 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6 mx-auto">
-                <h3>{{ $display->child_name }}の今日の予定</h3>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-6 mx-auto">
-                @if(empty($todaySchedule))
-                    なし
-                @else
-                    あり
-                @endif
+            @if(empty($todaySchedule[0]))
+                <h3>{{ $display->child_name }}の今日の予定はありません</h3>
+            @else
+                <h3>{{ $display->child_name }}の今日の予定は<a class="todayschedule" href="/calendar/day?id={{ $display->id }}&date={{ $today }}">{{ count($todaySchedule) }}件</a>あります</h3>
+            @endif
             </div>
         </div>
         
