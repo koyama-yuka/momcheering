@@ -41,7 +41,13 @@ class ScheduleController extends Controller
                             ->whereBetween('date',[$lastMonth, $nextMonth])
                             ->get();
         
-        return view('user.calendar_main', ['display' => $display, "schedules" => $schedules]);
+        //今日の予定分
+        $daySchedules = Schedule::where([
+                ['child_id', $request['id']],
+                ['date', $today,],
+                ])->orderBy('date')->get();
+        
+        return view('user.calendar_main', ['display' => $display, "schedules" => $schedules, "daySchedules" => $daySchedules]);
     }
     
     /**
