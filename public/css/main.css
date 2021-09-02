@@ -3,15 +3,18 @@
 body {
   background-repeat: no-repeat;
   background-position: center;
-  background-color: #DEEAF7;
-  /* 017　ベビーグッズ3　ベビーブルーの色 */
-  color: #000;
+  background-color: #EEF2EF;
+  /* 025 4の色 */
+  color: #74645C;
+  /* 025 9の色 */
 }
 
 .navbar-mom {
-  background-color: #FADBE1;
-  /* 017 　ベビーグッズ1　ベビーピンクの色 */
+  background-color: #B0DBD4;
+  /* 025 8の色 */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
   /* navbarにうっすらついてる影 */
+  color: #74645C;
+  /* 025 9の色 */
 }
 

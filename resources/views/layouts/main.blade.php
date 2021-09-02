@@ -23,8 +23,8 @@
         {{-- Laravel標準で用意されているCSSの読み込み --}}
         <link href="{{ secure_asset('css/app.css') }}" rel="stylesheet">
         
-        {{-- 自分で作成したCSSの読み込み予定 --}}
-        
+        {{-- 自分で作成したCSSの読み込み --}}
+        <link href="{{ secure_asset('css/main.css') }}" rel="stylesheet">
         {{-- カレンダーのためのjsとcss --}}
         <link href="{{ secure_asset('css/lib/main.min.css') }}" rel="stylesheet">
         <script src="{{ secure_asset('js/lib/main.min.js') }}" defer></script>
@@ -36,7 +36,7 @@
     <body>
         <div id="app">
             {{-- ナビゲーションバー --}}
-            <nav class="navbar navbar-expand-md navbar-light bg-dark" navbar-mom>
+            <nav class="navbar navbar-expand-md navbar-light navbar-mom">
                 <div class="container">
                     <a class="navbar-brand" href="{{ url('/home') }}?id={{ $display->id }}">子育て応援！母子手帳サポートシステム</a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Togglenavigation">
