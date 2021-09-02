@@ -36,7 +36,7 @@
     <body>
         <div id="app">
             {{-- ナビゲーションバー --}}
-            <nav class="navbar navbar-expand-md navbar-light navbar-mom">
+            <nav class="navbar navbar-expand-md navbar-mom">
                 <div class="container">
                     <a class="navbar-brand" href="{{ url('/home') }}?id={{ $display->id }}">子育て応援！母子手帳サポートシステム</a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Togglenavigation">
@@ -102,7 +102,7 @@
             
             
             {{-- こどものボタン表示 --}}
-            <div class="form-group row">
+            <div class="form-group row mt-2" >
                 
                 {{-- こどもの名前ボタン --}}
                     @foreach(Auth::user()->children as $child)
@@ -114,9 +114,9 @@
                     
                     {{-- 選択されてたら色変えるとき　＠yieldで --}}
                     @if($child->id == $display->id)
-                        <a class="btn btn-success btn-lg btn-block" href="{{ url()->current() }}?id={{ $child->id }}@yield('get_param')" role="button">{{ $child->child_name }}</a>
+                        <a class="btn btn-select-child btn-lg btn-block" href="{{ url()->current() }}?id={{ $child->id }}@yield('get_param')" role="button">{{ $child->child_name }}</a>
                     @else
-                        <a class="btn btn-primary btn-lg btn-block" href="{{ url()->current() }}?id={{ $child->id }}@yield('get_param')" role="button">{{ $child->child_name }}</a>
+                        <a class="btn btn-child btn-lg btn-block" href="{{ url()->current() }}?id={{ $child->id }}@yield('get_param')" role="button">{{ $child->child_name }}</a>
                     @endif
                     
                     </div>
@@ -125,7 +125,7 @@
                 
                 {{-- 追加ボタン --}}
                 <div class="col-md-1">
-                    <a class="btn btn-primary btn-lg btn-block" href="/child/add">＋</a>
+                    <a class="btn btn-child btn-lg btn-block" href="/child/add">＋</a>
                 </div>
                 
             </div>

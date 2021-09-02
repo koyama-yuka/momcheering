@@ -8,5 +8,73 @@ body {
 .navbar-mom {
     background-color: #B0DBD4;  /* 025 8の色 */
     box-shadow: 0 2px 4px rgba(0,0,0,0.04);  /* navbarにうっすらついてる影 */
-    color: #74645C;  /* 025 9の色 */
+}
+
+.navbar-brand {
+    color: #74645C;  /* 025 9 */
+}
+
+#navbarDropdown {
+    color: #74645C;  /* 025 9 */
+}
+
+.dropdown-item {
+    color: #74645C;  /* 025 9 */
+}
+
+//選択されているこどものボタン
+.btn-select-child {
+    background-color: #B5D569;  /* 025 7 */
+    color: #74645C;
+}
+//選択されているこどものhover時
+.btn-select-child:hover {
+    background-color: #9FBC5C;  /* 025 7 +2暗*/
+    color: #74645C;
+}
+
+//こどものボタン、追加ボタン
+.btn-child {
+    background-color: #87BFC1;  /* 025 2 */
+    color: #74645C;
+}
+//こどものボタン、追加ボタンのhover時
+.btn-child:hover {
+    background-color: #75A6A8;  /* 025 2 +2暗*/
+    color: #74645C;
+}
+
+
+//homeのボタン３つ
+.btn-main-content {
+    background-color: #B5D569;  /* 025 7 */
+    color: #74645C;
+}
+//homeのボタン３つのhover時
+.btn-main-content:hover {
+    background-color: #9FBC5C;  /* 025 7 +2暗*/
+    color: #74645C;
+}
+
+//予防接種一覧
+.btn-vaccine {
+    background-color: #B0DBD4;  /* 025 8 */
+    color: #74645C;
+}
+//予防接種一覧のhover時
+.btn-vaccine:hover {
+    background-color: #9CC2BB;  /* 025 8 +2暗*/
+    color: #74645C;
+}
+
+
+//PDF出力ボタン
+.btn-pdf {
+    background-color: #EDE795;  /* 025 3 */
+    color: #74645C;
+}
+//PDF出力ボタンのhover時
+.btn-pdf:hover {
+    background-color: #D4CE85;  /* 025 3 +2暗*/
+    color: #74645C;
 }

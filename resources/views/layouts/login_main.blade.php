@@ -23,12 +23,13 @@
         {{-- Laravel標準で用意されているCSSの読み込み --}}
         <link href="{{ secure_asset('css/app.css') }}" rel="stylesheet">
         {{-- 自分で作成したCSSの読み込み予定 --}}
+        <link href="{{ secure_asset('css/main.css') }}" rel="stylesheet">
         
     </head>
     
     <body>
         {{-- ナビゲーションバー --}}
-            <nav class="navbar navbar-expand-md navbar-light bg-dark" navbar-mom>
+            <nav class="navbar navbar-expand-md navbar-light navbar-mom" navbar-mom>
                 <div class="container">
                     <a class="navbar-brand" href="{{ url('/') }}">子育て応援！母子手帳サポートシステム</a>
                     
@@ -54,6 +55,9 @@
                                 </a>
 
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    
+                                    <a class="dropdown-item" href="/home">HOME</a>
+                                    
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
