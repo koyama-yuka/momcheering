@@ -1,5 +1,5 @@
 {{-- loginしているのでmainの読み込み --}}
-@extends('layouts.main')
+@extends('layouts.main2')
 
 {{-- title --}}
 @section('title', 'プロフィール編集')
@@ -105,10 +105,9 @@
                 
                 <div class="form-group row">
                     <div class="col-md-3 mx-auto">
-                        <a class="btn btn-primary btn-lg btn-block" href="/home?id={{ $display->id }}">ホームへ</a>
+                        <input type="button" class="btn btn-primary btn-lg btn-block" onclick="history.back(-1)" value="戻る">
                     </div>
                     <div class="col-md-3 mx-auto">
-                        <input type="hidden" name="id" value="{{ $display->id }}">
                         <input type="submit" class="btn btn-primary btn-lg btn-block" value="　更新　">
                     </div>
                 </div>

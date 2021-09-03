@@ -34,36 +34,39 @@ Route::get('/home', 'Users\UserController@homeDisplay')->middleware('auth');
 
 
 //カレンダーに関するものを入れるスペース
+Route::group(['prefix' => 'calendar', 'middleware' => ['auth', 'checkchild',]],function(){
+    Route::get('day', 'Users\ScheduleController@day');
+    Route::get('day/add', 'Users\ScheduleController@add');
+    Route::post('day/add', 'Users\ScheduleController@addDone');
+    
+    Route::get('details', 'Users\ScheduleController@details');
+    Route::post('details', 'Users\ScheduleController@detailDelete');
+    Route::get('details/edit', 'Users\ScheduleController@edit');
+    Route::post('details/edit', 'Users\ScheduleController@update');
+});
 Route::get('/calendar', 'Users\ScheduleController@index')->middleware('auth');
-Route::get('/calendar/day', 'Users\ScheduleController@day')->middleware('auth');
-Route::get('/calendar/day/add', 'Users\ScheduleController@add')->middleware('auth');
-Route::post('/calendar/day/add', 'Users\ScheduleController@addDone')->middleware('auth');
-
-Route::get('/calendar/details', 'Users\ScheduleController@details')->middleware('auth');
-Route::post('/calendar/details', 'Users\ScheduleController@detailDelete')->middleware('auth');
-Route::get('/calendar/details/edit', 'Users\ScheduleController@edit')->middleware('auth');
-Route::post('/calendar/details/edit', 'Users\ScheduleController@update')->middleware('auth');
 
 
 
 //予防接種に関するもの
 Route::group(['prefix' => 'vaccine', 'middleware' => ['auth', 'checkchild',]],function(){
-    Route::get('/', 'Users\VaccineController@index');
     Route::get('details', 'Users\VaccineController@details');
     Route::get('details/edit', 'Users\VaccineController@edit');
     Route::post('details/edit', 'Users\VaccineController@update');
 });
+Route::get('/vaccine', 'Users\VaccineController@index')->middleware('auth');
 
 
 //こどもに関するもの
 Route::group(['prefix' => 'child', 'middleware' => ['auth','checkchild',]],function(){
     Route::get('edit', 'Users\ChildController@edit');
     Route::post('edit', 'Users\ChildController@update');
-    Route::get('/', 'Users\ChildController@index');
-    Route::get('add', 'Users\ChildController@add');
-    Route::post('add', 'Users\ChildController@addDone');
-    
 });
+Route::get('/child', 'Users\ChildController@index')->middleware('auth');
+Route::get('/child/add', 'Users\ChildController@add')->middleware('auth');
+Route::post('/child/add', 'Users\ChildController@addDone')->middleware('auth');
+
+
 
 Auth::routes();
 

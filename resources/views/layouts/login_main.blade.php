@@ -29,7 +29,7 @@
     
     <body>
         {{-- ナビゲーションバー --}}
-            <nav class="navbar navbar-expand-md navbar-light navbar-mom" navbar-mom>
+            <nav class="navbar navbar-expand-md navbar-mom" navbar-mom>
                 <div class="container">
                     <a class="navbar-brand" href="{{ url('/') }}">子育て応援！母子手帳サポートシステム</a>
                     

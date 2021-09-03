@@ -27,7 +27,21 @@ class ScheduleController extends Controller
      */
     public function index(Request $request){
         
+        //もし$requestのidがなかったときは最初の子どものマンスリーカレンダーへ
+        if(empty($request['id'])){
+            $users_child = Auth::user()->children;
+            $id = $users_child[0]->id;
+            
+            return redirect('/calendar?id='.$id);
+        }
+        
+        
         $display = Child::find($request->id);
+        
+        //親のこどもでないなら表示できないようにするルール
+        if($display->user_id != Auth::id()){
+            abort(404);
+        }
         
         //今日の日付取得
         $today = date("Y-m-d");

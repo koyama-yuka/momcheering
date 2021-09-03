@@ -1,3 +1,4 @@
+{{-- こどもの追加、ユーザープロフィール関係のとき＝こどもの選択が不要のとき用 --}}
 <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}">
     <head>
@@ -38,7 +39,7 @@
             {{-- ナビゲーションバー --}}
             <nav class="navbar navbar-expand-md navbar-mom">
                 <div class="container">
-                    <a class="navbar-brand" href="{{ url('/home') }}?id={{ $display->id }}">子育て応援！母子手帳サポートシステム</a>
+                    <a class="navbar-brand" href="{{ url('/home') }}">子育て応援！母子手帳サポートシステム</a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Togglenavigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
@@ -65,14 +66,13 @@
                                     
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                         
-                                        {{-- 追加してみた箇所--}}
-                                        <a class="dropdown-item" href="/home?id={{ $display->id }}">HOME</a>
+                                        <a class="dropdown-item" href="/home">HOME</a>
                                         
-                                        <a class="dropdown-item" href="/calendar?id={{ $display->id }}">カレンダー</a>
+                                        <a class="dropdown-item" href="/calendar">カレンダー</a>
                                         
-                                        <a class="dropdown-item" href="/vaccine?id={{ $display->id }}">予防接種</a>
+                                        <a class="dropdown-item" href="/vaccine">予防接種</a>
                                         
-                                        <a class="dropdown-item" href="/child?id={{ $display->id }}">こどものデータ</a>
+                                        <a class="dropdown-item" href="/child">こどものデータ</a>
                                         
                                         <a class="dropdown-item" href="/user">ユーザーのデータ</a>
                                         
@@ -108,17 +108,8 @@
                     @foreach(Auth::user()->children as $child)
                     
                     <div class="col-md-2">
-                    {{--
-                    <a class="btn btn-primary btn-lg btn-block" href="{{ url()->current() }}?id={{ $child->id }}" role="button">{{ $child->child_name }}</a>
-                    --}}
-                    
-                    {{-- 選択されてたら色変えるとき　＠yieldで --}}
-                    @if($child->id == $display->id)
-                        <a class="btn btn-select-child btn-lg btn-block" href="{{ url()->current() }}?id={{ $child->id }}@yield('get_param')" role="button">{{ $child->child_name }}</a>
-                    @else
-                        <a class="btn btn-child btn-lg btn-block" href="{{ url()->current() }}?id={{ $child->id }}@yield('get_param')" role="button">{{ $child->child_name }}</a>
-                    @endif
-                    
+                    {{-- このときはこどものボタン押したら各こどものHOMEへ --}}
+                        <a class="btn btn-child btn-lg btn-block" href="/home?id={{ $child->id }}" role="button">{{ $child->child_name }}</a>
                     </div>
                     @endforeach
                 

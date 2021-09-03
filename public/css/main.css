@@ -73,7 +73,7 @@ body {
   color: #74645C;
 }
 
-.btn-vaccine {
+.btn-vaccine:hover {
   background-color: #9CC2BB;
   /* 025 8 +2暗*/
   color: #74645C;
@@ -85,7 +85,7 @@ body {
   color: #74645C;
 }
 
-.btn-pdf {
+.btn-pdf:hover {
   background-color: #D4CE85;
   /* 025 3 +2暗*/
   color: #74645C;

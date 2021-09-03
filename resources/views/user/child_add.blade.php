@@ -1,5 +1,5 @@
 {{-- loginしているのでmainの読み込み --}}
-@extends('layouts.main')
+@extends('layouts.main2')
 
 {{-- title --}}
 @section('title', 'こども情報の追加')

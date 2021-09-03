@@ -23,7 +23,7 @@ class ChildController extends Controller
     public function edit(Request $request){
         $display = Child::find($request->id);
         
-        return view('user.child_profile_edit',['child_form' => $display]);
+        return view('user.child_profile_edit',['display' => $display]);
     }
     
     
@@ -98,8 +98,23 @@ class ChildController extends Controller
      */
     public function index(Request $request){
         
+        //もし$requestのidがなかったときは最初の子どもの詳細ページへ
+        if(empty($request['id'])){
+            $users_child = Auth::user()->children;
+            $id = $users_child[0]->id;
+            
+            return redirect('/child?id='.$id);
+        }
+        
+        
         $form = $request['id'];
         $display = Child::find($form);
+        
+        //親のこどもでないなら表示できないようにするルール
+        if($display->user_id != Auth::id()){
+            abort(404);
+        }
+        
         
         //性別
         if($display->gender_id == 1){

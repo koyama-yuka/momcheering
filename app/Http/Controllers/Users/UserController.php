@@ -44,10 +44,9 @@ class UserController extends Controller
      */
     public function userProfieIndex(Request $request){
         
-        $display = Child::find($request['id']);
         $user = Auth::user();
         
-        return view('user.user_profile', ['display' => $display, "user" => $user]);
+        return view('user.user_profile', ["user" => $user]);
     }
     
     
@@ -59,10 +58,9 @@ class UserController extends Controller
      */
     public function profileEdit(Request $request){
         
-        $display = Child::find($request['id']);
         $user = Auth::user();
         
-        return view('user.user_profile_edit', ['display' => $display, 'user' => $user]);
+        return view('user.user_profile_edit', ['user' => $user]);
     }
     
     
@@ -75,10 +73,6 @@ class UserController extends Controller
     public function profileUpdate(Request $request){
         
         $user = Auth::user();
-        $display = Child::find($request['id']);
-        
-        
-        //$this->validate($request, User::$rules);
         
         //バリデーション
         $request->validate([
@@ -121,7 +115,7 @@ class UserController extends Controller
         
         unset($request['_token']);
         
-        return redirect('/user?id='.$display->id);
+        return redirect('/user');
     }
     
     

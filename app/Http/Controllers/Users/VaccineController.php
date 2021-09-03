@@ -22,7 +22,21 @@ class VaccineController extends Controller
      * 
      */
     public function index(Request $request){
+        
+        //もし$requestのidがなかったときは最初の子どもの予防接種一覧へ
+        if(empty($request['id'])){
+            $users_child = Auth::user()->children;
+            $id = $users_child[0]->id;
+            
+            return redirect('/vaccine?id='.$id);
+        }
+        
         $display = Child::find($request->id);
+        
+        //親のこどもでないなら表示できないようにするルール
+        if($display->user_id != Auth::id()){
+            abort(404);
+        }
         
         //マスターテーブルの情報取得
         $vaccines = Vaccine::all();
