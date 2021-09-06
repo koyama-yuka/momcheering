@@ -79,6 +79,12 @@ body {
   color: #74645C;
 }
 
+.btn-vaccine-done {
+  background-color: #87BFC1;
+  /* 025 2 */
+  color: #74645C;
+}
+
 .btn-pdf {
   background-color: #EDE795;
   /* 025 3 */

@@ -16,9 +16,16 @@
         
         <div class="row">    
         @foreach($vaccines as $vaccine)
-            <div class="col-md-4 mb-3">
-                <a class="btn btn-vaccine btn-lg btn-block py-3" href="/vaccine/details?id={{ $display->id }}&vaccine_id={{ $vaccine->id }}" role="button">{{ $vaccine->vaccine_name }}</a>
-            </div>
+            @if(in_array($vaccine->id, $check_vaccineNumber))
+                <div class="col-md-4 mb-3">
+                    <a class="btn btn-vaccine-done btn-lg btn-block py-3" href="/vaccine/details?id={{ $display->id }}&vaccine_id={{ $vaccine->id }}" role="button">{{ $vaccine->vaccine_name }}★完了</a>
+                </div>
+            @else
+                <div class="col-md-4 mb-3">
+                    <a class="btn btn-vaccine btn-lg btn-block py-3" href="/vaccine/details?id={{ $display->id }}&vaccine_id={{ $vaccine->id }}" role="button">{{ $vaccine->vaccine_name }}</a>
+                </div>
+            @endif
+            
         @endforeach
         </div>
         

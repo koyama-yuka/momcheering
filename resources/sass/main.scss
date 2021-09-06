@@ -67,6 +67,16 @@ body {
     color: #74645C;
 }
 
+//予防接種完了したもの
+.btn-vaccine-done {
+    background-color: #DB9FB3;  /* 025 2のトーンイントーン */
+    color: #74645C; 
+}
+//予防接種完了したもののhover時
+.btn-vaccine-done {
+    background-color: #75A6A8;  /* 025 2 +2暗*/
+    color: #74645C; 
+}
 
 //PDF出力ボタン
 .btn-pdf {

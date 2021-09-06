@@ -46,9 +46,14 @@ class VaccineController extends Controller
         $vaccines = Vaccine::all();
         
         //完了チェックの情報取得
-        $checkStatus = $display->checkC; //配列で取れている
+        $checkStatus = $display->checkC;
+        //完了になった予防接種のIDを配列で取得する
+        $check_vaccineNumber = array();
+        foreach($checkStatus as $arr){
+            array_push($check_vaccineNumber, $arr->vaccine_id);
+        }
         
-        return view('user.vaccine_index', ['display' => $display, 'vaccines' => $vaccines]);
+        return view('user.vaccine_index', ['display' => $display, 'vaccines' => $vaccines, 'check_vaccineNumber'=>$check_vaccineNumber]);
     }
     
     
