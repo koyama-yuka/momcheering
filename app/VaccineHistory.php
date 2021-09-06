@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes; //SoftDeleteを使用するために導入
 
 class VaccineHistory extends Model
 {

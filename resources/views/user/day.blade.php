@@ -90,10 +90,10 @@
         
         <div class="form-group row">
             <div class="col-md-3 mx-auto">
-                <a class="btn btn-primary btn-lg btn-block" href="/calendar?id={{ $display->id }}">カレンダーへ戻る</a>
+                <a class="btn btn-cancel btn-lg btn-block" href="/calendar?id={{ $display->id }}">カレンダーへ戻る</a>
             </div>
             <div class="col-md-3 mx-auto">
-                <a class="btn btn-primary btn-lg btn-block" href="/calendar/day/add?id={{ $display->id }}&date={{ $date }}">新規作成</a>
+                <a class="btn btn-edit btn-lg btn-block" href="/calendar/day/add?id={{ $display->id }}&date={{ $date }}">新規作成</a>
             </div>
             
             

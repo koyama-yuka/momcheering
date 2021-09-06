@@ -19,14 +19,15 @@ class CheckChild
     {
         $display = Child::find($request->id);
         
-        //親のこどもでないなら表示できないようにするルール
-        //dd($display);
-        if($display->user_id != Auth::id()){
+        //SoftDeleteの場合はnullになっている
+        if($display == null){
             abort(404);
         }
         
-        //結局使わない方向で↓
-        //session(['selected' => $request->id]);
+        //親のこどもでないなら表示できないようにするルール
+        if($display->user_id != Auth::id()){
+            abort(404);
+        }
         
         return $next($request);
     }

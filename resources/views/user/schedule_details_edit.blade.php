@@ -102,7 +102,7 @@
                 
                 <div class="form-group row">
                     <div class="col-md-3 mx-auto">
-                        <a class="btn btn-primary btn-lg btn-block" href="/calendar/details?id={{ $display->id }}&schedule_id={{ $schedule->id }}">キャンセル</a>
+                        <a class="btn btn-cancel btn-lg btn-block" href="/calendar/details?id={{ $display->id }}&schedule_id={{ $schedule->id }}">キャンセル</a>
                     </div>
                     <div class="col-md-3 mx-auto">
                         <input type="hidden" name="id" value="{{ $display->id }}">

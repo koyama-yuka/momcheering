@@ -97,7 +97,7 @@ body {
   color: #74645C;
 }
 
-.btn-edit {
+.btn-edit:hover {
   background-color: #75A6A8;
   /* 025 2 +2暗 */
   color: #74645C;
@@ -106,6 +106,24 @@ body {
 .btn-delete {
   background-color: #C18798;
   /* 025 2のスプリットコンプリメンタリー */
+  color: #74645C;
+}
+
+.btn-delete:hover {
+  background-color: #A87584;
+  /* 025 2のスプリットコンプリメンタリー +2暗*/
+  color: #74645C;
+}
+
+.btn-cancel {
+  background-color: #B0DBD4;
+  /* 025 8 */
+  color: #74645C;
+}
+
+.btn-cancel:hover {
+  background-color: #9CC2BB;
+  /* 025 8 +2暗*/
   color: #74645C;
 }
 

@@ -138,8 +138,12 @@ class UserController extends Controller
         }
     
         $display = Child::find($id);
-    
-        //親のこどもでないなら表示できないようにするルール
+        
+        ////親のこどもでないなら表示できないようにするルール
+        //SoftDeleteの場合はnullになっている
+        if($display == null){
+            abort(404);
+        }
         if($display->user_id != Auth::id()){
             abort(404);
         }

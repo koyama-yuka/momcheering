@@ -76,10 +76,10 @@
         
         <div class="form-group row">
             <div class="col-md-3 mx-auto">
-                <a class="btn btn-primary btn-lg btn-block" href="/vaccine?id={{ $display->id }}">一覧へ戻る</a>
+                <a class="btn btn-cancel btn-lg btn-block" href="/vaccine?id={{ $display->id }}">一覧へ戻る</a>
             </div>
             <div class="col-md-3 mx-auto">
-                <a class="btn btn-primary btn-lg btn-block" href="/vaccine/details/edit?id={{ $display->id }}&vaccine_id={{ $vaccine->id }}">編集</a>
+                <a class="btn btn-edit btn-lg btn-block" href="/vaccine/details/edit?id={{ $display->id }}&vaccine_id={{ $vaccine->id }}">編集</a>
             </div>
             
             

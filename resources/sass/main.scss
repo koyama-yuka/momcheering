@@ -79,23 +79,37 @@ body {
     color: #74645C;
 }
 
-//編集ボタン
+//編集、新規追加ボタン
 .btn-edit {
     background-color: #87BFC1;  /* 025 2 */
     color: #74645C;
 }
-//編集ボタンのhover時
-.btn-edit {
+//編集、新規追加ボタンのhover時
+.btn-edit:hover {
     background-color: #75A6A8;  /* 025 2 +2暗 */
     color: #74645C;
 }
 
-//削除
+//削除ボタン
 .btn-delete {
     background-color: #C18798; /* 025 2のスプリットコンプリメンタリー */
     color: #74645C;
 }
+//削除ボタンのhover時
+.btn-delete:hover {
+    background-color: #A87584; /* 025 2のスプリットコンプリメンタリー +2暗*/
+    color: #74645C;
+}
 
+//戻る、キャンセルボタン
+.btn-cancel {
+    background-color: #B0DBD4;  /* 025 8 */
+    color: #74645C;
+}
+//戻る、キャンセルボタンのhover時
+.btn-cancel:hover {
+    background-color: #9CC2BB;  /* 025 8 +2暗*/
+    color: #74645C;
+}
 
-
-
+//更新、登録ボタン

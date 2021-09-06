@@ -96,8 +96,28 @@
     
     <div class="form-group row">
         <div class="col-md-3 mx-auto">
-            <input type="submit" class="btn btn-delete btn-lg btn-block" value="削除"> {{-- まだ作ってない --}}
-        </div>
+                <button type="button" class="btn btn-delete btn-lg btn-block" data-toggle="modal" data-target="#modal1" {{ (count($users_children) == 1) ? "disabled" : ""}}>削除</button>
+                <div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+                    <form role="form" class="form-group" method="POST" action="{{ action('Users\ChildController@childDelete') }}">
+                        @csrf
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                            <h3 class="modal-title" id="modalLabelId">確認</h3>
+                            </div>
+                            <div class="modal-body">
+                                <label>本当に削除しますか？</label>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">キャンセル</button>
+                                <input type="hidden" name="id" value="{{ $display->id }}">
+                                <button type="submit" class="btn btn-danger">削除する</button>
+                            </div>
+                        </div>
+                    </div>
+                    </form>
+                </div>
+            </div>
         <div class="col-md-3 mx-auto">
             <a class="btn btn-edit btn-lg btn-block" href="{{ action('Users\ChildController@edit', ['id' => $display->id]) }}">編集</a>
         </div>

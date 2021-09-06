@@ -3,11 +3,14 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes; //SoftDeleteを使用するために導入
 
 class Child extends Model
 {
     protected $table = 't_children'; //モデルとテーブルの紐付け
     protected $guarded = array('id');
+    
+    use SoftDeletes; //論理削除のために
     
     /**
      * 

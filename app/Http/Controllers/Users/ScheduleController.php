@@ -39,6 +39,10 @@ class ScheduleController extends Controller
         $display = Child::find($request->id);
         
         //親のこどもでないなら表示できないようにするルール
+        //SoftDeleteの場合はnullになっている
+        if($display == null){
+            abort(404);
+        }
         if($display->user_id != Auth::id()){
             abort(404);
         }

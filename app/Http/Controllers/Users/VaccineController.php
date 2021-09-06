@@ -34,6 +34,10 @@ class VaccineController extends Controller
         $display = Child::find($request->id);
         
         //親のこどもでないなら表示できないようにするルール
+        //SoftDeleteの場合はnullになっている
+        if($display == null){
+            abort(404);
+        }
         if($display->user_id != Auth::id()){
             abort(404);
         }
@@ -43,7 +47,6 @@ class VaccineController extends Controller
         
         //完了チェックの情報取得
         $checkStatus = $display->checkC; //配列で取れている
-        //TODO 9/1 ここどうにかするぞ
         
         return view('user.vaccine_index', ['display' => $display, 'vaccines' => $vaccines]);
     }

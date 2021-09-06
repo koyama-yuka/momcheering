@@ -70,7 +70,7 @@
         
         <div class="form-group row">
             <div class="col-md-3 mx-auto">
-                <button type="button" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#modal1">削除ボタン</button>
+                <button type="button" class="btn btn-delete btn-lg btn-block" data-toggle="modal" data-target="#modal1">削除</button>
                 <div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
                     <form role="form" class="form-group" method="POST" action="{{ action('Users\ScheduleController@detailDelete') }}">
                         @csrf
@@ -94,13 +94,13 @@
                 </div>
             </div>
             <div class="col-md-3 mx-auto">
-                <a class="btn btn-primary btn-lg btn-block" href="/calendar/details/edit?id={{ $display->id }}&schedule_id={{ $schedule->id }}">編集</a>
+                <a class="btn btn-edit btn-lg btn-block" href="/calendar/details/edit?id={{ $display->id }}&schedule_id={{ $schedule->id }}">編集</a>
             </div>
         </div>
         
         <div class="form-group row">
             <div class="col-md-3 mx-auto">
-                <a class="btn btn-primary btn-lg btn-block" href="/calendar?id={{ $display->id }}">カレンダーに戻る</a>
+                <a class="btn btn-cancel btn-lg btn-block" href="/calendar?id={{ $display->id }}">カレンダーに戻る</a>
             </div>
         </div>
         

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Users;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth; //Authを使用するために導入
+use Illuminate\Database\Eloquent\SoftDeletes; //SoftDeleteを使用するために導入
 
 use App\Child;
 use App\User;
@@ -98,9 +99,11 @@ class ChildController extends Controller
      */
     public function index(Request $request){
         
+        //こどもの情報削除の際に、一人は必ず残すボタン無効化のための情報　と、↓のidがなかったとき最初のこども情報を取得するためのもの
+        $users_children = Auth::user()->children;
+        
         //もし$requestのidがなかったときは最初の子どもの詳細ページへ
         if(empty($request['id'])){
-            $users_child = Auth::user()->children;
             $id = $users_child[0]->id;
             
             return redirect('/child?id='.$id);
@@ -111,6 +114,10 @@ class ChildController extends Controller
         $display = Child::find($form);
         
         //親のこどもでないなら表示できないようにするルール
+        //SoftDeleteの場合はnullになっている
+        if($display == null){
+            abort(404);
+        }
         if($display->user_id != Auth::id()){
             abort(404);
         }
@@ -147,7 +154,7 @@ class ChildController extends Controller
             $display->blood_rh_id = "不明";
         }
         
-        return view('user.child_profile', ['display'=>$display]);
+        return view('user.child_profile', ['display'=>$display, 'users_children'=>$users_children]);
     }
     
     /**
@@ -189,6 +196,25 @@ class ChildController extends Controller
         return redirect('/home?id='.$child_data->id);
     }
     
-
+    
+    /**
+     * 
+     * こどもの情報削除（論理削除）
+     * @param Request $request
+     * 
+     * 
+     * 
+     */
+    public function childDelete(Request $request){
+        
+        $deleteChild = Child::find($request['id']);
+        unset($request['_token']);
+        
+        $deleteChild->delete();
+        
+        return redirect('/home');
+        
+    }
+    
     
 }

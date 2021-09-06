@@ -61,6 +61,7 @@ Route::get('/vaccine', 'Users\VaccineController@index')->middleware('auth');
 Route::group(['prefix' => 'child', 'middleware' => ['auth','checkchild',]],function(){
     Route::get('edit', 'Users\ChildController@edit');
     Route::post('edit', 'Users\ChildController@update');
+    Route::post('/', 'Users\ChildController@childDelete');
 });
 Route::get('/child', 'Users\ChildController@index')->middleware('auth');
 Route::get('/child/add', 'Users\ChildController@add')->middleware('auth');

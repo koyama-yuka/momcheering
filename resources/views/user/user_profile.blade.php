@@ -62,7 +62,7 @@
     
     <div class="form-group row">
         <div class="col-md-3 mx-auto">
-            <a class="btn btn-primary btn-lg btn-block" href="/user/edit">編集</a>
+            <a class="btn btn-edit btn-lg btn-block" href="/user/edit">編集</a>
         </div>
     </div>
     
