@@ -69,12 +69,12 @@ body {
 
 //予防接種完了したもの
 .btn-vaccine-done {
-    background-color: #DB9FB3;  /* 025 2のトーンイントーン */
+    background-color: #43DBC2;  /* 025 8 +10彩 */
     color: #74645C; 
 }
 //予防接種完了したもののhover時
-.btn-vaccine-done {
-    background-color: #75A6A8;  /* 025 2 +2暗*/
+.btn-vaccine-done:hover {
+    background-color: #3BC2AB;  /* 025 8 +10彩+2暗*/
     color: #74645C; 
 }
 
@@ -91,35 +91,36 @@ body {
 
 //編集、新規追加ボタン
 .btn-edit {
-    background-color: #87BFC1;  /* 025 2 */
+    background-color: #27BCC1;  /* 025 2 +10彩 */
     color: #74645C;
 }
 //編集、新規追加ボタンのhover時
 .btn-edit:hover {
-    background-color: #75A6A8;  /* 025 2 +2暗 */
+    background-color: #22A3A8;  /* 025 2 +10彩+2暗 */
     color: #74645C;
 }
 
 //削除ボタン
 .btn-delete {
-    background-color: #C18798; /* 025 2のスプリットコンプリメンタリー */
+    background-color: #C12755; /* 025 2 +10彩のスプリットコンプリメンタリー */
     color: #74645C;
 }
 //削除ボタンのhover時
 .btn-delete:hover {
-    background-color: #A87584; /* 025 2のスプリットコンプリメンタリー +2暗*/
+    background-color: #A8224A; /* 025 2 +10彩のスプリットコンプリメンタリー +2暗*/
     color: #74645C;
 }
 
 //戻る、キャンセルボタン
 .btn-cancel {
-    background-color: #B0DBD4;  /* 025 8 */
+    background-color: #87BFC1;  /* 025 2 */
     color: #74645C;
 }
 //戻る、キャンセルボタンのhover時
 .btn-cancel:hover {
-    background-color: #9CC2BB;  /* 025 8 +2暗*/
+    background-color: #75A6A8;  /* 025 2 +2暗*/
     color: #74645C;
 }
 
 //更新、登録ボタン
+

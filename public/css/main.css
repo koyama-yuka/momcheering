@@ -80,8 +80,14 @@ body {
 }
 
 .btn-vaccine-done {
-  background-color: #87BFC1;
-  /* 025 2 */
+  background-color: #43DBC2;
+  /* 025 8 +10彩 */
+  color: #74645C;
+}
+
+.btn-vaccine-done:hover {
+  background-color: #3BC2AB;
+  /* 025 8 +10彩+2暗*/
   color: #74645C;
 }
 
@@ -98,38 +104,38 @@ body {
 }
 
 .btn-edit {
+  background-color: #27BCC1;
+  /* 025 2 +10彩 */
+  color: #74645C;
+}
+
+.btn-edit:hover {
+  background-color: #22A3A8;
+  /* 025 2 +10彩+2暗 */
+  color: #74645C;
+}
+
+.btn-delete {
+  background-color: #C12755;
+  /* 025 2 +10彩のスプリットコンプリメンタリー */
+  color: #74645C;
+}
+
+.btn-delete:hover {
+  background-color: #A8224A;
+  /* 025 2 +10彩のスプリットコンプリメンタリー +2暗*/
+  color: #74645C;
+}
+
+.btn-cancel {
   background-color: #87BFC1;
   /* 025 2 */
   color: #74645C;
 }
 
-.btn-edit:hover {
-  background-color: #75A6A8;
-  /* 025 2 +2暗 */
-  color: #74645C;
-}
-
-.btn-delete {
-  background-color: #C18798;
-  /* 025 2のスプリットコンプリメンタリー */
-  color: #74645C;
-}
-
-.btn-delete:hover {
-  background-color: #A87584;
-  /* 025 2のスプリットコンプリメンタリー +2暗*/
-  color: #74645C;
-}
-
-.btn-cancel {
-  background-color: #B0DBD4;
-  /* 025 8 */
-  color: #74645C;
-}
-
 .btn-cancel:hover {
-  background-color: #9CC2BB;
-  /* 025 8 +2暗*/
+  background-color: #75A6A8;
+  /* 025 2 +2暗*/
   color: #74645C;
 }
 
