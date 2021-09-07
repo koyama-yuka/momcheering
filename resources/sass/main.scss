@@ -102,25 +102,33 @@ body {
 
 //削除ボタン
 .btn-delete {
-    background-color: #C12755; /* 025 2 +10彩のスプリットコンプリメンタリー */
+    border: 3px solid #C12755; /* 025 2 +10彩のスプリットコンプリメンタリー */
     color: #74645C;
 }
 //削除ボタンのhover時
 .btn-delete:hover {
-    background-color: #A8224A; /* 025 2 +10彩のスプリットコンプリメンタリー +2暗*/
+    border: 3px solid #A8224A; /* 025 2 +10彩のスプリットコンプリメンタリー +2暗*/
     color: #74645C;
 }
 
 //戻る、キャンセルボタン
 .btn-cancel {
-    background-color: #87BFC1;  /* 025 2 */
+    border: 3px solid #87BFC1;  /* 025 2 */
     color: #74645C;
 }
 //戻る、キャンセルボタンのhover時
 .btn-cancel:hover {
-    background-color: #75A6A8;  /* 025 2 +2暗*/
+    border: 3px solid #75A6A8;  /* 025 2 +2暗*/
     color: #74645C;
 }
 
 //更新、登録ボタン
-
+.btn-register {
+    background-color: #27BCC1;  /* 025 2 +10彩 */
+    color: #74645C;
+}
+//更新、登録ボタンのhover時
+.btn-register:hover {
+    background-color: #22A3A8;  /* 025 2 +10彩+2暗 */
+    color: #74645C;
+}

@@ -50,7 +50,10 @@ class VaccineController extends Controller
         //完了になった予防接種のIDを配列で取得する
         $check_vaccineNumber = array();
         foreach($checkStatus as $arr){
-            array_push($check_vaccineNumber, $arr->vaccine_id);
+            if(完了チェックが1のとき){
+                array_push($check_vaccineNumber, $arr->vaccine_id);
+            }
+            
         }
         
         return view('user.vaccine_index', ['display' => $display, 'vaccines' => $vaccines, 'check_vaccineNumber'=>$check_vaccineNumber]);

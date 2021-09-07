@@ -61,6 +61,7 @@
                     <label class="col-md-3" for="new_password">新しいパスワード（任意）</label>
                     <div class="col-md-5">
                         <input type="password" class="form-control" id="new_password" name="new_password">
+                        {{-- @error 追加する inputの中の@errorも枠を赤くするもので入れる--}}
                     </div>
                 </div>
                 
@@ -108,7 +109,7 @@
                         <input type="button" class="btn btn-cancel btn-lg btn-block" onclick="history.back(-1)" value="戻る">
                     </div>
                     <div class="col-md-3 mx-auto">
-                        <input type="submit" class="btn btn-primary btn-lg btn-block" value="　更新　">
+                        <input type="submit" class="btn btn-register btn-lg btn-block" value="　更新　">
                     </div>
                 </div>
                 

@@ -116,26 +116,38 @@ body {
 }
 
 .btn-delete {
-  background-color: #C12755;
+  border: 3px solid #C12755;
   /* 025 2 +10彩のスプリットコンプリメンタリー */
   color: #74645C;
 }
 
 .btn-delete:hover {
-  background-color: #A8224A;
+  border: 3px solid #A8224A;
   /* 025 2 +10彩のスプリットコンプリメンタリー +2暗*/
   color: #74645C;
 }
 
 .btn-cancel {
-  background-color: #87BFC1;
+  border: 3px solid #87BFC1;
   /* 025 2 */
   color: #74645C;
 }
 
 .btn-cancel:hover {
-  background-color: #75A6A8;
+  border: 3px solid #75A6A8;
   /* 025 2 +2暗*/
+  color: #74645C;
+}
+
+.btn-register {
+  background-color: #27BCC1;
+  /* 025 2 +10彩 */
+  color: #74645C;
+}
+
+.btn-register:hover {
+  background-color: #22A3A8;
+  /* 025 2 +10彩+2暗 */
   color: #74645C;
 }
 

@@ -92,6 +92,7 @@ class UserController extends Controller
         }
         
         //現在のパスワードの確認
+        //リダイレクトじゃなく、エラーメッセージ表示で返すほうが良い　return back()->withInput ～
         if(!password_verify($request->current_password, $user->password)){
             return redirect('/user/edit?id='.$display->id);
         }

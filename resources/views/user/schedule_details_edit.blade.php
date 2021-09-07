@@ -107,7 +107,7 @@
                     <div class="col-md-3 mx-auto">
                         <input type="hidden" name="id" value="{{ $display->id }}">
                         <input type="hidden" name="schedule_id" value="{{ $schedule->id }}">
-                        <input type="submit" class="btn btn-primary btn-lg btn-block" value="　更新　">
+                        <input type="submit" class="btn btn-register btn-lg btn-block" value="　更新　">
                     </div>
                 </div>
                 

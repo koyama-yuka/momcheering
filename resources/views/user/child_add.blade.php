@@ -126,7 +126,7 @@
                     </div>
             
                     <div class="col-md-3 mx-auto">
-                        <input type="submit" class="btn btn-primary btn-lg btn-block" value="　登録　">
+                        <input type="submit" class="btn btn-register btn-lg btn-block" value="　登録　">
                     </div>
                 </div>
                 
