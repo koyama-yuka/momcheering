@@ -1,4 +1,5 @@
 <?php
+//未使用モデル
 
 namespace App;
 

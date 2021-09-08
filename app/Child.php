@@ -26,6 +26,9 @@ class Child extends Model
         'blood_rh_id' => 'required|integer',
         'birth_weight' => 'required|numeric',
         'birth_height' => 'required|numeric',
+        'allergy' => 'nullable|string|max:255',
+        'sick' => 'nullable|string|max:255',
+        'child_memo' => 'nullable|string|max:255',
     );
     
     

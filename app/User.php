@@ -39,23 +39,6 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
     
-    /**
-     * 
-     * ユーザー情報更新時に使用するバリデート用
-     * 
-     * 
-     */
-    //public static $rules = array(
-    //    'user_name' => 'required|string|max:255',
-    //    'email' => 'required|string|email|max:255',
-    //    'password' => 'required',
-    //    'relationship_id' => 'required',
-    //    'notice_flag' => 'required',
-    //    
-    //    );
-    
-    
-    
     //t_childrenとの関連
     public function children()
     {

@@ -45,15 +45,14 @@ class VaccineController extends Controller
         //マスターテーブルの情報取得
         $vaccines = Vaccine::all();
         
-        //完了チェックの情報取得
+        //完了チェックの情報を取得し、その中でdone_checkが1（完了）のものを配列で取得
         $checkStatus = $display->checkC;
-        //完了になった予防接種のIDを配列で取得する
         $check_vaccineNumber = array();
+        
         foreach($checkStatus as $arr){
-            if(完了チェックが1のとき){
+            if($arr->done_check == 1){
                 array_push($check_vaccineNumber, $arr->vaccine_id);
             }
-            
         }
         
         return view('user.vaccine_index', ['display' => $display, 'vaccines' => $vaccines, 'check_vaccineNumber'=>$check_vaccineNumber]);
