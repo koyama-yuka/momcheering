@@ -170,6 +170,7 @@ return [
         'inoculation_date' => '接種日',
         'hospital' => '医療機関名',
         'vaccine_memo' => 'メモ',
+        'new_password' => '新しいパスワード',
         ],
 
 ];

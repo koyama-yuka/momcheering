@@ -60,8 +60,12 @@
                 <div class="form-group row">
                     <label class="col-md-3" for="new_password">新しいパスワード（任意）</label>
                     <div class="col-md-5">
-                        <input type="password" class="form-control" id="new_password" name="new_password">
-                        {{-- @error 追加する inputの中の@errorも枠を赤くするもので入れる--}}
+                        <input type="password" class="form-control @error('new_password') is-invalid @enderror" id="new_password" name="new_password">
+                        @error('new_password')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
                     </div>
                 </div>
                 
@@ -69,7 +73,7 @@
                 <div class="form-group row">
                     <label class="col-md-3" for="new_password_confirmation">新しいパスワード確認（新しく設定の際は必須）</label>
                     <div class="col-md-5">
-                        <input type="password" class="form-control" id="new_password_confirmation" name="new_password_confirmation">
+                        <input type="password" class="form-control @error('new_password_confirmation') is-invalid @enderror" id="new_password_confirmation" name="new_password_confirmation">
                     </div>
                 </div>
                 
