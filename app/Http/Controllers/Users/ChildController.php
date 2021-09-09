@@ -210,7 +210,10 @@ class ChildController extends Controller
         $deleteChild = Child::find($request['id']);
         unset($request['_token']);
         
-        $deleteChild->delete();
+        //2人以上の子がいるなら削除可、最低1人はこどもがいるように
+        if(2 <= count(Auth::user()->children)){
+            $deleteChild->delete();
+        }
         
         return redirect('/home');
         
