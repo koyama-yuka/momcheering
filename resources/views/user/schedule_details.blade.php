@@ -10,9 +10,11 @@
 {{-- contentここから --}}
 @section('content')
     <div class="container">
-        <h3>予定！</h3>
-        
-        <h3>{{ $schedule->date }}</h3>
+        <div class="row">
+            <div class="col-md-3 mx-auto">
+                <h3>{{ $schedule->date }}</h3>
+            </div>
+        </div>
         
         <div class="row">
             <div class="col-md-2">
@@ -57,7 +59,7 @@
         
         <div class="row">
             <div class="col-md-8">
-                開始時間：{{ $schedule->start_time }}
+                開始時間：{{ substr($schedule->start_time, 0, 5) }}
             </div>
         </div> 
         

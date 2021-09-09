@@ -82,36 +82,25 @@
                     {{-- 予定があるとき --}}
                     @isset($daySchedules[0])
                         @foreach($daySchedules as $daySchedule)
-                            <div class="card">
+                            
+                            <div class="card mb-2">
                                 <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            予防接種： 
-                                            @if($daySchedule->vaccine_flag == 1)
-                                                あり
-                                            @else
-                                                なし
-                                            @endif
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            健診： 
-                                            @if($daySchedule->medical_flag == 1)
-                                                あり
-                                            @else
-                                                なし
-                                            @endif
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            開始時間：{{ $daySchedule->start_time }}
-                                        </div>
-                                    </div>
+                                    予防接種： 
+                                        @if($daySchedule->vaccine_flag == 1)
+                                            あり<br>
+                                        @else
+                                            なし<br>
+                                        @endif
+                                    健診： 
+                                        @if($daySchedule->medical_flag == 1)
+                                            あり<br>
+                                        @else
+                                            なし<br>
+                                        @endif
+                                    開始時間：{{ substr($daySchedule->start_time, 0, 5) }}<br>
                                 </div>
-                                
                             </div>
+                            
                         @endforeach
                     {{-- 予定がないとき --}}
                     @else

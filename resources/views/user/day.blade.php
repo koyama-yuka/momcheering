@@ -10,12 +10,15 @@
 {{-- contentここから --}}
 @section('content')
     <div class="container">
-        <h3>予定！</h3>
+        <div class="row">
+            <div class="col-md-3 mx-auto">
+                <h3>{{ $date }}</h3>
+            </div>
+        </div>
         
         {{-- 予定があるとき --}}
         @isset($daySchedules[0])
         @foreach($daySchedules as $daySchedule)
-        <h3>{{ $daySchedule->date }}</h3>
         
         <div class="row">
             <div class="col-md-2">
@@ -56,28 +59,19 @@
                     {{$daySchedule->medical->medicalcheck_name}}
                 @endif
             </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-8">
-                開始時間：{{ $daySchedule->start_time }}
-            </div>
-        </div> 
-        
-        <div class="row">
-            <div class="col-md-8">
-                メモ：{{ $daySchedule->schedule_memo }}
-            </div>
-        </div>
-        
-        
-        {{-- 詳細ボタン --}}
-        <div class="form-group row">
-            <div class="col-md-3 mx-auto">
-                <a class="btn btn-primary btn-lg btn-block" href="/calendar/details?id={{ $display->id }}&schedule_id={{ $daySchedule->id }}">詳細へ</a>
+            
+            {{-- 詳細ボタン --}}
+            <div class="col-md-2 mx-auto">
+                <a class="btn btn-primary btn-block" href="/calendar/details?id={{ $display->id }}&schedule_id={{ $daySchedule->id }}">詳細へ</a>
             </div>    
         </div>
         
+        <div class="row">
+            <div class="col-md-8">
+                開始時間：{{ substr($daySchedule->start_time, 0, 5) }}
+            </div>
+        </div>
+        <p></p>
         @endforeach
         
         
