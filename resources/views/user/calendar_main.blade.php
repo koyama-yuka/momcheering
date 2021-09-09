@@ -66,52 +66,60 @@
 @section('content')
     <div class="container">
         <div class="row">
+            {{-- マンスリーカレンダー --}}
             <div class="col-md-10">
                 <div id="calendar"></div>
             </div>
             
+            {{-- 今日の予定　表示 --}}
             <div class="col-md-2">
                 <div class="row">
-                    <div class="col-md-12">今日の予定</div>
+                    <div class="col-md-10 mx-auto"><h3>今日の予定</h3></div>
                 </div>
                 
-                {{-- 予定があるとき --}}
-                @isset($daySchedules[0])
-                    @foreach($daySchedules as $daySchedule)
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        予防接種予定： 
-                                        @if($daySchedule->vaccine_flag == 1)
-                                            あり
-                                        @else
-                                            なし
-                                        @endif
+                <div class="row">
+                    <div class="col-md-12">
+                    {{-- 予定があるとき --}}
+                    @isset($daySchedules[0])
+                        @foreach($daySchedules as $daySchedule)
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            予防接種： 
+                                            @if($daySchedule->vaccine_flag == 1)
+                                                あり
+                                            @else
+                                                なし
+                                            @endif
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            健診： 
+                                            @if($daySchedule->medical_flag == 1)
+                                                あり
+                                            @else
+                                                なし
+                                            @endif
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            開始時間：{{ $daySchedule->start_time }}
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        健診予定： 
-                                        @if($daySchedule->medical_flag == 1)
-                                            あり
-                                        @else
-                                            なし
-                                        @endif
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        開始時間：{{ $daySchedule->start_time }}
-                                    </div>
-                                </div>
+                                
                             </div>
-                        </div>
-                    @endforeach
-                {{-- 予定がないとき --}}
-                @else
-                    <h3>予定はありません</h3>
-                @endisset
+                        @endforeach
+                    {{-- 予定がないとき --}}
+                    @else
+                        <h4>予定はありません</h4>
+                    @endisset
+                    </div>
+                </div>
+                
             </div>
         </div>
     </div>
