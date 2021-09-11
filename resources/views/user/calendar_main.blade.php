@@ -46,7 +46,7 @@
         });
         setTimeout(function(){
             calendar.render();
-        }, 500);
+        }, 100);
     });
 
 </script>
@@ -82,8 +82,8 @@
                     {{-- 予定があるとき --}}
                     @isset($daySchedules[0])
                         @foreach($daySchedules as $daySchedule)
-                            
                             <div class="card mb-2">
+                                <a class="schedule-link" href="/calendar/details?id={{ $display->id }}&schedule_id={{ $daySchedule->id }}">
                                 <div class="card-body">
                                     予防接種： 
                                         @if($daySchedule->vaccine_flag == 1)
@@ -99,6 +99,7 @@
                                         @endif
                                     開始時間：{{ substr($daySchedule->start_time, 0, 5) }}<br>
                                 </div>
+                                </a>
                             </div>
                             
                         @endforeach

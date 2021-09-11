@@ -35,7 +35,7 @@
                 
                 <div class="form-group row">
                     <label class="col-md-3" for="vaccine_flag">予防接種の有無</label>
-                    <div class="col-md-6 radio-inline">
+                    <div class="col-md-6 radio-inline @error('vaccine_flag') is-invalid @enderror">
                         <input type="radio" name="vaccine_flag" id="vaccine_flag_on" value="1">
                         <label for="yes">あり</label>
                         
@@ -44,7 +44,7 @@
                     </div>
                 </div>
                 
-                {{-- TODO:保存の仕方 --}}
+                
                 <div class="form-group row">
                     <label class="col-md-3" for="vaccine_id">予防接種の種類</label>
                     <div class="col-md-8">
@@ -61,7 +61,7 @@
                 
                 <div class="form-group row">
                     <label class="col-md-3" for="medical_flag">健診の有無</label>
-                    <div class="col-md-6 radio-inline">
+                    <div class="col-md-6 radio-inline @error('medical_flag') is-invalid @enderror">
                         <input type="radio" name="medical_flag" id="medical_flag_on" value="1">
                         <label for="yes">あり</label>
                         
@@ -87,7 +87,12 @@
                 <div class="form-group row">
                     <label class="col-md-3" for="start_time">開始時間</label>
                     <div class="col-md-3">
-                        <input id="start_time" type="time" class="form-control" name="start_time" value="{{ old('start_time') }}">
+                        <input id="start_time" type="time" class="form-control @error('start_time') is-invalid @enderror" name="start_time" value="{{ old('start_time') }}">
+                        @error('start_time')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
                 </div>
                 
@@ -95,7 +100,12 @@
                 <div class="form-group row">
                     <label class="col-md-3" for="schedule_memo">メモ</label>
                     <div class="col-md-5">
-                        <textarea class="form-control" name="schedule_memo" rows="6" placeholder="メモスペース">{{ old('schedule_memo') }}</textarea>
+                        <textarea class="form-control @error('schedule_memo') is-invalid @enderror" name="schedule_memo" rows="6" placeholder="メモスペース">{{ old('schedule_memo') }}</textarea>
+                        @error('schedule_memo')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
                 </div>
                 

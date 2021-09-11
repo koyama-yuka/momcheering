@@ -95,7 +95,12 @@
                 <div class="form-group row">
                     <label class="col-md-3" for="schedule_memo">メモ</label>
                     <div class="col-md-5">
-                        <textarea class="form-control" name="schedule_memo" rows="6" placeholder="メモスペース">{{ $schedule->schedule_memo }}</textarea>
+                        <textarea class="form-control @error('schedule_memo') is-invalid @enderror" name="schedule_memo" rows="6" placeholder="メモスペース">{{ $schedule->schedule_memo }}</textarea>
+                        @error('schedule_memo')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
                 </div>
                 

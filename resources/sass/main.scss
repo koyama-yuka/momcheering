@@ -132,3 +132,14 @@ body {
     background-color: #22A3A8;  /* 025 2 +10彩+2暗 */
     color: #74645C;
 }
+
+
+//マンスリーカレンダー横の今日の予定カード
+.schedule-link {
+    color: 000;
+}
+//マンスリーカレンダー横の今日の予定カードのhover時
+.schedule-link:hover {
+    text-decoration: none;
+    color: 000;
+}

@@ -151,3 +151,12 @@ body {
   color: #74645C;
 }
 
+.schedule-link {
+  color: 0;
+}
+
+.schedule-link:hover {
+  text-decoration: none;
+  color: 0;
+}
+
