@@ -84,7 +84,7 @@
                 </div>
             </div>
             
-            
+            {{-- 前日メール機能に関しては今後勉強したら実装予定で
             <div class="form-group row">
                 <label class="col-md-3" for="notice_flag">前日メールの受け取り</label>
                 <div class="col-md-6 radio-inline">
@@ -95,7 +95,7 @@
                     <label for="no">受け取らない</label>
                 </div>
             </div>
-            
+            --}}
             
             
             {{-- こどもの情報登録 --}}

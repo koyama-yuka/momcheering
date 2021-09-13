@@ -56,7 +56,7 @@ class RegisterController extends Controller
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'relationship_id' => ['required', 'integer'],
-            'notice_flag' => ['required', 'integer'],
+            //'notice_flag' => ['required', 'integer'],
             
             'child_name' => ['required', 'string', 'max:255'],
             'gender_id' => ['required', 'integer'],
@@ -86,7 +86,7 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'relationship_id' => $data['relationship_id'],
-            'notice_flag' => $data['notice_flag'],
+            //'notice_flag' => $data['notice_flag'],
             ]);
             
             

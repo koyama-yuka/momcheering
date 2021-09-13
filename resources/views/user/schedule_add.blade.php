@@ -36,10 +36,10 @@
                 <div class="form-group row">
                     <label class="col-md-3" for="vaccine_flag">予防接種の有無</label>
                     <div class="col-md-6 radio-inline @error('vaccine_flag') is-invalid @enderror">
-                        <input type="radio" name="vaccine_flag" id="vaccine_flag_on" value="1">
+                        <input type="radio" name="vaccine_flag" id="vaccine_flag_on" value="1" checked>
                         <label for="yes">あり</label>
                         
-                        <input type="radio" name="vaccine_flag" id="vaccine_flag_off" value="0" >
+                        <input type="radio" name="vaccine_flag" id="vaccine_flag_off" value="0">
                         <label for="no">なし</label>
                     </div>
                 </div>
@@ -62,7 +62,7 @@
                 <div class="form-group row">
                     <label class="col-md-3" for="medical_flag">健診の有無</label>
                     <div class="col-md-6 radio-inline @error('medical_flag') is-invalid @enderror">
-                        <input type="radio" name="medical_flag" id="medical_flag_on" value="1">
+                        <input type="radio" name="medical_flag" id="medical_flag_on" value="1" checked>
                         <label for="yes">あり</label>
                         
                         <input type="radio" name="medical_flag" id="medical_flag_off" value="0">

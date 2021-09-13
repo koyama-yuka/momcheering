@@ -80,7 +80,7 @@ class UserController extends Controller
             'email' => 'required|string|email|max:255',
             'current_password' => 'required',
             'relationship_id' => 'required',
-            'notice_flag' => 'required',
+            //'notice_flag' => 'required',
             ]);
             
         
@@ -111,7 +111,7 @@ class UserController extends Controller
         $user->name = $request->user_name;
         $user->email = $request->email;
         $user->relationship_id = $request->relationship_id;
-        $user->notice_flag = $request->notice_flag;
+        //$user->notice_flag = $request->notice_flag;
         
         $user->update();
         

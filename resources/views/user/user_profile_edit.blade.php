@@ -95,7 +95,7 @@
                     </div>
                 </div>
                 
-                
+                {{--
                 <div class="form-group row">
                     <label class="col-md-3" for="password">前日メールの受け取り（必須）</label>
                     <div class="col-md-9 radio-inline">
@@ -106,6 +106,7 @@
                         <label for="no">受け取らない</label>
                     </div>
                 </div>
+                --}}
                 
                 
                 <div class="form-group row">

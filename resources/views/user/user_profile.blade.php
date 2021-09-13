@@ -47,6 +47,7 @@
         </div>
     </div>
     
+    {{--
     <div class="row">
         <div class="col-md-3">
             <h3>前日メールの受け取り</h3>
@@ -59,6 +60,7 @@
             @endif
         </div>
     </div>
+    --}}
     
     <div class="form-group row">
         <div class="col-md-3 mx-auto">
