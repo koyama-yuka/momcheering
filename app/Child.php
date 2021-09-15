@@ -20,10 +20,10 @@ class Child extends Model
      */
     public static $rules = array(
         'child_name' => 'required|string|max:255',
-        'gender_id' => 'required|integer',
+        'gender_id' => 'required|digits_between:1,3',
         'birthday' => 'required|date',
-        'blood_type_id' => 'required|integer',
-        'blood_rh_id' => 'required|integer',
+        'blood_type_id' => 'required|digits_between:1,5',
+        'blood_rh_id' => 'required|digits_between:1,3',
         'birth_weight' => 'required|numeric',
         'birth_height' => 'required|numeric',
         'allergy' => 'nullable|string|max:255',

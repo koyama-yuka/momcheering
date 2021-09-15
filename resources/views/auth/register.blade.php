@@ -211,11 +211,11 @@
             
             <div class="form-group row">
                 <div class="col-md-3 mx-auto">
-                    <input type="button" class="btn btn-primary btn-lg btn-block" onclick="history.back(-1)" value="戻る">
+                    <input type="button" class="btn btn-cancel btn-lg btn-block" onclick="history.back(-1)" value="戻る">
                 </div>
                 
                 <div class="col-md-3 mx-auto">
-                    <input type="submit" class="btn btn-primary btn-lg btn-block" value="登録">
+                    <input type="submit" class="btn btn-register btn-lg btn-block" value="登録">
                 </div>
             </div>
             

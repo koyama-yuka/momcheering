@@ -55,16 +55,16 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'relationship_id' => ['required', 'integer'],
+            'relationship_id' => ['required', 'digits_between:1,3'],
             //'notice_flag' => ['required', 'integer'],
             
             'child_name' => ['required', 'string', 'max:255'],
-            'gender_id' => ['required', 'integer'],
+            'gender_id' => ['required', 'digits_between:1,3'],
             'birthday' => ['required', 'date'],
-            'blood_type_id' => ['required', 'integer'],
-            'blood_rh_id' => ['required', 'integer'],
-            'birth_weight' => ['required', 'numeric'],
-            'birth_height' => ['required', 'numeric'],
+            'blood_type_id' => ['required', 'digits_between:1,5'],
+            'blood_rh_id' => ['required', 'digits_between:1,3'],
+            'birth_weight' => ['required', 'numeric', 'max:10000'],
+            'birth_height' => ['required', 'numeric', 'max:100'],
         ]);
     }
 

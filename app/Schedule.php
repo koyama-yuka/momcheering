@@ -12,9 +12,9 @@ class Schedule extends Model
     
     public static $rules = array(
         'date' => 'required|date',
-        'vaccine_flag' => 'required|integer',
-        'medical_flag' => 'required|integer',
-        'medical_id' => 'nullable|integer',
+        'vaccine_flag' => 'required|digits_between:0,1',
+        'medical_flag' => 'required|digits_between:0,1',
+        'medical_id' => 'nullable|digits_between:1,12',
         'start_time' => 'required|date_format:H:i',
         'schedule_memo' => 'nullable|string|max:255',
         );

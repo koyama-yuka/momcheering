@@ -29,11 +29,13 @@
         @endforeach
         </div>
         
+        {{-- PDF化は今後の課題で予定
         <div class="form-group row">
             <div class="col-md-4 mx-auto">
-                <input type="submit" class="btn btn-pdf btn-lg btn-block" value="データPDF出力ボタン"> {{-- PDF化については最後の最後かな… --}}
+                <input type="submit" class="btn btn-pdf btn-lg btn-block" value="データPDF出力ボタン">
             </div>
         </div>
+        --}}
     </div>
 
 

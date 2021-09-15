@@ -13,6 +13,6 @@ class VaccineHistory extends Model
     public static $rules = array(
         'inoculation_date' => 'nullable|date',
         'hospital' => 'nullable|string|max:255',
-        'vaccine_memo' => 'nullable|string'
+        'vaccine_memo' => 'nullable|string|max:255'
         );
 }
