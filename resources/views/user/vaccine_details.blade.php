@@ -11,8 +11,8 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <div class="col-md-4 mx-auto">
-                <h3>{{ $vaccine->vaccine_name }}</h3>
+            <div class="col-12 mx-auto text-center h3">
+                {{ $vaccine->vaccine_name }}
             </div>
         </div>
         
@@ -23,56 +23,51 @@
             </div>
         </div>
         --}}
-        
-        
-            
+        <div class="col-7 mx-auto">
             @for($i = 1; $i <= $vaccine->vaccine_times; $i++)
                 <div class="row">
-                    <div class="col-md-1"><h3>{{ $i }}回目</h3></div>
-                    
-                    {{-- 記録がないとき --}}
-                    @empty($vaccine_histories[$i-1])
-                    
-                        <div class="col-md-2">
-                            <h3>接種日</h3>
-                        </div>
-                        <div class="col-md-3">
-                            <h3>接種日がありません</h3>
-                        </div>
-                        
-                        <div class="col-md-2">
-                            <h3>医療機関</h3>
-                        </div>
-                        <div class="col-md-4">
-                            <h3>接種記録がありません</h3>
-                        </div>
-                    
-                    
-                    {{-- 記録がないとき --}}
-                    @else
-                    
-                        <div class="col-md-2">
-                            <h3>接種日</h3>
-                        </div>
-                        <div class="col-md-3">
-                            <h3>{{ $vaccine_histories[$i-1]->inoculation_date }}</h3>
-                        </div>
-                        
-                        <div class="col-md-2">
-                            <h3>医療機関</h3>
-                        </div>
-                        <div class="col-md-4">
-                            <h3>{{ $vaccine_histories[$i-1]->hospital }}</h3>
-                        </div>
-                    
-                    
-                    @endempty
-                    
-                    
-                    
+                    <div class="col-md-6 h3">【{{ $i }}回目】</div>
                 </div>
-            @endfor
-        
+                    
+                {{-- 記録がないとき --}}
+                @empty($vaccine_histories[$i-1])
+                    <div class="row">
+                        <div class="col-md-6 vaccine_record">
+                            接種の記録がありません
+                        </div>
+                    </div>
+                    <p></p>
+                    
+                {{-- 記録があるとき --}}
+                @else
+                    <div class="row">
+                        <div class="col-md-3 vaccine_record">
+                            接種日：
+                        </div>
+                        <div class="col-md-3 vaccine_record">
+                            {{ $vaccine_histories[$i-1]->inoculation_date }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3 vaccine_record">
+                            医療機関：
+                        </div>
+                        <div class="col-md-4 vaccine_record">
+                            {{ $vaccine_histories[$i-1]->hospital }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3 vaccine_record">
+                            メモ：
+                        </div>
+                        <div class="col-md-8 vaccine_record">
+                            {{ $vaccine_histories[$i-1]->vaccine_memo }}
+                        </div>
+                    </div>
+                    <p></p>
+            @endempty
+        @endfor
+        </div>
         
         <div class="form-group row">
             <div class="col-md-3 mx-auto">

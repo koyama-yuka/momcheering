@@ -160,3 +160,21 @@ body {
   color: 0;
 }
 
+.vaccine_record {
+  font-size: large;
+}
+
+@media (max-width: 991px) {
+  .vaccine_record {
+    font-size: 100%;
+  }
+}
+
+/*
+@include media-breakpoint-up(md) {
+    .vaccine_record {
+        font-size: medium;
+    }
+}
+*/
+
