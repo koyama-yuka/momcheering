@@ -105,7 +105,7 @@
                         @endforeach
                     {{-- 予定がないとき --}}
                     @else
-                        <h4>予定はありません</h4>
+                        <p>予定はありません</p>
                     @endisset
                     </div>
                 </div>
