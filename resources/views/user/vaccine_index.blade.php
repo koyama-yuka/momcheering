@@ -22,7 +22,7 @@
                 </div>
             @else
                 <div class="col-lg-4 mb-3">
-                    <a class="btn btn-vaccine btn-lg btn-block py-3 d-flex align-items-center justify-content-center" href="/vaccine/details?id={{ $display->id }}&vaccine_id={{ $vaccine->id }}" role="button">{{ $vaccine->vaccine_name }}</a>
+                    <a class="btn btn-vaccine btn-lg btn-block py-3 d-flex align-items-center justify-content-center" href="/vaccine/details?id={{ $display->id }}&vaccine_id={{ $vaccine->id }}" role="button"><div>{{ $vaccine->vaccine_name }}</div></a>
                 </div>
             @endif
             

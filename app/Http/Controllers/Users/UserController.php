@@ -22,7 +22,8 @@ class UserController extends Controller
      * 
      */
     public function loginTop(){
-        return view('auth.login');
+        
+        return redirect('/home');
     }
     
     /**
