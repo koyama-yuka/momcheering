@@ -48,16 +48,16 @@
                 </div>
                 
                 <div class="form-group row">
-                    <div class="col-md-8 offset-md-4">
-                        <button type="submit" class="btn btn-primary">{{ __('messages.Login') }}</button>
+                    <div class="col-5 mx-auto">
+                        <button type="submit" class="btn btn-main-content btn-block">{{ __('messages.Login') }}</button>
                     </div>
                 </div>
                 
             </form>
             
             <div class="form-group row">
-                <div class="col-md-8 offset-md-4">
-                    <button type="button" class="btn btn-primary" onclick="location.href='/register'">新規登録の方はこちら</button>
+                <div class="col-5 mx-auto">
+                    <button type="button" class="btn btn-main-content btn-block" onclick="location.href='/register'">新規登録の方はこちら</button>
                 </div>
             </div>
             

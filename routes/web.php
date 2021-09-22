@@ -17,7 +17,7 @@ Route::get('/', function () {
 });
 */
 
-Route::get('/', 'Users\UserController@loginTop'); //ログイン画面
+Route::get('/', 'Users\UserController@loginTop'); //ログイン画面　ログインしていたらHOMEへ
 
 
 

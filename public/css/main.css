@@ -71,6 +71,7 @@ body {
   background-color: #B0DBD4;
   /* 025 8 */
   color: #74645C;
+  height: 70px;
 }
 
 .btn-vaccine:hover {
@@ -83,12 +84,17 @@ body {
   background-color: #43DBC2;
   /* 025 8 +10彩 */
   color: #74645C;
+  height: 70px;
 }
 
 .btn-vaccine-done:hover {
   background-color: #3BC2AB;
   /* 025 8 +10彩+2暗*/
   color: #74645C;
+}
+
+.vaccine-button {
+  font-size: 15px;
 }
 
 .btn-pdf {
@@ -169,12 +175,4 @@ body {
     font-size: 100%;
   }
 }
-
-/*
-@include media-breakpoint-up(md) {
-    .vaccine_record {
-        font-size: medium;
-    }
-}
-*/
 

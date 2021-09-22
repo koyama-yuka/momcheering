@@ -17,7 +17,7 @@ class UserController extends Controller
     /**
      * 
      * ログイン画面の表示
-     * 
+     * (ログインしていたらHOMEへ)
      * 
      * 
      */

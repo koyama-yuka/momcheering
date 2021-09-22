@@ -45,7 +45,7 @@ body {
 }
 
 
-//homeのボタン３つ
+//homeのボタン３つ ログインボタン/新規登録ボタン
 .btn-main-content {
     background-color: #B5D569;  /* 025 7 */
     color: #74645C;
@@ -60,6 +60,7 @@ body {
 .btn-vaccine {
     background-color: #B0DBD4;  /* 025 8 */
     color: #74645C;
+    height: 70px;
 }
 //予防接種一覧のhover時
 .btn-vaccine:hover {
@@ -70,13 +71,23 @@ body {
 //予防接種完了したもの
 .btn-vaccine-done {
     background-color: #43DBC2;  /* 025 8 +10彩 */
-    color: #74645C; 
+    color: #74645C;
+    height: 70px;
 }
 //予防接種完了したもののhover時
 .btn-vaccine-done:hover {
     background-color: #3BC2AB;  /* 025 8 +10彩+2暗*/
     color: #74645C; 
 }
+
+
+//予防接種一覧ボタンの文字サイズ
+.vaccine-button {
+    font-size: 15px;
+}
+
+
+
 
 //PDF出力ボタン
 .btn-pdf {
@@ -154,10 +165,3 @@ body {
         font-size: 100%;
     }
 }
-/*
-@include media-breakpoint-up(md) {
-    .vaccine_record {
-        font-size: medium;
-    }
-}
-*/
