@@ -41,27 +41,18 @@
                 {{-- 記録があるとき --}}
                 @else
                     <div class="row">
-                        <div class="col-md-3 vaccine_record">
-                            接種日：
-                        </div>
-                        <div class="col-md-3 vaccine_record">
-                            {{ $vaccine_histories[$i-1]->inoculation_date }}
+                        <div class="col-12 vaccine_record">
+                            接種日：{{ $vaccine_histories[$i-1]->inoculation_date }}
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-3 vaccine_record">
-                            医療機関：
-                        </div>
-                        <div class="col-md-4 vaccine_record">
-                            {{ $vaccine_histories[$i-1]->hospital }}
+                        <div class="col-12 vaccine_record">
+                            医療機関：{{ $vaccine_histories[$i-1]->hospital }}
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-3 vaccine_record">
-                            メモ：
-                        </div>
-                        <div class="col-md-8 vaccine_record">
-                            {{ $vaccine_histories[$i-1]->vaccine_memo }}
+                        <div class="col-md-12 vaccine_record">
+                            (メモ) {{ $vaccine_histories[$i-1]->vaccine_memo }}
                         </div>
                     </div>
                     <p></p>

@@ -9,11 +9,11 @@
     
     <div class="container">
         <div class="row">
-            <div class="col-md-6 mx-auto">
+            <div class="col-md-6 mx-auto h4 text-center">
             @if(empty($todaySchedule[0]))
-                <h3>{{ $display->child_name }}の今日の予定はありません</h3>
+                {{ $display->child_name }}の今日の予定はありません
             @else
-                <h3>{{ $display->child_name }}の今日の予定は<a class="todayschedule" href="/calendar/day?id={{ $display->id }}&date={{ $today }}">{{ count($todaySchedule) }}件</a>あります</h3>
+                {{ $display->child_name }}の今日の予定は<a class="todayschedule" href="/calendar/day?id={{ $display->id }}&date={{ $today }}">{{ count($todaySchedule) }}件</a>あります
             @endif
             </div>
         </div>

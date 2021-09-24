@@ -39,11 +39,13 @@
             <nav class="navbar navbar-expand-md navbar-mom">
                 <div class="container">
                     <a class="navbar-brand" href="{{ url('/home') }}?id={{ $display->id }}">子育て応援！母子手帳サポートシステム</a>
+                    {{--
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Togglenavigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
+                    --}}
                     
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <div class="navbarSupportedContent" id="navbarSupportedContent">
                         <!-- Left Side Of Navbar -->
                         <ul class="navbar-nav mr-auto">
                             
@@ -107,7 +109,7 @@
                 {{-- こどもの名前ボタン --}}
                     @foreach(Auth::user()->children as $child)
                     
-                    <div class="col-md-2">
+                    <div class="col-md-2 mb-1">
                     {{--
                     <a class="btn btn-primary btn-lg btn-block" href="{{ url()->current() }}?id={{ $child->id }}" role="button">{{ $child->child_name }}</a>
                     --}}
