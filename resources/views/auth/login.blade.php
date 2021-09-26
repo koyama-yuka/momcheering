@@ -22,20 +22,27 @@
                 <div class="form-group row">
                     <label class="col-md-3" for="email">{{ __('messages.E-Mail Address') }}</label>
                     <div class="col-md-6">
-                        <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" placeholder="メールアドレス" value="{{ old('email') }}" required autofocus>
+                        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" placeholder="メールアドレス" value="{{ old('email') }}" autocomplete="email" required autofocus>
+                        
+                        @error('email')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                        
                     </div>
                 </div>
                 
                 <div class="form-group row">
                     <label class="col-md-3" for="password">{{ __('messages.Password') }}</label>
                     <div class="col-md-6">
-                        <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" placeholder="パスワード" required>
+                        <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" placeholder="パスワード" autocomplete="current-password" required>
                         
-                        @if ($errors->has('password'))
-                            <span class="invalid-feedback">
-                                <strong>{{ $errors->first('password') }}</strong>
+                        @error('password')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
                             </span>
-                        @endif
+                        @enderror
                     </div>
                 </div>
                 
