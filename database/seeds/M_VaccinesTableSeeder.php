@@ -101,6 +101,7 @@ class M_VaccinesTableSeeder extends Seeder
                 'updated_at' => new DateTime(),
             ],
             
+            /*
             [
                 'vaccine_name' => 'その他',
                 'vaccine_times' => '1',
@@ -108,6 +109,7 @@ class M_VaccinesTableSeeder extends Seeder
                 'created_at' => new DateTime(),
                 'updated_at' => new DateTime(),
             ],
+            */
             
         ]);
     }
