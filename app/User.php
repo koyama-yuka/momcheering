@@ -42,7 +42,7 @@ class User extends Authenticatable
     //t_childrenとの関連
     public function children()
     {
-        return $this->hasMany('App\Child');
+        return $this->hasMany('App\Child')->orderBy('child.id'); //9/30で解決すること！！
     }
     
     
