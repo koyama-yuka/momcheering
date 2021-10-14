@@ -10,7 +10,7 @@
         },
             
         locale: 'ja',
-        navLinks: true, 
+        navLinks: false, 
         businessHours: true, 
         editable: true,
         selectable: true,

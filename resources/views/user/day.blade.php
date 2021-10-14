@@ -34,9 +34,13 @@
             <div class="col-md-10">
                 ワクチン：
                 @if($daySchedule->vaccine_flag == 1)
-                    @foreach(explode(",", $daySchedule->vaccineSchedule->vaccine_id) as $vaccineNameID)
+                    @if($daySchedule->vaccineSchedule->vaccine_id == "")
+                        指定なし
+                    @else
+                        @foreach(explode(",", $daySchedule->vaccineSchedule->vaccine_id) as $vaccineNameID)
                             {{ $vaccines[$vaccineNameID - 1]->vaccine_name }} /
-                    @endforeach
+                        @endforeach
+                    @endif
                 @endif
                 
             </div>
@@ -56,7 +60,11 @@
             <div class="col-md-5">
                 検診：
                 @if($daySchedule->medical_flag == 1)
-                    {{$daySchedule->medical->medicalcheck_name}}
+                    @if($daySchedule->medical == "")
+                        指定なし
+                    @else
+                        {{$daySchedule->medical->medicalcheck_name}}
+                    @endif
                 @endif
             </div>
             

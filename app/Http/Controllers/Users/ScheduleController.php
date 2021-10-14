@@ -122,6 +122,19 @@ class ScheduleController extends Controller
         $this->validate($request, Schedule::$rules);
         $this->validate($request,VaccineSchedule::$rules);
         
+        if($request->medical_flag == 1){
+            $request->validate([
+                'medical_id' => 'required',
+                ]);
+        }
+        if($request->vaccine_flag == 1){
+            $request->validate([
+                'vaccine_id' => 'required',
+                ]);
+        }
+        
+        
+        
         $display = Child::find($request->id);
         
         if(!empty($request->vaccine_id)){

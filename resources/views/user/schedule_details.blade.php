@@ -31,9 +31,13 @@
             <div class="col-md-10">
                 ワクチンの名前：
                 @if($schedule->vaccine_flag == 1)
-                    @foreach($vaccine_kind as $vaccine_kindID)
-                        {{ $vaccines[$vaccine_kindID - 1]->vaccine_name }} / 
-                    @endforeach
+                    @if($vaccine_kind[0] == "")
+                        選択なし
+                    @else
+                        @foreach($vaccine_kind as $vaccine_kindID)
+                            {{ $vaccines[$vaccine_kindID - 1]->vaccine_name }} /
+                        @endforeach
+                    @endif
                 @endif
             </div>
         </div>
@@ -52,7 +56,11 @@
             <div class="col-md-5">
                 検診の名前：
                 @if($schedule->medical_flag == 1)
-                    {{$schedule->medical->medicalcheck_name}}
+                    @if($schedule->medical == "")
+                        選択なし
+                    @else
+                        {{$schedule->medical->medicalcheck_name}}
+                    @endif
                 @endif
             </div>
         </div>

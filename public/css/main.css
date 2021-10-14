@@ -9,6 +9,10 @@ body {
   /* 025 9の色 */
 }
 
+a {
+  text-decoration: none;
+}
+
 .navbar-mom {
   background-color: #B0DBD4;
   /* 025 8の色 */
@@ -164,6 +168,11 @@ body {
 .schedule-link:hover {
   text-decoration: none;
   color: 0;
+}
+
+.fc-col-header-cell-cushion,
+.fc-daygrid-day-number:hover {
+  color: inherit;
 }
 
 .vaccine_record {
